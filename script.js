@@ -1,28 +1,23 @@
-// 1. قاموس الترجمة الشامل لجميع عناصر الصفحة الرئيسية والتبويبات
 const translations = {
     ar: {
         navHome: "الرئيسية", navBirth: "الميلاد", navMarriage: "الزواج", navPrivacy: "الخصوصية", navTerms: "الشروط", navContact: "اتصل بنا",
         mainTitle: "اكتشف أسرار تاريخك الفلكي الكوني", mainDesc: "اختر الأداة الزمنية التي ترغب في حسابها بدقة متناهية وبأعلى المعايير الفلكية.",
         birthTitle: "🎂 حاسبة أسرار ميلادك الفلكي", birthDesc: "احسب إجمالي الساعات والدقائق التراكمية التي عشتها وتاريخك بالتقويم الهجري الدقيق وأم القرى.", birthLink: "دخول الأداة والاحتساب الآن ←",
-        marriageTitle: "💍 حاسبة ذكرى الزواج السعيدة", marriageDesc: "تتبع أدق التفاصيل التراكمية لرحلتكم المشتركة، واعرف كم يوماً ودقيقة مرت على هذه الخطوة المباركة.", marriageLink: "دخول الأداة والاحتساب الآن ←"
+        marriageTitle: "💍 حاسبة ذكرى الزواج السعيدة", marriageDesc: "تتبع أدق التفاصيل التراكمية لرحلتكم المشتركة، واعرف كم يوماً ودقيقة مرت على هذه الخطوة المباركة.", marriageLink: "دخول الأداة والاحتساب الآن ←",
+        // ترجمات صفحة الميلاد الجديدة
+        birthPageTitle: "🎂 أسرار ميلادك الفلكي الكوني", birthPageDesc: "اكتشف تفاصيل رحلتك الكونية الفريدة بدقة متناهية وبأعلى المعايير الفلكية.",
+        lblHijri: "التقويم الهجري ذكي", lblSelectDay: "اختر اليوم", lblSelectMonth: "اختر الشهر", lblSelectYear: "اختر السنة",
+        resTitle: "النتائج والحسابات التراكمية", resDays: "إجمالي الأيام التي عشتها:", resHours: "إجمالي الساعات الكلية التراكمية:", resMinutes: "إجمالي الدقائق التراكمية الحية:", viralBtn: "🚀 مشاركة النتائج المذهلة فيروسياً"
     },
     en: {
         navHome: "Home", navBirth: "Birthday", navMarriage: "Marriage", navPrivacy: "Privacy", navTerms: "Terms", navContact: "Contact Us",
         mainTitle: "Discover Cosmic Astronomical Secrets", mainDesc: "Choose the time tool you want to calculate with extreme precision and highest standards.",
         birthTitle: "🎂 Astronomical Birthday Calculator", birthDesc: "Calculate total cumulative hours, live minutes, and your accurate Hijri Umm Al-Qura date.", birthLink: "Enter Tool & Calculate Now ←",
-        marriageTitle: "💍 Happy Marriage Anniversary", marriageDesc: "Track cumulative details of your journey, and know how many days and minutes have passed.", marriageLink: "Enter Tool & Calculate Now ←"
-    },
-    tr: {
-        navHome: "Anasayfa", navBirth: "Doğum Günü", navMarriage: "Evlilik", navPrivacy: "Gizlilik", navTerms: "Şartlar", navContact: "İletişim",
-        mainTitle: "Kozmik Astronomik Sırları Keşfedin", mainDesc: "En yüksek astronomik standartlarla hesaplamak istediğiniz zaman aracını seçin.",
-        birthTitle: "🎂 Astronomik Doğum Günü Hesaplayıcı", birthDesc: "Yaşadığınız toplam saat ve dakikayı, doğru Hicri Ümmü El-Kura tarihini hesaplayın.", birthLink: "Araca Girin ve Hesaplayın ←",
-        marriageTitle: "💍 Mutlu Evlilik Yıldönümü", marriageDesc: "Yolculuğunuzun birikimli ayrıntılarını takip edin, kaç gün ve dakika geçtiğini öğrenin.", marriageLink: "Araca Girin ve Hesaplayın ←"
-    },
-    ur: {
-        navHome: "ہوم پیج", navBirth: "پیدائش", navMarriage: "شادی", navPrivacy: "رازداری", navTerms: "شرائط", navContact: "رابطہ کریں",
-        mainTitle: "اپنے کائناتی فلکیاتی راز دریافت کریں", mainDesc: "انتہائی درستگی اور اعلیٰ فلکیاتی معیارات کے ساتھ حساب لگانے کے لیے ٹول منتخب کریں۔",
-        birthTitle: "🎂 فلکیاتی تاریخ پیدائش کیلکولیٹر", birthDesc: "کل گھنٹوں، منٹوں اور اپنے درست ہجری ام القریٰ کیلنڈر کی تاریخ کا حساب لگائیں۔", birthLink: "ٹول میں داخل ہوں اور حساب لگائیں ←",
-        marriageTitle: "💍 شادی کی سالگرہ مبارک", marriageDesc: "اپنے مشترکہ سفر کی تفصیلات کو ٹریک کریں، اور جانیں کہ کتنے دن اور منٹ گزر چکے ہیں۔", marriageLink: "ٹول میں داخل ہوں اور حساب لگائیں ←"
+        marriageTitle: "💍 Happy Marriage Anniversary", marriageDesc: "Track cumulative details of your journey, and know how many days and minutes have passed.", marriageLink: "Enter Tool & Calculate Now ←",
+        // ترجمات صفحة الميلاد بالإنجليزية
+        birthPageTitle: "🎂 Your Cosmic Birthday Secrets", birthPageDesc: "Discover the details of your unique cosmic journey with extreme accuracy and certified astronomical data.",
+        lblHijri: "Smart Hijri Calendar", lblSelectDay: "Select Day", lblSelectMonth: "Select Month", lblSelectYear: "Select Year",
+        resTitle: "Results & Cumulative Calculations", resDays: "Total Days Lived:", resHours: "Total Cumulative Hours:", resMinutes: "Live Cumulative Minutes:", viralBtn: "🚀 Share Amazing Results Virally"
     }
 };
 
@@ -69,24 +64,24 @@ function changeLanguage(lang) {
     translatePageElements(lang);
 }
 
-// دالة الترجمة الفورية واللحظية لجميع النصوص والشروحات بناء على القاموس
 function translatePageElements(lang) {
     const dict = translations[lang] || translations["ar"];
     
-    // ترجمة أزرار التنقل (الروابط) إذا كانت موجودة بالصفحة
     const elements = {
         'nav-home': dict.navHome, 'nav-birth': dict.navBirth, 'nav-marriage': dict.navMarriage,
         'nav-privacy': dict.navPrivacy, 'nav-terms': dict.navTerms, 'nav-contact': dict.navContact,
         'main-title': dict.mainTitle, 'main-desc': dict.mainDesc,
         'birth-title': dict.birthTitle, 'birth-desc': dict.birthDesc, 'birth-link': dict.birthLink,
-        'marriage-title': dict.marriageTitle, 'marriage-desc': dict.marriageDesc, 'marriage-link': dict.marriageLink
+        'marriage-title': dict.marriageTitle, 'marriage-desc': dict.marriageDesc, 'marriage-link': dict.marriageLink,
+        // ربط معرفات صفحة الميلاد الجديدة
+        'birth-page-title': dict.birthPageTitle, 'birth-page-desc': dict.birthPageDesc,
+        'lbl-hijri': dict.lblHijri, 'lbl-select-day': dict.lblSelectDay, 'lbl-select-month': dict.lblSelectMonth, 'lbl-select-year': dict.lblSelectYear,
+        'res-title': dict.resTitle, 'res-days': dict.resDays, 'res-hours': dict.resHours, 'res-minutes': dict.resMinutes, 'viralShareBtn': dict.viralBtn
     };
 
     for (let id in elements) {
         const el = document.getElementById(id);
-        if (el && elements[id]) {
-            el.innerText = elements[id];
-        }
+        if (el && elements[id]) el.innerText = elements[id];
     }
 }
 
@@ -95,18 +90,19 @@ function updateAdDirection(lang) {
     if (!adText) return;
     adText.classList.remove("scroll-rtl", "scroll-ltr");
 
+    // تم حذف كلمة أدسينس وأصبحت العبارة احترافية تسويقية خالصة
     if (lang === "ar" || lang === "ur") {
         adText.classList.add("scroll-rtl");
         adText.style.left = "0"; adText.style.right = "auto";
-        adText.innerText = "مرحباً بكم في منصة زمانك العالمية - حساب تفاصيل الميلاد، ذكريات الزواج، والدقة الفلكية المعتمدة المستوفية لشروط أدسينس!";
+        adText.innerText = "مرحباً بكم في منصة زمانك العالمية - حساب تفاصيل الميلاد، ذكريات الزواج، والدقة الفلكية المعتمدة لتوثيق اللحظات السعيدة!";
     } else {
         adText.classList.add("scroll-ltr");
         adText.style.right = "0"; adText.style.left = "auto";
-        adText.innerText = "Welcome to Zamanak Global Platform - Calculate birthday secrets, marriage memories, and certified astronomical accuracy!";
+        adText.innerText = "Welcome to Zamanak Global Platform - Calculate cosmic birthday secrets, happy marriage memories, and certified astronomical accuracy!";
     }
 }
 
-// محرك فتح وغلق النوافذ المنبثقة التفاعلية لمنع التداخل والـ تجميد
+// محرك الشبكة المنبثقة الذكية
 const monthNames = {
     ar: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"]
 };
