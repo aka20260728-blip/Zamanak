@@ -7,180 +7,89 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <a href="index.html" class="logo">ZAMANAK ✨</a>
-        <div class="nav-links">
-            <a href="index.html" id="ln-home">الرئيسية</a>
-            <a href="birthday.html" class="active" id="ln-birth">الميلاد</a>
-            <a href="privacy.html" id="ln-privacy">الخصوصية</a>
-            <a href="terms.html" id="ln-terms">الشروط</a>
-            <a href="contact.html" id="ln-contact">اتصل بنا</a>
-        </div>
-        <div class="nav-controls">
-            <button class="theme-btn" onclick="toggleTheme()" id="theme-icon">🌙</button>
-            <select class="lang-switcher" id="langSelect" onchange="changeLanguage(this.value)">
-                <option value="ar">العربية</option>
-                <option value="en">English</option>
-                <option value="tr">Türkçe</option>
-                <option value="ur">اردو</option>
+
+    <!-- شريط التنقل العلوي الموحد -->
+    <header class="global-navbar">
+        <a href="index.html" class="logo-link">✨ ZAMANAK</a>
+        <nav class="nav-links">
+            <a href="index.html" id="nav-home">الرئيسية</a>
+            <a href="birthday.html" id="nav-birth" class="active">الميلاد</a>
+            <a href="marriage.html" id="nav-marriage">الزواج</a>
+            <a href="privacy.html" id="nav-privacy">الخصوصية</a>
+            <a href="terms.html" id="nav-terms">الشروط</a>
+            <a href="contact.html" id="nav-contact">اتصل بنا</a>
+        </nav>
+        <div class="controls-group">
+            <select id="languageSelect">
+                <option value="ar">العربية 🇸🇦</option>
+                <option value="en">English 🇬🇧</option>
+                <option value="tr">Türkçe 🇹🇷</option>
+                <option value="ur">اردو 🇵🇰</option>
             </select>
+            <button id="darkModeToggle" class="theme-btn">🌓</button>
         </div>
-    </nav>
-    <div class="ad-space">مساحة إعلانية مستقبلية أعلى الأداة حافزة للأرباح</div>
-    <div class="calculator-container">
-        <h2 id="calc-title">🎂 أسرار ميلادك الفلكي الكوني</h2>
-        <div class="toggle-container">
-            <span id="lbl-hijri">التقويم الهجري ذكي</span>
-            <input type="checkbox" id="cal-toggle" onchange="toggleCalendar()">
+    </header>
+
+    <!-- الحاوية الرئيسية الموسطة تماماً وحواف الأمان -->
+    <main class="main-wrapper">
+        
+        <!-- مستطيل الشرح الاحترافي الخالي من كلمة أدسينس -->
+        <div class="adsense-placeholder-box">
+            <div id="movingAdText" class="moving-text"></div>
         </div>
-        <div class="date-grid-trigger">
-            <div class="selector-box" onclick="openPopup('day')">📅 <span id="view-day">13</span></div>
-            <div class="selector-box" onclick="openPopup('month')">🌙 <span id="view-month" data-val="9">سبتمبر</span></div>
-            <div class="selector-box" onclick="openPopup('year')">⏳ <span id="view-year">2016</span></div>
+
+        <div class="tool-header">
+            <h1 id="birth-page-title">🎂 أسرار ميلادك الفلكي الكوني</h1>
+            <p id="birth-page-desc" style="opacity: 0.8; font-size: 0.9rem; margin-top: 5px;">اكتشف تفاصيل رحلتك الكونية الفريدة بدقة متناهية وبأعلى المعايير الفلكية.</p>
         </div>
-        <div class="results-box">
-            <div class="result-item"><span id="res-h-lbl">المقابل الهجري (أم القرى):</span> <span id="res-hijri">11 ذو الحجة 1437 هـ</span></div>
-            <div class="result-item"><span id="res-d-lbl">إجمالي الأيام التي عشتها:</span> <span id="res-days">-</span></div>
-            <div class="result-item"><span id="res-hr-lbl">إجمالي الساعات الكلية التراكمية:</span> <span id="res-hours">-</span></div>
-            <div class="result-item"><span id="res-m-lbl">إجمالي الدقائق التراكمية الحية:</span> <span id="res-minutes">-</span></div>
+
+        <div class="calendar-switch" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <input type="checkbox" id="hijriCheckbox" style="width: 18px; height: 18px; cursor: pointer;">
+            <label for="hijriCheckbox" id="lbl-hijri" style="font-weight: bold; cursor: pointer;">التقويم الهجري ذكي</label>
         </div>
-        <button class="share-btn" onclick="openShareCard()" id="btn-share">🚀 مشاركة النتائج المذهلة فيروسياً</button>
+
+        <!-- صناديق الاختيار المنبثقة لمنع ظهور الأرقام المنسابة طويلاً للأسفل -->
+        <div class="date-selectors-container" style="width: 100%; display: flex; flex-direction: column; gap: 12px;">
+            <div class="date-selector-box" onclick="openPopup('day')">
+                <span id="lbl-select-day">اختر اليوم</span>
+                <span id="selectedDayText" style="color: var(--primary-gold); font-weight: bold;">13 📅</span>
+            </div>
+            <div class="date-selector-box" onclick="openPopup('month')">
+                <span id="lbl-select-month">اختر الشهر</span>
+                <span id="selectedMonthText" style="color: var(--primary-gold); font-weight: bold;">سبتمبر 🌙</span>
+            </div>
+            <div class="date-selector-box" onclick="openPopup('year')">
+                <span id="lbl-select-year">اختر السنة</span>
+                <span id="selectedYearText" style="color: var(--primary-gold); font-weight: bold;">2016 ⏳</span>
+            </div>
+        </div>
+
+        <!-- تأثير التشويق والإثارة -->
+        <div id="loadingEffect" class="loading-box" style="display: none;">
+            <div class="spinner"></div>
+            <p id="loadingText">جاري الاتصال بالمحرك الفلكي لـ زمانك...</p>
+        </div>
+
+        <!-- صندوق النتائج التراكمية المربوط بالترجمة الفورية -->
+        <div id="resultContainer" class="tool-card">
+            <h3 id="res-title" style="color: var(--primary-gold); margin-bottom: 15px; text-align: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">النتائج والحسابات التراكمية</h3>
+            <p style="margin-bottom: 10px;" id="hijriOutput">المقابل الهجري (أم القرى): <span style="font-weight: bold; color: var(--primary-gold);">11 ذو الحجة 1437 هـ</span></p>
+            <p style="margin-bottom: 10px;"><span id="res-days">إجمالي الأيام التي عشتها:</span> <span style="font-weight: bold;">-</span></p>
+            <p style="margin-bottom: 10px;"><span id="res-hours">إجمالي الساعات الكلية التراكمية:</span> <span style="font-weight: bold;">-</span></p>
+            <p style="margin-bottom: 15px;"><span id="res-minutes">إجمالي الدقائق التراكمية الحية:</span> <span style="font-weight: bold; color: #2ecc71;">-</span></p>
+            <button id="viralShareBtn" style="width: 100%; background: linear-gradient(90deg, #e67e22, var(--primary-gold)); color: #fff; border: none; font-weight: bold; padding: 12px; font-size: 1rem; border-radius: 6px;">🚀 مشاركة النتائج المذهلة فيروسياً</button>
+        </div>
+
+    </main>
+
+    <!-- صندوق النافذة المنبثقة المطور (تم تعديل الـ CSS الخاص به لحجب ما خلفه 100%) -->
+    <div id="datePopupModal" class="popup-modal">
+        <div class="popup-content">
+            <div class="popup-title" id="popupTitle">اختر</div>
+            <div class="grid-container" id="popupGridItems"></div>
+        </div>
     </div>
 
-    <div id="day-popup" class="popup-modal" onclick="closePopup('day')"><div class="popup-content" onclick="event.stopPropagation()"><h3 id="pop-d-title">اختر اليوم</h3><div class="grid-layout grid-day" id="grid-days-container"></div></div></div>
-    <div id="month-popup" class="popup-modal" onclick="closePopup('month')"><div class="popup-content" onclick="event.stopPropagation()"><h3 id="pop-m-title">اختر الشهر</h3><div class="grid-layout grid-month" id="grid-months-container"></div></div></div>
-    <div id="year-popup" class="popup-modal" onclick="closePopup('year')"><div class="popup-content" onclick="event.stopPropagation()"><h3 id="pop-y-title">اختر السنة</h3><div class="grid-layout grid-year" id="grid-years-container"></div></div></div>
-
-    <div id="share-popup" class="popup-modal" onclick="closeShareCard()">
-        <div class="popup-content viral-card" onclick="event.stopPropagation()">
-            <h3 style="color: var(--gold);">✨ بطاقة زمانك العالمية ✨</h3>
-            <p id="viral-msg-preview" style="font-size: 14px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px; text-align: right; direction: rtl;"></p>
-            <button class="share-btn" style="margin-top: 10px;" onclick="copyViralText()">📋 نسخ النص والمشاركة</button>
-            <button class="share-btn" style="background: #25d366; color: #fff; margin-top: 8px;" onclick="sendWhatsApp()">💬 إرسال عبر الواتساب فوراً</button>
-        </div>
-    </div>
-    <div class="ad-space">مساحة إعلانية مستقبلية أسفل الأداة حافزة للأرباح</div>
     <script src="script.js"></script>
-    <script>
-        const langPack = {
-            ar: {
-                home:"الرئيسية", birth:"الميلاد", privacy:"الخصوصية", terms:"الشروط", contact:"اتصل بنا",
-                title:"🎂 أسرار ميلادك الفلكي الكوني", lblHijri:"التقويم الهجري الذكي",
-                hI:"المقابل الهجري (أم القرى):", dI:"إجمالي الأيام التي عشتها:", hrI:"إجمالي الساعات الكلية التراكمية:", mI:"إجمالي الدقائق التراكمية الحية:",
-                shBtn:"🚀 مشاركة النتائج المذهلة فيروسياً", popD:"اختر اليوم", popM:"اختر الشهر", popY:"اختر السنة",
-                months: ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"],
-                hMonths: ["محرم","صفر","ربيع الأول","ربيع الآخر","جمادى الأولى","جمادى الآخرة","رجب","شعبان","رمضان","شوال","ذو القعدة","ذو الحجة"]
-            },
-            en: {
-                home:"Home", birth:"Birthday", privacy:"Privacy", terms:"Terms", contact:"Contact Us",
-                title:"🎂 Cosmic Birthday Secrets", lblHijri:"Smart Hijri Calendar Mode",
-                hI:"Hijri Equivalent (Umm al-Qura):", dI:"Total Days You Lived:", hrI:"Total Cumulative Hours:", mI:"Total Live Minutes:",
-                shBtn:"🚀 Share Stunning Viral Results", popD:"Select Day", popM:"Select Month", popY:"Select Year",
-                months: ["January","February","March","April","May","June","July","August","September","October","November","December"],
-                hMonths: ["Muharram","Safar","Rabi' al-Awwal","Rabi' al-Thani","Jumada al-Awwal","Jumada al-Thani","Rajab","Sha'ban","Ramadan","Shawwal","Dhu al-Qa'dah","Dhu al-Hijjah"]
-            },
-            tr: {
-                home:"Ana Sayfa", birth:"Doğum Günü", privacy:"Gizlilik", terms:"Şartlar", contact:"İletişim",
-                title:"🎂 Kozmik Doğum Günü Sırları", lblHijri:"Akıllı Hicri Takvim Modu",
-                hI:"Hicri Karşılığı (Ümmü El-Kura):", dI:"Yaşadığınız Toplam Gün:", hrI:"Kümülâtif Toplam Saat:", mI:"Canlı Toplam Dakika:",
-                shBtn:"🚀 Çarpıcı Viral Sonuçları Paylaş", popD:"Gün Seçin", popM:"Ay Seçin", popY:"Yıl Seçin",
-                months: ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"],
-                hMonths: ["Muharrem","Sefer","Rebiülevvel","Rebiülahır","Cemaziyelevvel","Cemaziyelahır","Recep","Şaban","Ramazan","Şevval","Zilkade","Zilhicce"]
-            },
-            ur: {
-                home: "ہوم", birth: "سالگرہ", privacy: "رازداری", terms: "شرائط", contact: "رابطہ کریں",
-                title: "🎂 کائناتی سالگرہ کا کیلکولیٹر", lblHijri: "اسمارٹ ہجری کیلنڈر وضع",
-                hI: "ہجری متبادل (ام القری):", dI: "کل دن جو آپ جی چکے ہیں:", hrI: "کل جمع شدہ گھنٹے:", mI: "کل لائیو منٹ:",
-                shBtn: "🚀 وائرل نتائج شیئر کریں", popD: "دن منتخب کریں", popM: "مہینہ منتخب کریں", popY: "سال منتخب کریں",
-                months: ["جنوری","فروری","مارچ","اپریل","مئی","جون","جولائی","اگست","ستمبر","اکتوبر","نوفمبر","دسمبر"],
-                hMonths: ["محرم","صفر","ربیع الاول","ربیع الثانی","جمادی الاول","جمادی الثانی","رجب","شعبان","رمضان","شوال","ذوالقعدہ","ذوالحجہ"]
-            }
-        };
-
-        let currentLang = 'ar'; let isHijriMode = false;
-
-        function initGridPopups() {
-            const daysContainer = document.getElementById('grid-days-container'); daysContainer.innerHTML = '';
-            for(let i=1; i<=31; i++) { daysContainer.innerHTML += `<div class="grid-item" onclick="selectValue('day', ${i})">${i}</div>`; }
-            const yearsContainer = document.getElementById('grid-years-container'); yearsContainer.innerHTML = '';
-            let currentYear = new Date().getFullYear();
-            for(let i=currentYear; i>=1930; i--) { yearsContainer.innerHTML += `<div class="grid-item" onclick="selectValue('year', ${i})">${i}</div>`; }
-            renderMonthsGrid();
-        }
-
-        function renderMonthsGrid() {
-            const monthsContainer = document.getElementById('grid-months-container'); monthsContainer.innerHTML = '';
-            const list = isHijriMode ? langPack[currentLang].hMonths : langPack[currentLang].months;
-            list.forEach((m, index) => { monthsContainer.innerHTML += `<div class="grid-item" onclick="selectValue('month', ${index+1}, '${m}')">${m}</div>`; });
-        }
-
-        function openPopup(type) { document.getElementById(`${type}-popup`).style.display = 'flex'; }
-        function closePopup(type) { document.getElementById(`${type}-popup`).style.display = 'none'; }
-
-        function selectValue(type, val, text) {
-            if(type === 'day') document.getElementById('view-day').innerText = val;
-            if(type === 'year') document.getElementById('view-year').innerText = val;
-            if(type === 'month') { const viewMonth = document.getElementById('view-month'); viewMonth.innerText = text; viewMonth.setAttribute('data-val', val); }
-            closePopup(type); calculateMetrics();
-        }
-
-        function toggleCalendar() {
-            isHijriMode = document.getElementById('cal-toggle').checked;
-            document.getElementById('view-month').innerText = isHijriMode ? langPack[currentLang].hMonths : langPack[currentLang].months;
-            document.getElementById('view-month').setAttribute('data-val', '9');
-            renderMonthsGrid(); calculateMetrics();
-        }
-
-        function calculateMetrics() {
-            const d = parseInt(document.getElementById('view-day').innerText);
-            const m = parseInt(document.getElementById('view-month').getAttribute('data-val'));
-            const y = parseInt(document.getElementById('view-year').innerText);
-            let targetDate = new Date(y, m - 1, d);
-            
-            if (!isHijriMode && y === 2016 && m === 9 && d === 13) { document.getElementById('res-hijri').innerText = "11 ذو الحجة 1437 هـ"; }
-            else if (!isHijriMode) { let hYear = Math.round((y - 622) * (32 / 31)); document.getElementById('res-hijri').innerText = `15 رمضان ${hYear} هـ`; }
-            else { document.getElementById('res-hijri').innerText = `${d} / ${m} / ${y} م`; }
-
-            const now = new Date(); const diffTime = Math.abs(now - targetDate);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); const diffHours = diffDays * 24; const diffMinutes = diffHours * 60;
-            document.getElementById('res-days').innerText = diffDays.toLocaleString();
-            document.getElementById('res-hours').innerText = diffHours.toLocaleString();
-            document.getElementById('res-minutes').innerText = diffMinutes.toLocaleString();
-        }
-
-        function generateViralText() {
-            const days = document.getElementById('res-days').innerText; const hijri = document.getElementById('res-hijri').innerText;
-            if(currentLang === 'ar') { return `✨ مذهل! اكتشفت أسرار تاريخ ميلادي الفلكي عبر موقع زمانك العالمي! ⏳ عشت حتى الآن إجمالي ${days} يوماً تراكمياً! ومقابله الفلكي بأم القرى هو: ${hijri}. اكتشف أسرار تاريخك مجاناً فوراً عبر الرابط: zamanak.com`; }
-            else if(currentLang === 'ur') { return `✨ حیرت انگیز! میں نے زمانک پر اپنے کائناتی سالگرہ کے راز دریافت کیے! ⏳ میں اب تک کل ${days} دن جی چکا ہوں! ہجری تاریخ: ${hijri}. اپنے راز ابھی مفت میں دیکھیں: zamanak.com`; }
-            else { return `✨ Amazing! I discovered my cosmic birthday secrets on Zamanak! ⏳ I have lived ${days} cumulative days so far! Hijri equivalent: ${hijri}. Discover your secrets now for free at: zamanak.com`; }
-        }
-
-        function openShareCard() { document.getElementById('viral-msg-preview').innerText = generateViralText(); document.getElementById('share-popup').style.display = 'flex'; }
-        function closeShareCard() { document.getElementById('share-popup').style.display = 'none'; }
-        function copyViralText() { navigator.clipboard.writeText(generateViralText()); alert(currentLang === 'ar' ? "تم نسخ نص الترويج بنجاح!" : "Viral text copied!"); }
-        function sendWhatsApp() { const text = encodeURIComponent(generateViralText()); window.open(`https://whatsapp.com{text}`, '_blank'); }
-
-        function changeLanguage(lang) {
-            localStorage.setItem('zamanak_lang', lang);
-            applySavedThemeAndLang(); currentLang = lang;
-            
-            document.getElementById('ln-home').innerText = langPack[lang].home; document.getElementById('ln-birth').innerText = langPack[lang].birth;
-            document.getElementById('ln-privacy').innerText = langPack[lang].privacy; document.getElementById('ln-terms').innerText = langPack[lang].terms;
-            document.getElementById('ln-contact').innerText = langPack[lang].contact; document.getElementById('calc-title').innerText = langPack[lang].title;
-            document.getElementById('lbl-hijri').innerText = langPack[lang].lblHijri; document.getElementById('res-h-lbl').innerText = langPack[lang].hI;
-            document.getElementById('res-d-lbl').innerText = langPack[lang].dI; document.getElementById('res-hr-lbl').innerText = langPack[lang].hrI;
-            document.getElementById('res-m-lbl').innerText = langPack[lang].mI; document.getElementById('btn-share').innerText = langPack[lang].shBtn;
-            document.getElementById('pop-d-title').innerText = langPack[lang].popD; document.getElementById('pop-m-title').innerText = langPack[lang].popM;
-            document.getElementById('pop-y-title').innerText = langPack[lang].popY;
-            renderMonthsGrid(); calculateMetrics();
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            initGridPopups(); const savedLang = localStorage.getItem('zamanak_lang') || 'ar'; changeLanguage(savedLang);
-        });
-    </script>
 </body>
 </html>
-
-    
-    
