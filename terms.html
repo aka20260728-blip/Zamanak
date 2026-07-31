@@ -3,95 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شروط الاستخدام | Terms of Service - Zamanak</title>
-    <style>
-        :root { --bg-dark: #0a0e17; --card-dark: #121824; --gold: #d4af37; --text-light: #e2e8f0; --text-muted: #8a99ad; }
-        body { background-color: var(--bg-dark); color: var(--text-light); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        .navbar { background-color: var(--card-dark); border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding: 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 22px; font-weight: bold; color: var(--gold); text-decoration: none; }
-        .nav-links { display: flex; gap: 12px; }
-        .nav-links a { color: var(--text-light); text-decoration: none; font-size: 13px; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-        .lang-switcher { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 5px 10px; border-radius: 5px; cursor: pointer; }
-        .content-container { max-width: 700px; margin: 30px auto; padding: 25px; background: var(--card-dark); border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.1); line-height: 1.8; }
-        h1 { color: var(--gold); border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 10px; }
-        h3 { color: var(--gold); margin-top: 20px; }
-        p { color: var(--text-light); font-size: 15px; }
-    </style>
+    <title>زمانك (Zamanak) - سياسة الخصوصية</title>
+    <!-- ربط ملف التصميم الموحد والجديد -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- شريط التنقل المشترك -->
-    <nav class="navbar">
-        <a href="index.html" class="logo">ZAMANAK ✨</a>
-        <div class="nav-links">
-            <a href="index.html" id="ln-home">الرئيسية</a>
-            <a href="birthday.html" id="ln-birth">الميلاد</a>
-            <a href="privacy.html" id="ln-privacy">الخصوصية</a>
-            <a href="terms.html" class="active" id="ln-terms">الشروط</a>
-            <a href="contact.html" id="ln-contact">اتصل بنا</a>
+    <!-- 1. شريط التنقل العلوي الموحد (يظهر في جميع الصفحات الآن) -->
+    <header class="global-navbar">
+        <div class="navbar-container">
+            <div class="logo" style="font-weight: bold; font-size: 1.2rem;">Zamanak</div>
+            <div class="controls-group">
+                <select id="languageSelect">
+                    <option value="ar">العربية 🇸🇦</option>
+                    <option value="en">English 🇬🇧</option>
+                    <option value="tr">Türkçe 🇹🇷</option>
+                    <option value="ur">اردو 🇵🇰</option>
+                </select>
+                <button id="darkModeToggle">🌓</button>
+            </div>
         </div>
-        <select class="lang-switcher" onchange="changeLanguage(this.value)">
-            <option value="ar">العربية</option>
-            <option value="en">English</option>
-            <option value="tr">Türkçe</option>
-            <option value="fr">Français</option>
-        </select>
-    </nav>
+    </header>
 
-    <!-- محتوى شروط الخدمة القانوني لتفعيل أدسينس واإخلاء المسؤولية الفلكية -->
-    <div class="content-container">
-        <h1 id="t-title">شروط وأحكام استخدام زمانك</h1>
-        <div id="t-body">
-            <p>باستخدامك لموقع "زمانك"، فإنك توافق على الالتزام بالشروط والأحكام التالية. يرجى قراءتها بعناية قبل استخدام المحرك الفلكي.</p>
-            <h3>إخلاء المسؤولية الفلكية والزمنية</h3>
-            <p>جميع الحسابات الفلكية، العدادات التراكمية، ومقارنات التقويم الهجري وأم القرى المقدمة في هذا الموقع هي لأغراض ترفيهية، معرفية، وتثقيفية فقط. على الرغم من بذل أقصى جهد لضمان الدقة الحسابية الدقيقة (بما في ذلك تصحيحات الفروق الفلكية)، فإن الموقع لا يقدم ضمانات قانونية مطلقة حول تطابق النتائج مع كافة الرؤى الشرعية المحلية.</p>
+    <!-- 2. الحاوية الرئيسية للتوسط الشامل وحواف الأمان -->
+    <main class="main-wrapper">
+        
+        <!-- مستطيل الإعلان المتحرك الذكي المضاف حديثاً -->
+        <div class="adsense-placeholder-box">
+            <div id="movingAdText" class="moving-text"></div>
         </div>
-    </div>
 
-    <script>
-        const langPack = {
-            ar: {
-                home:"الرئيسية", birth:"الميلاد", privacy:"الخصوصية", terms:"الشروط", contact:"اتصل بنا",
-                title:"شروط وأحكام استخدام زمانك",
-                body:`<p>باستخدامك لموقع "زمانك"، فإنك توافق على الالتزام بالشروط والأحكام التالية. يرجى قراءتها بعناية قبل استخدام المحرك الفلكي.</p>
-                <h3>إخلاء المسؤولية الفلكية والزمنية</h3>
-                <p>جميع الحسابات الفلكية، العدادات التراكمية، ومقارنات التقويم الهجري وأم القرى المقدمة في هذا الموقع هي لأغراض ترفيهية، معرفية، وتثقيفية فقط. على الرغم من بذل أقصى جهد لضمان الدقة الحسابية الدقيقة، فإن الموقع لا يقدم ضمانات قانونية مطلقة حول تطابق النتائج مع كافة الرؤى الشرعية المحلية.</p>`
-            },
-            en: {
-                home:"Home", birth:"Birthday", privacy:"Privacy", terms:"Terms", contact:"Contact Us",
-                title:"Terms of Service - Zamanak",
-                body:`<p>By using Zamanak, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
-                <h3>Astronomical & Time Disclaimer</h3>
-                <p>All astronomical calculations, cumulative counters, and calendar conversions provided on this site are for entertainment, information, and educational purposes only. While we strive for extreme mathematical precision, we offer no absolute legal guarantees.</p>`
-            },
-            tr: {
-                home:"Ana Sayfa", birth:"Doğum Günü", privacy:"Gizlilik", terms:"Şartlar", contact:"İletişim",
-                title:"Kullanım Şartları - Zamanak",
-                body:`<p>Zamanak'ı kullanarak, aşağıdaki şart ve koşullara uymayı ve bunlarla bağlı kalmayı kabul etmiş olursunuz. Lütfen bunları dikkatlice okuyun.</p>
-                <h3>Astronomik ve Zaman Sorumluluk Reddi</h3>
-                <p>Bu sitede sunulan tüm astronomik hesaplamalar, kümülatif sayaçlar ve takvim dönüşümleri yalnızca eğlence, bilgi ve eğitim amaçlıdır. Matematiksel hassasiyet için azami çaba gösterilse de, mutlak yasal garanti verilmez.</p>`
-            },
-            fr: {
-                home:"Accueil", birth:"Anniversaire", privacy:"Confidentialité", terms:"Conditions", contact:"Contact",
-                title:"Conditions d'Utilisation - Zamanak",
-                body:`<p>En utilisant Zamanak, vous acceptez de vous conformer aux termes et conditions suivants. Veuillez les lire attentivement.</p>
-                <h3>Avis de Non-responsabilité Astronomique</h3>
-                <p>Tous les calculs astronomiques, compteurs cumulatifs et conversions de calendrier fournis sur ce site sont à des fins récréatives, informatives et éducatives uniquement. Bien que nous visions une précision extrême, aucune garantie absolue n'est fournie.</p>`
-            }
-        };
+        <!-- محتوى السياسة القانوني المتوسط تماماً ومريح للعين -->
+        <article class="policy-content" style="line-height: 1.8;">
+            <h1 style="margin-bottom: 15px; color: var(--primary-gold);">سياسة الخصوصية الرسمية</h1>
+            <p>مرحباً بكم في منصة زمانك. نحن نحترم خصوصيتكم ونلتزم بحمايتها بالكامل لاستيفاء معايير وشروط جوجل أدسينس المالية.</p>
+            <br>
+            <h3 style="margin-top: 15px;">1. جمع المعلومات والبيانات</h3>
+            <p>الموقع لا يقوم بتخزين أي تواريخ ميلاد أو زواج على سيرفرات خارجية؛ كل العمليات الحسابية تتم محلياً داخل متصفحك لضمان أعلى مستويات الأمان والسرية.</p>
+            <br>
+            <h3 style="margin-top: 15px;">2. ملفات تعريف الارتباط (Cookies)</h3>
+            <p>نحن نستخدم الذاكرة المحلية (localStorage) فقط لحفظ تفضيلاتك الشخصية مثل اللغة المفضلة لديك والوضع اللوني (داكن/فاتح) لضمان سهولة تصفحك للموقع.</p>
+        </article>
 
-        function changeLanguage(lang) {
-            document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
-            document.documentElement.lang = lang;
-            document.getElementById('ln-home').innerText = langPack[lang].home;
-            document.getElementById('ln-birth').innerText = langPack[lang].birth;
-            document.getElementById('ln-privacy').innerText = langPack[lang].privacy;
-            document.getElementById('ln-terms').innerText = langPack[lang].terms;
-            document.getElementById('ln-contact').innerText = langPack[lang].contact;
-            document.getElementById('t-title').innerText = langPack[lang].title;
-            document.getElementById('t-body').innerHTML = langPack[lang].body;
-        }
-    </script>
+    </main>
+
+    <!-- ربط محرك المزامنة الذكي الموحد -->
+    <script src="script.js"></script>
 </body>
 </html>
