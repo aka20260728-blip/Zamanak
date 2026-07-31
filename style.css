@@ -1,0 +1,44 @@
+:root {
+    --bg: #0a0e17; --card: #121824; --gold: #d4af37; --text: #e2e8f0; --text-muted: #8a99ad; --border: rgba(212, 175, 55, 0.2);
+}
+.light-mode {
+    --bg: #f4f6f9; --card: #ffffff; --gold: #b58900; --text: #1a202c; --text-muted: #64748b; --border: rgba(181, 137, 0, 0.3);
+}
+body {
+    background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 0; transition: 0.3s;
+}
+/* تنسيق شريط التصفح الذكي المتناسق */
+.navbar {
+    background-color: var(--card); border-bottom: 1px solid var(--border); padding: 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000;
+}
+.logo { font-size: 22px; font-weight: bold; color: var(--gold); text-decoration: none; }
+.nav-links { display: flex; gap: 12px; align-items: center; }
+.nav-links a { color: var(--text); text-decoration: none; font-size: 13px; transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-controls { display: flex; gap: 10px; align-items: center; }
+.lang-switcher { background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 5px 8px; border-radius: 5px; cursor: pointer; font-size: 12px; }
+.theme-btn { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 14px; }
+.ad-space { background: rgba(255, 255, 255, 0.02); border: 1px dashed var(--text-muted); margin: 15px auto; padding: 15px; text-align: center; max-width: 90%; color: var(--text-muted); font-size: 11px; border-radius: 8px; }
+/* توسيط المحتوى ومنع الميل التام لليمين */
+.main-container, .calculator-container, .content-container { 
+    padding: 20px; max-width: 500px; margin: 20px auto; text-align: center; display: flex; flex-direction: column; align-items: center; box-sizing: border-box;
+}
+.tool-card, .results-box { background-color: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; width: 100%; box-sizing: border-box; }
+.tool-card { cursor: pointer; transition: 0.3s; text-decoration: none; color: inherit; }
+.tool-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.tool-card h3 { color: var(--gold); margin: 0 0 10px 0; }
+.toggle-container { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px; }
+.date-grid-trigger { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; width: 100%; }
+.selector-box { flex: 1; background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.result-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); width: 100%; }
+.result-item span:last-child { color: var(--gold); font-weight: bold; }
+.share-btn { background: linear-gradient(45deg, #d4af37, #aa8413); color: #0a0e17; border: none; padding: 12px 25px; font-weight: bold; border-radius: 25px; cursor: pointer; margin-top: 20px; width: 100%; }
+/* المنبثقات */
+.popup-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
+.popup-content { background: var(--card); border: 1px solid var(--gold); border-radius: 12px; padding: 20px; max-width: 90%; width: 350px; }
+.grid-layout { display: grid; gap: 8px; max-height: 250px; overflow-y: auto; width: 100%; }
+.grid-day { grid-template-columns: repeat(5, 1fr); }
+.grid-month { grid-template-columns: repeat(3, 1fr); }
+.grid-year { grid-template-columns: repeat(4, 1fr); }
+.grid-item { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 5px; cursor: pointer; text-align: center; }
+.grid-item:hover { background: var(--gold); color: #0a0e17; }
