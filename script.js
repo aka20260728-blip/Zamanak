@@ -107,3 +107,92 @@ function triggerCalculationWithSuspense(lang, callbackSuccess) {
         if(callbackSuccess) callbackSuccess();
     }, 1500); 
 }
+
+// مصفوفة أسماء الأشهر للغات المختلفة لتسهيل البناء الذكي
+const monthNames = {
+    ar: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
+    en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+};
+
+// الدالة الرئيسية لفتح النافذة المنبثقة وبناء الشبكة (Grid) حسب النوع المعطى
+function openPopup(type) {
+    const modal = document.getElementById("datePopupModal");
+    const title = document.getElementById("popupTitle");
+    const gridContainer = document.getElementById("popupGridItems");
+    const currentLang = localStorage.getItem("zamanak_lang") || "ar";
+
+    if (!modal || !gridContainer) return;
+
+    // تصفير المحتوى القديم للشبكة قبل البناء الجديد
+    gridContainer.innerHTML = "";
+
+    if (type === 'day') {
+        title.innerText = currentLang === 'ar' ? "اختر اليوم" : "Select Day";
+        // بناء أيام الشهر من 1 إلى 31 في مربعات متناسقة
+        for (let i = 1; i <= 31; i++) {
+            createGridElement(i, i, 'day', modal);
+        }
+    } 
+    else if (type === 'month') {
+        title.innerText = currentLang === 'ar' ? "اختر الشهر" : "Select Month";
+        // بناء أشهر السنة الـ 12
+        const months = monthNames[currentLang] || monthNames['ar'];
+        months.forEach((month, index) => {
+            createGridElement(month, index + 1, 'month', modal);
+        });
+    } 
+    else if (type === 'year') {
+        title.innerText = currentLang === 'ar' ? "اختر السنة" : "Select Year";
+        // بناء السنوات ديناميكياً من السنة الحالية نزولاً لـ 100 سنة مضت
+        const currentYear = new Date().getFullYear();
+        for (let i = currentYear; i >= currentYear - 100; i--) {
+            createGridElement(i, i, 'year', modal);
+        }
+    }
+
+    // إظهار النافذة المنبثقة بأسلوب مرن موسط في الشاشة
+    modal.style.display = "flex";
+}
+
+// دالة فرعية لصناعة مربعات الشبكة وتحديد حدث الضغط عليها
+function createGridElement(text, value, type, modalElement) {
+    const gridContainer = document.getElementById("popupGridItems");
+    const item = document.createElement("div");
+    item.className = "grid-item";
+    item.innerText = text;
+
+    item.onclick = () => {
+        if (type === 'day') {
+            document.getElementById("selectedDayText").innerText = text + " 📅";
+            localStorage.setItem("selected_day", value);
+        } else if (type === 'month') {
+            document.getElementById("selectedMonthText").innerText = text + " 🌙";
+            localStorage.setItem("selected_month", value);
+        } else if (type === 'year') {
+            document.getElementById("selectedYearText").innerText = text + " ⏳";
+            localStorage.setItem("selected_year", value);
+        }
+
+        // إغلاق النافذة المنبثقة تلقائياً فور اختيار الرقم
+        modalElement.style.display = "none";
+
+        // استدعاء دالة التشويق والحساب التلقائي اللحظي دون أزرار
+        const lang = localStorage.getItem("zamanak_lang") || "ar";
+        if (typeof triggerCalculationWithSuspense === "function") {
+            triggerCalculationWithSuspense(lang, () => {
+                // [ملاحظة هندسية]: ضع اسم دالة الحسابات الفلكية الحقيقية الخاصة بك هنا ليتم تحديث الأرقام والعدادات فوراً
+                console.log("تم تحديث البيانات الفلكية والعدادات بنجاح!");
+            });
+        }
+    };
+
+    gridContainer.appendChild(item);
+}
+
+// إغلاق النافذة المنبثقة عند الضغط خارج صندوق المربعات للأمان
+window.onclick = function(event) {
+    const modal = document.getElementById("datePopupModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
