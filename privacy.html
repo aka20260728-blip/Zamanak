@@ -3,51 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زمانك (Zamanak) - سياسة الخصوصية</title>
-    <!-- ربط ملف التصميم الموحد والجديد -->
+    <title>زمانك - سياسة الخصوصية الرسمية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. شريط التنقل العلوي الموحد (يظهر في جميع الصفحات الآن) -->
+    <!-- الهيدر الموحد متوفر بجميع التبويبات والشعار الذكي -->
     <header class="global-navbar">
-        <div class="navbar-container">
-            <div class="logo" style="font-weight: bold; font-size: 1.2rem;">Zamanak</div>
-            <div class="controls-group">
-                <select id="languageSelect">
-                    <option value="ar">العربية 🇸🇦</option>
-                    <option value="en">English 🇬🇧</option>
-                    <option value="tr">Türkçe 🇹🇷</option>
-                    <option value="ur">اردو 🇵🇰</option>
-                </select>
-                <button id="darkModeToggle">🌓</button>
-            </div>
+        <a href="index.html" class="logo-link">✨ ZAMANAK</a>
+        <nav class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="birthday.html">الميلاد</a>
+            <a href="marriage.html">الزواج</a>
+            <a href="privacy.html" class="active">الخصوصية</a>
+            <a href="terms.html">الشروط</a>
+            <a href="contact.html">اتصل بنا</a>
+        </nav>
+        <div class="controls-group">
+            <select id="languageSelect">
+                <option value="ar">العربية 🇸🇦</option>
+                <option value="en">English 🇬🇧</option>
+                <option value="tr">Türkçe 🇹🇷</option>
+                <option value="ur">اردو 🇵🇰</option>
+            </select>
+            <button id="darkModeToggle" class="theme-btn">🌓</button>
         </div>
     </header>
 
-    <!-- 2. الحاوية الرئيسية للتوسط الشامل وحواف الأمان -->
     <main class="main-wrapper">
-        
-        <!-- مستطيل الإعلان المتحرك الذكي المضاف حديثاً -->
         <div class="adsense-placeholder-box">
             <div id="movingAdText" class="moving-text"></div>
         </div>
 
-        <!-- محتوى السياسة القانوني المتوسط تماماً ومريح للعين -->
-        <article class="policy-content" style="line-height: 1.8;">
-            <h1 style="margin-bottom: 15px; color: var(--primary-gold);">سياسة الخصوصية الرسمية</h1>
-            <p>مرحباً بكم في منصة زمانك. نحن نحترم خصوصيتكم ونلتزم بحمايتها بالكامل لاستيفاء معايير وشروط جوجل أدسينس المالية.</p>
+        <div class="tool-card" style="text-align: right; line-height: 1.8;">
+            <h1 style="color: var(--primary-gold); margin-bottom: 15px; text-align: center;">سياسة الخصوصية الرسمية</h1>
+            <p>مرحباً بكم في منصة زمانك. نحن ملتزمون تماماً بحماية خصوصية بياناتكم كشرط أساسي لقبول إعلانات جوجل أدسينس المالي.</p>
             <br>
-            <h3 style="margin-top: 15px;">1. جمع المعلومات والبيانات</h3>
-            <p>الموقع لا يقوم بتخزين أي تواريخ ميلاد أو زواج على سيرفرات خارجية؛ كل العمليات الحسابية تتم محلياً داخل متصفحك لضمان أعلى مستويات الأمان والسرية.</p>
+            <h4 style="color: var(--primary-gold);">1. معالجة البيانات المحلية</h4>
+            <p>موقع زمانك لا يرفع ولا يحفظ أي تواريخ ميلاد أو زواج على خوادم خارجية؛ كافة العمليات التراكمية الحية والعدادات تتم محلياً 100% في متصفحك الخاص.</p>
             <br>
-            <h3 style="margin-top: 15px;">2. ملفات تعريف الارتباط (Cookies)</h3>
-            <p>نحن نستخدم الذاكرة المحلية (localStorage) فقط لحفظ تفضيلاتك الشخصية مثل اللغة المفضلة لديك والوضع اللوني (داكن/فاتح) لضمان سهولة تصفحك للموقع.</p>
-        </article>
-
+            <h4 style="color: var(--primary-gold);">2. الذاكرة المحلية والملفات</h4>
+            <p>نحن نستخدم الذاكرة المحلية (localStorage) فقط لحفظ وتذكر خياراتك المفضلة كاللغة والوضع الداكن لضمان تنقل متزامن وسلس بين التبويبات.</p>
+        </div>
     </main>
 
-    <!-- ربط محرك المزامنة الذكي الموحد -->
     <script src="script.js"></script>
 </body>
 </html>
