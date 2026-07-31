@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زمانك - اتصل بنا</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- الهيدر العالمي الموحد بجميع التبويبات والشعار الذكي -->
+    <header class="global-navbar">
+        <a href="index.html" class="logo-link">✨ ZAMANAK</a>
+        <nav class="nav-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="birthday.html">الميلاد</a>
+            <a href="marriage.html">الزواج</a>
+            <a href="privacy.html">الخصوصية</a>
+            <a href="terms.html">الشروط</a>
+            <a href="contact.html" class="active">اتصل بنا</a>
+        </nav>
+        <div class="controls-group">
+            <select id="languageSelect">
+                <option value="ar">العربية 🇸🇦</option>
+                <option value="en">English 🇬🇧</option>
+                <option value="tr">Türkçe 🇹🇷</option>
+                <option value="ur">اردو 🇵🇰</option>
+            </select>
+            <button id="darkModeToggle" class="theme-btn">🌓</button>
+        </div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="adsense-placeholder-box">
+            <div id="movingAdText" class="moving-text"></div>
+        </div>
+
+        <div class="tool-card" style="text-align: right;">
+            <h1 style="color: var(--primary-gold); margin-bottom: 10px; text-align: center;">✉️ اتصل بنا</h1>
+            <p style="text-align: center; font-size: 0.9rem; opacity: 0.8; margin-bottom: 20px;">يسعدنا استقبال آرائكم واستفساراتكم حول منصة زمانك وتطوير المحرك الفلكي.</p>
+            
+            <!-- نموذج إرسال سلس وموسط متناسق مع حواف الجوال -->
+            <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-weight: bold; font-size: 0.9rem;">الاسم الكامل:</label>
+                    <input type="text" placeholder="أدخل اسمك هنا" style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color);" required>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-weight: bold; font-size: 0.9rem;">البريد الإلكتروني:</label>
+                    <input type="email" placeholder="name@example.com" style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color); text-align: left; direction: ltr;" required>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 5px;">
+                    <label style="font-weight: bold; font-size: 0.9rem;">نص الرسالة:</label>
+                    <textarea rows="4" placeholder="اكتب رسالتك أو ملاحظتك هنا..." style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color); font-family: inherit;" required></textarea>
+                </div>
+
+                <button type="submit" style="width: 100%; background: linear-gradient(90deg, #e67e22, var(--primary-gold)); color: #fff; border: none; font-weight: bold; padding: 12px; font-size: 1rem; margin-top: 5px; border-radius: 6px;">🚀 إرسال الرسالة الآن</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
