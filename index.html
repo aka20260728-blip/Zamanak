@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زمانك | Zamanak - الموسوعة الفلكية والزمنية لميلادك</title>
+    <style>
+        /* نظام الوضع الداكن الفاخر والهوية الفلكية */
+        :root {
+            --bg-dark: #0a0e17;
+            --card-dark: #121824;
+            --gold: #d4af37;
+            --text-light: #e2e8f0;
+            --text-muted: #8a99ad;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* شريط التنقل العالي الكفاءة للهواتف */
+        .navbar {
+            background-color: var(--card-dark);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold);
+        }
+
+        /* صندوق اختيار اللغات الأربع */
+        .lang-switcher {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* حاوية الإعلانات (AdSense Ready) */
+        .ad-space {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--text-muted);
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+            max-width: 90%;
+            color: var(--text-muted);
+            font-size: 12px;
+            border-radius: 8px;
+        }
+
+        /* كروت الأدوات في الصفحة الرئيسية */
+        .main-container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .tool-card {
+            background-color: var(--card-dark);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            text-align: right;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .tool-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .tool-card h3 {
+            color: var(--gold);
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل المشترك -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">ZAMANAK ✨</a>
+        <div class="nav-links">
+            <a href="index.html" class="active" id="link-home">الرئيسية</a>
+            <a href="help.html" id="link-help">المساعدة</a>
+            <a href="contact.html" id="link-contact">اتصل بنا</a>
+        </div>
+        <select class="lang-switcher" onchange="changeLanguage(this.value)">
+            <option value="ar">العربية</option>
+            <option value="en">English</option>
+            <option value="tr">Türkçe</option>
+            <option value="fr">Français</option>
+        </select>
+    </nav>
+
+    <!-- مساحة إعلانية علوية لزيادة الأرباح -->
+    <div class="ad-space">مساحة إعلانية مستقبلية (جوجل أدسينس)</div>
+
+    <!-- محتوى الصفحة الرئيسية -->
+    <div class="main-container">
+        <h1 id="main-title">اكتشف أسرار تاريخك الفلكي</h1>
+        <p id="main-desc" style="color: var(--text-muted); margin-bottom: 30px;">اختر الأداة الزمنية التي ترغب في حسابها بدقة متناهية وبأعلى المعايير الفلكية:</p>
+
+        <!-- كرت أداة ميلادك (رابط منفصل) -->
+        <a href="birthday.html" class="tool-card">
+            <h3 id="card-birth-title">🎂 حاسبة أسرار ميلادك الفلكي</h3>
+            <p id="card-birth-desc" style="color: var(--text-muted); font-size: 14px;">احسب إجمالي الساعات والدقائق التراكمية التي عشتها، وتاريخك بالتقويم الهجري الدقيق وأم القرى.</p>
+        </a>
+
+        <!-- كرت أداة زواجك (رابط منفصل) -->
+        <a href="marriage.html" class="tool-card">
+            <h3 id="card-marriage-title">💍 حاسبة ذكرى الزواج السعيدة</h3>
+            <p id="card-marriage-desc" style="color: var(--text-muted); font-size: 14px;">تتبع أدق التفاصيل التراكمية لرحلتكم المشتركة، واعرف كم يوماً ودقيقة مرت على هذه الخطوة المباركة.</p>
+        </a>
+    </div>
+
+    <!-- مساحة إعلانية سفلية -->
+    <div class="ad-space">مساحة إعلانية مستقبلية (جوجل أدسينس)</div>
+
+    <script>
+        // كائن الترجمة الذكي للأربع لغات
+        const translations = {
+            ar: {
+                home: "الرئيسية", help: "المساعدة", contact: "اتصل بنا",
+                title: "اكتشف أسرار تاريخك الفلكي",
+                desc: "اختر الأداة الزمنية التي ترغب في حسابها بدقة متناهية وبأعلى المعايير الفلكية:",
+                birthTitle: "🎂 حاسبة أسرار ميلادك الفلكي",
+                birthDesc: "احسب إجمالي الساعات والدقائق التراكمية التي عشتها، وتاريخك بالتقويم الهجري الدقيق وأم القرى.",
+                marriageTitle: "💍 حاسبة ذكرى الزواج السعيدة",
+                marriageDesc: "تتبع أدق التفاصيل التراكمية لرحلتكم المشتركة، واعرف كم يوماً ودقيقة مرت على هذه الخطوة المباركة."
+            },
+            en: {
+                home: "Home", help: "Help", contact: "Contact",
+                title: "Discover Your Astronomical Secrets",
+                desc: "Choose the time tool you want to calculate with extreme precision and high astronomical standards:",
+                birthTitle: "🎂 Cosmic Birthday Calculator",
+                birthDesc: "Calculate total cumulative hours and minutes you lived, and your exact Hijri & Umm al-Qura date.",
+                marriageTitle: "💍 Happy Marriage Anniversary Tracker",
+                marriageDesc: "Track precise cumulative details of your journey together, see how many days and minutes passed."
+            },
+            tr: {
+                home: "Ana Sayfa", help: "Yardım", contact: "İletişim",
+                title: "Astronomik Sırlarınızı Keşfedin",
+                desc: "Aşırı hassasiyet ve yüksek astronomik standartlarla hesaplamak istediğiniz zaman aracını seçin:",
+                birthTitle: "🎂 Kozmik Doğum Günü Hesaplayıcı",
+                birthDesc: "Yaşadığınız toplam kümülatif saati ve dakikayı, tam Hicri ve Ümmü El-Kura tarihinizi hesaplayın.",
+                marriageTitle: "💍 Mutlu Evlilik Yıldönümü Takibi",
+                marriageDesc: "Birlikte yaptığınız yolculuğun kesin kümülatif detaylarını takip edin, kaç gün ve dakika geçtiğini görün."
+            },
+            fr: {
+                home: "Accueil", help: "Aide", contact: "Contact",
+                title: "Découvrez Vos Secrets Astronomiques",
+                desc: "Choisissez l'outil temporel que vous souhaitez calculer avec une précision extrême et des normes astronomiques élevées:",
+                birthTitle: "🎂 Calculateur d'Anniversaire Cosmique",
+                birthDesc: "Calculez le total des heures et minutes cumulées vécues, ainsi que votre date exacte du calendrier de l'Hégire.",
+                marriageTitle: "💍 Suivi d'Anniversaire de Mariage",
+                marriageDesc: "Suivez les détails cumulatifs précis de votre voyage ensemble, voyez combien de jours et de minutes se sont écoulés."
+            }
+        };
+
+        function changeLanguage(lang) {
+            // تغيير اتجاه الموقع بناء على اللغة
+            if(lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+                document.querySelectorAll('.tool-card').forEach(c => c.style.textAlignment = 'right');
+            } else {
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = lang;
+                document.querySelectorAll('.tool-card').forEach(c => c.style.textAlignment = 'left');
+            }
+
+            // تحديث النصوص لحظياً
+            document.getElementById('link-home').innerText = translations[lang].home;
+            document.getElementById('link-help').innerText = translations[lang].help;
+            document.getElementById('link-contact').innerText = translations[lang].contact;
+            document.getElementById('main-title').innerText = translations[lang].title;
+            document.getElementById('main-desc').innerText = translations[lang].desc;
+            document.getElementById('card-birth-title').innerText = translations[lang].birthTitle;
+            document.getElementById('card-birth-desc').innerText = translations[lang].birthDesc;
+            document.getElementById('card-marriage-title').innerText = translations[lang].marriageTitle;
+            document.getElementById('card-marriage-desc').innerText = translations[lang].marriageDesc;
+        }
+    </script>
+</body>
+</html>
