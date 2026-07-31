@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زمانك | Zamanak</title>
+    <!-- ربط ملف التصميم الموحد الخارجي -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="logo">ZAMANAK ✨</a>
+        <div class="nav-links">
+            <a href="index.html" class="active" id="ln-home">الرئيسية</a>
+            <a href="birthday.html" id="ln-birth">الميلاد</a>
+            <a href="privacy.html" id="ln-privacy">الخصوصية</a>
+            <a href="terms.html" id="ln-terms">الشروط</a>
+            <a href="contact.html" id="ln-contact">اتصل بنا</a>
+        </div>
+        <div class="nav-controls">
+            <button class="theme-btn" onclick="toggleTheme()" id="theme-icon">🌙</button>
+            <select class="lang-switcher" id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="ar">العربية</option>
+                <option value="en">English</option>
+                <option value="tr">Türkçe</option>
+                <option value="ur">اردو</option>
+            </select>
+        </div>
+    </nav>
+
+    <div class="ad-space">مساحة إعلانية مستقبلية (جوجل أدسينس)</div>
+
+    <div class="main-container">
+        <h1 id="main-title">اكتشف أسرار تاريخك الفلكي</h1>
+        <p id="main-desc" style="color: var(--text-muted); margin-bottom: 30px;">اختر الأداة الزمنية التي ترغب في حسابها بدقة متناهية وبأعلى المعايير الفلكية:</p>
+
+        <a href="birthday.html" class="tool-card">
+            <h3 id="card-birth-title">🎂 حاسبة أسرار ميلادك الفلكي</h3>
+            <p id="card-birth-desc">احسب إجمالي الساعات والدقائق التراكمية التي عشتها، وتاريخك بالتقويم الهجري الدقيق وأم القرى.</p>
+        </a>
+
+        <a href="marriage.html" class="tool-card">
+            <h3 id="card-marriage-title">💍 حاسبة ذكرى الزواج السعيدة</h3>
+            <p id="card-marriage-desc">تتبع أدق التفاصيل التراكمية لرحلتكم المشتركة، واعرف كم يوماً ودقيقة مرت على هذه الخطوة المباركة.</p>
+        </a>
+    </div>
+
+    <div class="ad-space">مساحة إعلانية مستقبلية (جوجل أدسينس)</div>
+
+    <!-- ربط ملف البرمجة والمزامنة التلقائية الخارجي -->
+    <script src="script.js"></script>
+    <script>
+        const translations = {
+            ar: {
+                home: "الرئيسية", birth: "الميلاد", privacy: "الخصوصية", terms: "الشروط", contact: "اتصل بنا",
+                title: "اكتشف أسرار تاريخك الفلكي", desc: "اختر الأداة الزمنية التي ترغب في حسابها بدقة متناهية وبأعلى المعايير الفلكية:",
+                bTitle: "🎂 حاسبة أسرار ميلادك الفلكي", bDesc: "احسب إجمالي الساعات والدقائق التراكمية التي عشتها، وتاريخك بالتقويم الهجري الدقيق وأم القرى.",
+                mTitle: "💍 حاسبة ذكرى الزواج السعيدة", mDesc: "تتبع أدق التفاصيل التراكمية لرحلتكم المشتركة، واعرف كم يوماً ودقيقة مرت على هذه الخطوة المباركة."
+            },
+            en: {
+                home: "Home", birth: "Birthday", privacy: "Privacy", terms: "Terms", contact: "Contact",
+                title: "Discover Your Astronomical Secrets", desc: "Choose the time tool you want to calculate with extreme precision and high astronomical standards:",
+                bTitle: "🎂 Cosmic Birthday Calculator", bDesc: "Calculate total cumulative hours and minutes you lived, and your exact Hijri date.",
+                mTitle: "💍 Happy Marriage Anniversary Tracker", mDesc: "Track precise cumulative details of your journey together, see how many days and minutes passed."
+            },
+            tr: {
+                home: "Ana Sayfa", birth: "Doğum Günü", privacy: "Gizlilik", terms: "Şartlar", contact: "İletişim",
+                title: "Astronomik Sırlarınızı Keşfedin", desc: "Aşırı hassasiyet ve yüksek astronomik standartlarla hesaplamak istediğiniz zaman aracını seçin:",
+                bTitle: "🎂 Kozmik Doğum Günü Hesaplayıcı", bDesc: "Yaşadığınız toplam kümülatif saati ve dakikayı, tam Hicri tarihinizi hesaplayın.",
+                mTitle: "💍 Mutlu Evlilik Yıldönümü Takibi", mDesc: "Birlikte yaptığınız yolculuğun kesin kümülatif detaylarını takip edin, kaç gün ve dakika geçtiğini görün."
+            },
+            ur: {
+                home: "ہوم", birth: "سالگرہ", privacy: "رازداری", terms: "شرائط", contact: "رابطہ کریں",
+                title: "اپنے فلکیاتی راز دریافت کریں", desc: "انتہائی درستگی اور اعلی فلکیاتی معیارات کے ساتھ حساب لگانے کے لیے ٹول کا انتخاب کریں:",
+                bTitle: "🎂 کائناتی سالگرہ کا کیلکولیٹر", bDesc: "کل جمع شدہ گھنٹے اور منٹ معلوم کریں جو آپ جی چکے ہیں، اور اپنی درست ہجری تاریخ دیکھیں۔",
+                mTitle: "💍 شادی کی سالگرہ کا ٹریکر", mDesc: "ایک ساتھ اپنے سفر کی درست تفصیلات کا پتہ لگائیں، دیکھیں کہ کتنے دن اور منٹ گزر چکے ہیں۔"
+            }
+        };
+
+        function changeLanguage(lang) {
+            localStorage.setItem('zamanak_lang', lang);
+            applySavedThemeAndLang(); // تشغيل محرك المزامنة فوراً لإعادة ضبط الاتجاهات
+            
+            document.getElementById('ln-home').innerText = translations[lang].home;
+            document.getElementById('ln-birth').innerText = translations[lang].birth;
+            document.getElementById('ln-privacy').innerText = translations[lang].privacy;
+            document.getElementById('ln-terms').innerText = translations[lang].terms;
+            document.getElementById('ln-contact').innerText = translations[lang].contact;
+            document.getElementById('main-title').innerText = translations[lang].title;
+            document.getElementById('main-desc').innerText = translations[lang].desc;
+            document.getElementById('card-birth-title').innerText = translations[lang].bTitle;
+            document.getElementById('card-birth-desc').innerText = translations[lang].bDesc;
+            document.getElementById('card-marriage-title').innerText = translations[lang].mTitle;
+            document.getElementById('card-marriage-desc').innerText = translations[lang].mDesc;
+        }
+
+        // قراءة اللغة عند أول تحميل لتحديث النصوص في الرئيسية
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentLang = localStorage.getItem('zamanak_lang') || 'ar';
+            changeLanguage(currentLang);
+        });
+    </script>
+</body>
+</html>
