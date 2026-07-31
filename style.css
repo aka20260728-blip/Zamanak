@@ -1,18 +1,20 @@
 /* ==========================================
-   1. المتغيرات العامة وإعادة الضبط (CSS Variables & Reset)
+   1. المتغيرات العامة وإعادة الضبط لمنع ميلان الشاشة
    ========================================== */
 :root {
+    --bg-color: #121212; /* الخلفية الداكنة الفخمة الثابتة */
+    --text-color: #ffffff;
+    --border-color: #333333;
+    --primary-gold: #f1c40f;
+    --secondary-gold: #e67e22;
+    --box-bg: #1e1e1e;
+}
+
+[data-theme="light"] {
     --bg-color: #ffffff;
     --text-color: #2c3e50;
     --border-color: #e0e0e0;
-    --primary-gold: #e67e22;
-    --secondary-gold: #f1c40f;
-}
-
-[data-theme="dark"] {
-    --bg-color: #1a1a1a;
-    --text-color: #f5f6fa;
-    --border-color: #333333;
+    --box-bg: #f9f9f9;
 }
 
 * {
@@ -22,89 +24,145 @@
 }
 
 body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: system-ui, -apple-system, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    overflow-x: hidden; /* يحل مشكلة ميلان واهتزاز الشاشة نهائياً */
-    font-family: system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
     transition: background-color 0.3s, color 0.3s;
 }
 
 /* ==========================================
-   2. الهيكل الهندسي والتوسط (Layout & Centering)
+   2. شريط التنقل العلوي العالمي الموحد (Global Navbar)
    ========================================== */
 .global-navbar {
     width: 100%;
+    max-width: 500px;
+    padding: 15px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     border-bottom: 1px solid var(--border-color);
-    padding: 15px 0;
-    background-color: var(--bg-color);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
-.navbar-container {
-    width: 100%;
-    max-width: 1000px; /* العرض المثالي لتوسط الموقع */
-    padding: 0 40px; /* حواف أمان جانبية (بمثابة الـ 5 سم) */
+.logo-link {
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    transition: transform 0.2s;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-gold);
+    opacity: 1;
+    background-color: rgba(241, 196, 15, 0.1);
 }
 
 .controls-group {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
-select, button {
-    padding: 8px 12px;
+select, .theme-btn {
+    padding: 6px 10px;
     border-radius: 6px;
     border: 1px solid var(--border-color);
-    background-color: var(--bg-color);
+    background-color: var(--box-bg);
     color: var(--text-color);
     cursor: pointer;
+    font-size: 0.85rem;
 }
 
-/* الحاوية السحرية الموحدة للتوسط في جميع الصفحات */
+/* ==========================================
+   3. الحاوية الرئيسية للتوسط الشامل (حواف الـ 5 سم)
+   ========================================== */
 .main-wrapper {
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 40px; /* حواف جانبية ثابتة ومساحات عمودية مريحة */
+    max-width: 500px;
+    padding: 20px 25px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    align-items: center;
+    text-align: center;
+    gap: 22px;
 }
 
-/* منع الكيبورد وإخفاء مؤشر الكتابة في حقول التواريخ */
+h1 {
+    color: var(--primary-gold);
+    font-size: 1.5rem;
+}
+
+.tool-card {
+    background-color: var(--box-bg);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: right;
+}
+
+.date-selector-box {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 input[readonly] {
     caret-color: transparent;
     cursor: pointer;
 }
 
 /* ==========================================
-   3. مستطيل الإعلان الذكي المتحرك (Marquee Ad)
+   4. مستطيل الشرح الإعلاني المتحرك المعدل
    ========================================== */
 .adsense-placeholder-box {
     width: 100%;
-    background: linear-gradient(90deg, var(--primary-gold), var(--secondary-gold));
-    color: #fff;
-    padding: 14px;
+    background: linear-gradient(90deg, var(--secondary-gold), var(--primary-gold));
+    color: #000;
+    padding: 12px;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     font-weight: bold;
-    position: relative;
-    height: 50px;
+    font-size: 0.85rem;
+    height: 45px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .moving-text {
@@ -113,7 +171,6 @@ input[readonly] {
     display: inline-block;
 }
 
-/* تحريك النص حسب اتجاه اللغة */
 .scroll-rtl {
     animation: scrollRTL 15s linear infinite;
 }
@@ -123,32 +180,32 @@ input[readonly] {
 }
 
 @keyframes scrollRTL {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-
-@keyframes scrollLTR {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
 }
 
+@keyframes scrollLTR {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
 /* ==========================================
-   4. تأثير التشويق والإثارة (Loader & Suspense)
+   5. تأثير التشويق والإثارة والشبكة المنبثقة
    ========================================== */
 .loading-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    padding: 30px;
+    gap: 12px;
+    padding: 20px;
     color: var(--primary-gold);
     font-weight: bold;
 }
 
 .spinner {
-    width: 45px;
-    height: 45px;
-    border: 4px solid rgba(230, 126, 34, 0.2);
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(241, 196, 15, 0.2);
     border-top: 4px solid var(--primary-gold);
     border-radius: 50%;
     animation: spin 1s linear infinite;
@@ -159,20 +216,49 @@ input[readonly] {
     100% { transform: rotate(360deg); }
 }
 
-#loadingText {
-    animation: pulse 1.5s infinite ease-in-out;
+.popup-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+.popup-content {
+    background-color: var(--box-bg);
+    border: 2px solid var(--primary-gold);
+    border-radius: 12px;
+    width: 85%;
+    max-width: 350px;
+    padding: 25px;
+    max-height: 65vh;
+    overflow-y: auto;
 }
 
-.fade-in-effect {
-    animation: fadeIn 0.6s ease-in-out;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 15px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.grid-item {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.grid-item:hover {
+    background-color: var(--primary-gold);
+    color: #000;
 }
