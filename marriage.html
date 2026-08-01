@@ -11,12 +11,12 @@
     <header class="global-navbar">
         <a href="index.html" class="logo-link">✨ ZAMANAK</a>
         <nav class="nav-links">
-            <a href="index.html" id="nav-home">الرئيسية</a>
-            <a href="birthday.html" id="nav-birth">الميلاد</a>
-            <a href="marriage.html" id="nav-marriage" class="active">الزواج</a>
-            <a href="privacy.html" id="nav-privacy">الخصوصية</a>
-            <a href="terms.html" id="nav-terms">الشروط</a>
-            <a href="contact.html" id="nav-contact">اتصل بنا</a>
+            <a href="index.html"><span data-lang="ar">الرئيسية</span><span data-lang="en">Home</span></a>
+            <a href="birthday.html"><span data-lang="ar">الميلاد</span><span data-lang="en">Birth</span></a>
+            <a href="marriage.html" class="active"><span data-lang="ar">الزواج</span><span data-lang="en">Marriage</span></a>
+            <a href="privacy.html"><span data-lang="ar">الخصوصية</span><span data-lang="en">Privacy</span></a>
+            <a href="terms.html"><span data-lang="ar">الشروط</span><span data-lang="en">Terms</span></a>
+            <a href="contact.html"><span data-lang="ar">اتصل بنا</span><span data-lang="en">Contact</span></a>
         </nav>
         <div class="controls-group">
             <select id="languageSelect"><option value="ar">العربية 🇸🇦</option><option value="en">English 🇬🇧</option></select>
@@ -25,38 +25,51 @@
     </header>
 
     <div class="three-column-layout">
-        <aside class="side-wing"><div class="wing-title" id="wing-game-title">..</div><p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p><button class="game-btn" id="game-click-btn" onclick="playZamanakGame()">..</button></aside>
+        <aside class="side-wing"><div class="wing-title"><span data-lang="ar">🎮 جناح التسلية السريعة</span><span data-lang="en">🎮 Mini Game Wing</span></div><p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p><button class="game-btn" onclick="playZamanakGame()"><span data-lang="ar">اضغط لتجميع طاقة النجوم ✨</span><span data-lang="en">Gather Star Energy ✨</span></button></aside>
 
         <main class="center-content">
-            <div class="adsense-placeholder-box"><div id="movingAdText" class="moving-text">..</div></div>
+            <div class="adsense-placeholder-box">
+                <div class="moving-text">
+                    <span data-lang="ar">مشروع زمانك الفلكي العالمي - احسب تفاصيل عمرك ولحظاتك بدقة فلكية متناهية حياً ومباشرة عبر التاريخ الهجري والميلادي.</span>
+                    <span data-lang="en">Zamanak Global Astronomical Project - Calculate your age details and live moments with extreme accuracy.</span>
+                </div>
+            </div>
             <div class="tool-header">
-                <h1 id="marriage-page-title">💍 عداد الرابطة الزوجية اللحظي حياً</h1>
-                <p id="marriage-page-desc" style="opacity:0.8; font-size:0.9rem; margin-top:5px;">..</p>
+                <h1><span data-lang="ar">💍 عداد الرابطة الزوجية اللحظي حياً</span><span data-lang="en">💍 Live Cumulative Marriage Counter</span></h1>
+                <p style="opacity:0.8; font-size:0.9rem; margin-top:5px;">
+                    <span data-lang="ar">احسبوا اللحظات، الساعات، والدقائق التراكمية لرحلتكم المشتركة معاً بدقة مطلقة.</span>
+                    <span data-lang="en">Calculate the precise live moments, hours, and cumulative minutes of your beautiful journey together.</span>
+                </p>
             </div>
             <div class="tool-card">
                 <div class="calendar-switch">
                     <input type="checkbox" id="hijriCheckbox" style="width: 18px; height: 18px; cursor: pointer;">
-                    <label for="hijriCheckbox" id="lbl-hijri-m" style="font-weight: bold; cursor: pointer;">التقويم الهجري والميلادي للزواج الذكي</label>
+                    <label for="hijriCheckbox" style="font-weight: bold; cursor: pointer;"><span data-lang="ar">التقويم الهجري ذكي</span><span data-lang="en">Smart Hijri Calendar</span></label>
                 </div>
-                <div class="date-selector-box" onclick="openPopup('day')"><span id="lbl-select-day-m">اختر يوم الزواج السعيد</span><span id="selectedDayText" style="color:var(--primary-gold); font-weight:bold;">-</span></div>
-                <div class="date-selector-box" onclick="openPopup('month')"><span id="lbl-select-month-m">اختر شهر الاقتران الكوني</span><span id="selectedMonthText" style="color:var(--primary-gold); font-weight:bold;">-</span></div>
-                <div class="date-selector-box" onclick="openPopup('year')"><span id="lbl-select-year-m">اختر سنة العقد المبارك</span><span id="selectedYearText" style="color:var(--primary-gold); font-weight:bold;">-</span></div>
+                <div class="date-selector-box" onclick="openPopup('day')"><span><span data-lang="ar">اختر يوم الزواج السعيد</span><span data-lang="en">Select Wedding Day</span></span><span id="selectedDayText" style="color:var(--primary-neon); font-weight:bold;">-</span></div>
+                <div class="date-selector-box" onclick="openPopup('month')"><span><span data-lang="ar">اختر شهر الاقتران الكوني</span><span data-lang="en">Select Wedding Month</span></span><span id="selectedMonthText" style="color:var(--primary-neon); font-weight:bold;">-</span></div>
+                <div class="date-selector-box" onclick="openPopup('year')"><span><span data-lang="ar">اختر سنة العقد المبارك</span><span data-lang="en">Select Wedding Year</span></span><span id="selectedYearText" style="color:var(--primary-neon); font-weight:bold;">-</span></div>
             </div>
-            <div id="loadingEffect" class="loading-box" style="display: none;"><div class="spinner"></div><p id="loadingText">..</p></div>
+            
+            <div id="loadingEffect" class="loading-box" style="display: none;"><div class="spinner"></div><p><span data-lang="ar">جاري حساب فلك الرابطة للأزواج...</span><span data-lang="en">Calculating marriage celestial matrix...</span></p></div>
             
             <div id="resultContainer" class="tool-card" style="border: 2px solid var(--border-color);">
-                <p style="color:var(--primary-gold); text-align:center; font-weight:bold; font-size:1.05rem; margin-bottom:12px; line-height:1.6;">✨ "بارك الله لكما وبارك عليكما وجمع بينكما في خير.. أدام الله المودة والرحمة في رحلتكما الكونية معاً" ✨</p>
-                <p style="margin-bottom:10px;"><span id="res-days-m">إجمالي الأيام المشتركة المذهلة:</span> <span id="res-days-val" style="font-weight: bold; color: var(--primary-neon);">-</span></p>
-                <p style="margin-bottom:10px;"><span id="res-hours-m">إجمالي الساعات الزوجية التراكمية:</span> <span id="res-hours-val" style="font-weight: bold;">-</span></p>
-                <p style="margin-bottom:15px;"><span id="res-minutes-m">إجمالي الدقائق الحية المشتركة للأزواج:</span> <span id="res-mins-val" style="font-weight: bold; color: #2ecc71;">-</span></p>
+                <p style="color:var(--primary-neon); text-align:center; font-weight:bold; font-size:1.05rem; margin-bottom:15px; line-height:1.6;">
+                    <span data-lang="ar">✨ "بارك الله لكما وبارك عليكما وجمع بينكما في خير.. أدام الله المودة والرحمة في رحلتكما الكونية معاً" ✨</span>
+                    <span data-lang="en">✨ "May Blessings shower upon your cosmic union and bind your hearts in eternal harmony and affection" ✨</span>
+                </p>
+                <p style="margin-bottom:12px; display:none; color:var(--primary-neon); font-weight:bold; text-align:center;" id="hijriOutput"></p>
+                <p style="margin-bottom:10px;"><span data-lang="ar">إجمالي الأيام المشتركة المذهلة:</span><span data-lang="en">Total shared amazing days:</span> <span id="res-days-val" style="font-weight: bold; color: var(--primary-neon);">-</span></p>
+                <p style="margin-bottom:10px;"><span data-lang="ar">إجمالي الساعات الزوجية التراكمية:</span><span data-lang="en">Total cumulative marriage hours:</span> <span id="res-hours-val" style="font-weight: bold;">-</span></p>
+                <p style="margin-bottom:15px;"><span data-lang="ar">إجمالي الدقائق الحية المشتركة للأزواج:</span><span data-lang="en">Total live shared minutes:</span> <span id="res-mins-val" style="font-weight: bold; color: #2ecc71;">-</span></p>
                 <div style="display:flex; gap:10px;">
-                    <button class="action-gradient-btn" onclick="shareZamanakViral()">🚀 مشاركة حبنا المذهل فيروسياً</button>
-                    <button class="game-btn" onclick="copyZamanakCard()">📋 نسخ البطاقة</button>
+                    <button class="action-gradient-btn" onclick="shareZamanakViral()"><span data-lang="ar">🚀 مشاركة حبنا المذهل فيروسياً</span><span data-lang="en">🚀 Share Virally</span></button>
+                    <button class="game-btn" onclick="copyZamanakCard()"><span data-lang="ar">📋 نسخ البطاقة</span><span data-lang="en">📋 Copy Card</span></button>
                 </div>
             </div>
         </main>
 
-        <aside class="side-wing"><div class="wing-title" id="wing-puzzle-title">..</div><p id="puzzle-q" style="font-size:0.9rem; text-align:justify;">..</p><button class="puzzle-btn" id="puzzle-btn-text" onclick="revealPuzzle()">..</button></aside>
+        <aside class="side-wing"><div class="wing-title"><span data-lang="ar">🔮 أسرار وألغاز طالعك</span><span data-lang="en">🔮 Cosmic Riddles</span></div><p style="font-size:0.9rem; text-align:justify;"><span data-lang="ar">س: ما هو الكوكب الأكثر لمعاناً في سماء الليل؟</span><span data-lang="en">Q: Which is the brightest planet in the night sky?</span></p><button class="puzzle-btn" onclick="revealPuzzle()"><span data-lang="ar">عرض الإجابة الفلكية</span><span data-lang="en">Show Cosmic Answer</span></button></aside>
     </div>
 
     <div id="datePopupModal" class="popup-modal"><div class="popup-content"><div class="popup-title" id="popupTitle">اختر</div><div class="grid-container" id="popupGridItems"></div></div></div>
