@@ -19,25 +19,29 @@
             <a href="contact.html" id="nav-contact" class="active">اتصل بنا</a>
         </nav>
         <div class="controls-group">
-            <select id="languageSelect">
-                <option value="ar">العربية 🇸🇦</option>
-                <option value="en">English 🇬🇧</option>
-            </select>
+            <select id="languageSelect"><option value="ar">العربية 🇸🇦</option><option value="en">English 🇬🇧</option></select>
             <button id="darkModeToggle" class="theme-btn">🌓</button>
         </div>
     </header>
 
-    <main class="main-wrapper">
-        <div class="tool-header"><h1 id="contact-title">✉️ اتصل بنا والدعم الفوري</h1></div>
-        <div class="tool-card">
-            <form onsubmit="event.preventDefault(); alert('تم استلام رسالتك الفورية سحابياً بنجاح في زمانك!');" style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
-                <input type="text" placeholder="الاسم الكامل" required style="background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: 8px; width: 100%;">
-                <input type="email" placeholder="البريد الإلكتروني" required style="background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: 8px; width: 100%;">
-                <textarea rows="5" placeholder="نص الرسالة والاستفسار الكوني" required style="background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: 8px; width: 100%;"></textarea>
-                <button type="submit" style="background: var(--primary-gold); color: #0b0f19; border: none; font-weight: bold; padding: 14px; border-radius: 8px; cursor: pointer; font-size: 1rem;">إرسال الرسالة الفورية</button>
-            </form>
-        </div>
-    </main>
+    <div class="three-column-layout">
+        <aside class="side-wing"><div class="wing-title" id="wing-game-title">..</div><p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p><button class="game-btn" id="game-click-btn" onclick="playZamanakGame()">..</button></aside>
+
+        <main class="center-content">
+            <div class="tool-header"><h1 id="contact-title">✉️ اتصل بنا والدعم الفوري للخدمة</h1></div>
+            <div class="tool-card">
+                <!-- نموذج الدعم الفوري المعزز بالميكانيكية الذكية للتوجيه لإيميلك -->
+                <form onsubmit="event.preventDefault(); sendZamanakEmail();" style="width: 100%;">
+                    <input type="text" id="form-name" class="zamanak-form-input" required>
+                    <input type="email" id="form-email" class="zamanak-form-input" required>
+                    <textarea id="form-msg" rows="5" class="zamanak-form-input" required></textarea>
+                    <button type="submit" id="form-submit" class="action-gradient-btn">إرسال الرسالة الفورية</button>
+                </form>
+            </div>
+        </main>
+
+        <aside class="side-wing"><div class="wing-title" id="wing-puzzle-title">..</div><p id="puzzle-q" style="font-size:0.9rem; text-align:justify;">..</p><button class="puzzle-btn" id="puzzle-btn-text" onclick="revealPuzzle()">..</button></aside>
+    </div>
 
     <script src="script.js"></script>
 </body>
