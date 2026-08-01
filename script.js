@@ -1,18 +1,21 @@
-// ==========================================
-// 1. قاموس محرك الترجمة الفورية الكامل
-// ==========================================
+// ==========================================================================
+// 1. قاموس محرك الترجمة الفورية الكامل (7 صفحات + حقول الدعم)
+// ==========================================================================
 const zamanakTranslations = {
     ar: {
         nav: { home: "الرئيسية", birthday: "ذكرى الميلاد", marriage: "ذكرى الزواج", privacy: "سياسة الخصوصية", terms: "الشروط والأحكام", contact: "اتصل بنا", about: "مشروع زمانك الفلكي العالمي - احسب تفاصيل عمرك ولحظاتك بدقة فلكية متناهية حياً ومباشرة." },
-        contactForm: { name: "الاسم الكامل", email: "البريد الإلكتروني", message: "نص الرسالة", submit: "إرسال الرسالة الفورية" }
+        form: { name: "الاسم الكامل", email: "البريد الإلكتروني", message: "نص الرسالة والطلب", submit: "إرسال الرسالة الفورية", title: "اتصل بنا" },
+        counters: { days: "أيام", hours: "ساعات", minutes: "دقائق", seconds: "ثواني حية" }
     },
     en: {
-        nav: { home: "Home", birthday: "Birthday", marriage: "Marriage Anniversary", privacy: "Privacy Policy", terms: "Terms & Conditions", contact: "Contact Us", about: "Zamanak Global Astronomical Project - Calculate your age details and live moments with extreme accuracy." },
-        contactForm: { name: "Full Name", email: "Email Address", message: "Your Message", submit: "Send Instant Message" }
+        nav: { home: "Home", birthday: "Birthday", marriage: "Marriage", privacy: "Privacy Policy", terms: "Terms & Conditions", contact: "Contact Us", about: "Zamanak Global Astronomical Project - Calculate your age details and live moments with extreme accuracy." },
+        form: { name: "Full Name", email: "Email Address", message: "Your Message", submit: "Send Instant Message", title: "Contact Us" },
+        counters: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Live Seconds" }
     },
     tr: {
-        nav: { home: "Ana Sayfa", birthday: "Doğum Günü", marriage: "Evlilik Yıldönümü", privacy: "Gizlilik Politikası", terms: "Şartlar ve Koşullar", contact: "İletişim", about: "Zamanak Küresel Astronomik Projesi - Yaş detaylarınızı ve canlı anlarınızı üstün doğrulukla hesaplayın." },
-        contactForm: { name: "Ad Soyad", email: "E-posta Adresi", message: "Mesajınız", submit: "Anında Mesaj Gönder" }
+        nav: { home: "Ana Sayfa", birthday: "Doğum Günü", marriage: "Evlilik", privacy: "Gizlilik Politikası", terms: "Şartlar ve Koşullar", contact: "İletişim", about: "Zamanak Küresel Astronomik Projesi - Yaş detaylarınızı وبواسطة canlı anlarınızı üstün doğrulukla hesaplayın." },
+        form: { name: "Ad Soyad", email: "E-posta Adresi", message: "Mesajınız", submit: "Anında Mesaj Gönder", title: "İletişim" },
+        counters: { days: "Gün", hours: "Saat", minutes: "Dakika", seconds: "Canlı Saniye" }
     }
 };
 
@@ -20,111 +23,104 @@ function switchZamanakLanguage(lang) {
     document.documentElement.lang = lang;
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
     
-    // ترجمة القائمة العلوية والشرح
-    document.querySelectorAll('[data-i18n-nav]').forEach(element => {
-        const key = element.getAttribute('data-i18n-nav');
-        if (zamanakTranslations[lang].nav[key]) {
-            element.textContent = zamanakTranslations[lang].nav[key];
+    // ترجمة القائمة وشريط الشرح الفيروسي
+    document.querySelectorAll('[data-i18n-nav]').forEach(el => {
+        const key = el.getAttribute('data-i18n-nav');
+        if (zamanakTranslations[lang].nav[key]) el.textContent = zamanakTranslations[lang].nav[key];
+    });
+
+    // ترجمة حقول النماذج والعناوين
+    document.querySelectorAll('[data-i18n-form]').forEach(el => {
+        const key = el.getAttribute('data-i18n-form');
+        const trans = zamanakTranslations[lang].form[key];
+        if (trans) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.setAttribute('placeholder', trans);
+            else el.textContent = trans;
         }
     });
 
-    // ترجمة حقول اتصل بنا
-    document.querySelectorAll('[data-i18n-form]').forEach(element => {
-        const key = element.getAttribute('data-i18n-form');
-        const translation = zamanakTranslations[lang].contactForm[key];
-        if (translation) {
-            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                element.setAttribute('placeholder', translation);
-            } else {
-                element.textContent = translation;
-            }
-        }
+    // ترجمة بطاقات العدادات الحية
+    document.querySelectorAll('[data-i18n-counter]').forEach(el => {
+        const key = el.getAttribute('data-i18n-counter');
+        if (zamanakTranslations[lang].counters[key]) el.textContent = zamanakTranslations[lang].counters[key];
     });
+
     localStorage.setItem('zamanak_lang', lang);
 }
 
-// ==========================================
-// 2. المحرك الفلكي والشبكة الهيدروليكية للأيام
-// ==========================================
-let targetDaysCount = 31; // الافتراضي ميلادي 31 يوماً
-let selectedDay = 1;
+// ==========================================================================
+// 2. المحرك الفلكي للشبكة الهيدروليكية لراحة العين (30/31 يوماً)
+// ==========================================================================
+let maxDays = 31; 
+let chosenDay = 1;
+let liveInterval;
 
-function generateDaysGrid() {
-    const gridContainer = document.getElementById('daysGrid');
-    if (!gridContainer) return;
+function buildHydraulicGrid() {
+    const grid = document.getElementById('daysGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
     
-    gridContainer.innerHTML = ''; // تنظيف الشبكة
-    
-    for (let i = 1; i <= targetDaysCount; i++) {
+    for (let i = 1; i <= maxDays; i++) {
         const cell = document.createElement('div');
         cell.classList.add('day-cell');
-        if (i === selectedDay) cell.classList.add('active');
-        
-        // دمج رقم وشهر لراحة العين (مثال تبسيطي تلسكوبي لراحة عين المستخدم)
-        cell.textContent = i; 
+        if (i === chosenDay) cell.classList.add('active');
+        cell.textContent = i; // دمج الأرقام بشكل نظيف ومريح للعين
         
         cell.onclick = function() {
             document.querySelectorAll('.day-cell').forEach(c => c.classList.remove('active'));
             cell.classList.add('active');
-            selectedDay = i;
-            restartAstronomicalCounter(); // إعادة تشغيل العداد الفلكي بناء على اليوم المختار
+            chosenDay = i;
+            initAstronomicalCounter(); 
         };
-        gridContainer.appendChild(cell);
+        grid.appendChild(cell);
     }
 }
 
-// دالة تفعيل المحرك الفلكي والتقويم الهجري الذكي (الشبكة الهيدروليكية)
 function toggleHijriEngine() {
     const isHijri = document.getElementById('hijriToggle').checked;
-    
-    // التقلص الهيدروليكي التلقائي: التقويم الهجري لا يتعدى 30 يوماً فلكياً
-    targetDaysCount = isHijri ? 30 : 31;
-    if (selectedDay > targetDaysCount) selectedDay = targetDaysCount;
-    
-    generateDaysGrid();
-    restartAstronomicalCounter();
+    // التقلص الهيدروليكي الميكانيكي: الهجري 30 يوماً والميلادي 31 يوماً تلقائياً
+    maxDays = isHijri ? 30 : 31;
+    if (chosenDay > maxDays) chosenDay = maxDays;
+    buildHydraulicGrid();
+    initAstronomicalCounter();
 }
 
-// ==========================================
-// 3. محرك العدادات الحية التراكمية (بدون تجمد)
-// ==========================================
-let counterInterval;
-// تعيين تاريخ مرجعي وهمي تراكمي يتغير ديناميكياً لتشغيل العداد لايف
-let basePastDate = new Date("1995-05-15T00:00:00"); 
-
-function startLiveCounter() {
-    if (counterInterval) clearInterval(counterInterval);
+// ==========================================================================
+// 3. دوال العدادات الحية التراكمية لجميع السنين (بدون تعليق أو تجمد)
+// ==========================================================================
+function initAstronomicalCounter() {
+    if (liveInterval) clearInterval(liveInterval);
     
-    counterInterval = setInterval(() => {
-        const now = new Date();
-        // تعديل اليوم بناء على اختيار المستخدم من الشبكة الهيدروليكية
-        basePastDate.setDate(selectedDay);
+    // تاريخ مرجعي مرن يعتمد على الصفحة الحالية (ميلاد أو زواج)
+    const isMarriagePage = window.location.pathname.includes('marriage.html');
+    let pastTargetDate = isMarriagePage ? new Date("2018-10-10T00:00:00") : new Date("1998-06-15T00:00:00");
+    
+    // حقن اليوم المختار ديناميكياً من الشبكة
+    pastTargetDate.setDate(chosenDay);
+
+    liveInterval = setInterval(() => {
+        const rightNow = new Date();
+        const deltaMs = rightNow - pastTargetDate;
         
-        const differenceInMs = now - basePastDate;
-        
-        if (differenceInMs > 0) {
-            const totalSeconds = Math.floor(differenceInMs / 1000);
-            const totalMinutes = Math.floor(totalSeconds / 60);
-            const totalHours = Math.floor(totalMinutes / 60);
-            const totalDays = Math.floor(totalHours / 24);
+        if (deltaMs > 0) {
+            const secs = Math.floor(deltaMs / 1000);
+            const mins = Math.floor(secs / 60);
+            const hrs = Math.floor(mins / 60);
+            const days = Math.floor(hrs / 24);
             
-            // حقن الأرقام حية داخل واجهة العرض التراكمية
-            document.getElementById('liveDays').textContent = totalDays.toLocaleString();
-            document.getElementById('liveHours').textContent = (totalHours % 24).toLocaleString();
-            document.getElementById('liveMinutes').textContent = (totalMinutes % 60).toLocaleString();
-            document.getElementById('liveSeconds').textContent = (totalSeconds % 60).toLocaleString();
+            // حقن مباشر في الـ DOM للعدادات الحية
+            if(document.getElementById('daysVal')) document.getElementById('daysVal').textContent = days.toLocaleString();
+            if(document.getElementById('hoursVal')) document.getElementById('hoursVal').textContent = (hrs % 24).toLocaleString();
+            if(document.getElementById('minsVal')) document.getElementById('minsVal').textContent = (mins % 60).toLocaleString();
+            if(document.getElementById('secsVal')) document.getElementById('secsVal').textContent = (secs % 60).toLocaleString();
         }
-    }, 1000); // تحديث فوري كل ثانية بلا تجمد
+    }, 1000);
 }
 
-function restartAstronomicalCounter() {
-    startLiveCounter();
-}
-
-// تشغيل التهيئة المبدئية عند التحميل
+// التشغيل الموحد المبدئي عند جهوزية المستند
 document.addEventListener("DOMContentLoaded", () => {
-    const savedLang = localStorage.getItem('zamanak_lang') || 'ar';
-    switchZamanakLanguage(savedLang);
-    generateDaysGrid();
-    startLiveCounter();
+    const initialLang = localStorage.getItem('zamanak_lang') || 'ar';
+    switchZamanakLanguage(initialLang);
+    buildHydraulicGrid();
+    initAstronomicalCounter();
 });
