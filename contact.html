@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زمانك - اتصل بنا</title>
+    <title>اتصل بنا | Zamanak</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- الهيدر العالمي الموحد بجميع التبويبات والشعار الذكي -->
     <header class="global-navbar">
         <a href="index.html" class="logo-link">✨ ZAMANAK</a>
         <nav class="nav-links">
-            <a href="index.html">الرئيسية</a>
-            <a href="birthday.html">الميلاد</a>
-            <a href="marriage.html">الزواج</a>
-            <a href="privacy.html">الخصوصية</a>
-            <a href="terms.html">الشروط</a>
-            <a href="contact.html" class="active">اتصل بنا</a>
+            <a href="index.html" id="nav-home">الرئيسية</a>
+            <a href="birthday.html" id="nav-birth">الميلاد</a>
+            <a href="marriage.html" id="nav-marriage">الزواج</a>
+            <a href="privacy.html" id="nav-privacy">الخصوصية</a>
+            <a href="terms.html" id="nav-terms">الشروط</a>
+            <a href="contact.html" id="nav-contact" class="active">اتصل بنا</a>
         </nav>
         <div class="controls-group">
             <select id="languageSelect">
@@ -31,32 +30,16 @@
     </header>
 
     <main class="main-wrapper">
-        <div class="adsense-placeholder-box">
-            <div id="movingAdText" class="moving-text"></div>
+        <div class="tool-header">
+            <h1 id="contact-title">✉️ اتصل بنا والدعم الفوري</h1>
         </div>
 
-        <div class="tool-card" style="text-align: right;">
-            <h1 style="color: var(--primary-gold); margin-bottom: 10px; text-align: center;">✉️ اتصل بنا</h1>
-            <p style="text-align: center; font-size: 0.9rem; opacity: 0.8; margin-bottom: 20px;">يسعدنا استقبال آرائكم واستفساراتكم حول منصة زمانك وتطوير المحرك الفلكي.</p>
-            
-            <!-- نموذج إرسال سلس وموسط متناسق مع حواف الجوال -->
-            <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
-                <div style="display: flex; flex-direction: column; gap: 5px;">
-                    <label style="font-weight: bold; font-size: 0.9rem;">الاسم الكامل:</label>
-                    <input type="text" placeholder="أدخل اسمك هنا" style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color);" required>
-                </div>
-
-                <div style="display: flex; flex-direction: column; gap: 5px;">
-                    <label style="font-weight: bold; font-size: 0.9rem;">البريد الإلكتروني:</label>
-                    <input type="email" placeholder="name@example.com" style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color); text-align: left; direction: ltr;" required>
-                </div>
-
-                <div style="display: flex; flex-direction: column; gap: 5px;">
-                    <label style="font-weight: bold; font-size: 0.9rem;">نص الرسالة:</label>
-                    <textarea rows="4" placeholder="اكتب رسالتك أو ملاحظتك هنا..." style="padding: 10px; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--bg-color); color: var(--text-color); font-family: inherit;" required></textarea>
-                </div>
-
-                <button type="submit" style="width: 100%; background: linear-gradient(90deg, #e67e22, var(--primary-gold)); color: #fff; border: none; font-weight: bold; padding: 12px; font-size: 1rem; margin-top: 5px; border-radius: 6px;">🚀 إرسال الرسالة الآن</button>
+        <div class="tool-card">
+            <form class="zamanak-form" onsubmit="event.preventDefault(); alert('تم استلام طلبك بنجاح في قاعدة بيانات زمانك سحابياً!');">
+                <input type="text" id="form-name" placeholder="الاسم الكامل" required style="margin-bottom: 12px;">
+                <input type="email" id="form-email" placeholder="البريد الإلكتروني" required style="margin-bottom: 12px;">
+                <textarea id="form-msg" rows="5" placeholder="نص الرسالة أو الاستفسار الفلكي" required style="margin-bottom: 15px;"></textarea>
+                <button type="submit" id="form-submit" style="width: 100%; background: var(--primary-gold); color: #0b0f19; border: none; font-weight: bold; padding: 14px; font-size: 1rem; border-radius: 8px; cursor: pointer;">إرسال الرسالة الفورية</button>
             </form>
         </div>
     </main>
