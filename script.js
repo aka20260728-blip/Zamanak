@@ -83,3 +83,157 @@ if(darkModeToggle) {
         localStorage.setItem('zamanak_theme', newTheme);
     });
 }
+
+// ==========================================
+// 2. المحرك الفلكي وصناديق الاختيار المنبثقة (Grid Modal)
+// ==========================================
+let isHijriActive = false;
+let currentSelectedDay = 13;
+let currentSelectedMonth = 9;
+let currentSelectedYear = 2016;
+let liveCounterInterval;
+
+const hijriCheckbox = document.getElementById('hijriCheckbox');
+if(hijriCheckbox) {
+    hijriCheckbox.addEventListener('change', (e) => {
+        isHijriActive = e.target.checked;
+        if(isHijriActive && currentSelectedDay > 30) {
+            currentSelectedDay = 30; // تقلص ميكانيكي هيدروليكي لـ 30 يوماً كحد أقصى في الهجري
+            document.getElementById('selectedDayText').textContent = "30 📅";
+        }
+        triggerLoadingAndCalculate();
+    });
+}
+
+const arabicMonths = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+const hijriMonths = ["محرم", "صفر", "ربيع الأول", "ربيع الآخر", "جمادى الأولى", "جمادى الآخرة", "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة"];
+
+function openPopup(type) {
+    const modal = document.getElementById('datePopupModal');
+    const title = document.getElementById('popupTitle');
+    const grid = document.getElementById('popupGridItems');
+    
+    grid.innerHTML = '';
+    modal.style.display = 'flex';
+
+    if (type === 'day') {
+        title.textContent = "اختر اليوم الفلكي";
+        const maxDays = isHijriActive ? 30 : 31;
+        for (let i = 1; i <= maxDays; i++) {
+            createGridItem(i, i + " 📅", () => {
+                currentSelectedDay = i;
+                document.getElementById('selectedDayText').textContent = i + " 📅";
+                closePopup();
+            });
+        }
+    } else if (type === 'month') {
+        title.textContent = "اختر الشهر";
+        const currentMonthArray = isHijriActive ? hijriMonths : arabicMonths;
+        currentMonthArray.forEach((monthName, index) => {
+            // دمج أرقام الأشهر لراحة العين (مثال: 1 - يناير)
+            createGridItem(index + 1, `${index + 1} - ${monthName} 🌙`, () => {
+                currentSelectedMonth = index + 1;
+                document.getElementById('selectedMonthText').textContent = monthName + " 🌙";
+                closePopup();
+            });
+        });
+    } else if (type === 'year') {
+        title.textContent = "اختر السنة";
+        const currentYear = new Date().getFullYear();
+        const startYear = isHijriActive ? 1350 : 1930;
+        const endYear = isHijriActive ? 1450 : currentYear;
+        
+        for (let i = endYear; i >= startYear; i--) {
+            createGridItem(i, i + " ⏳", () => {
+                currentSelectedYear = i;
+                document.getElementById('selectedYearText').textContent = i + " ⏳";
+                closePopup();
+            });
+        }
+    }
+}
+
+function createGridItem(val, text, callback) {
+    const grid = document.getElementById('popupGridItems');
+    const item = document.createElement('div');
+    item.classList.add('grid-item');
+    item.textContent = text;
+    item.onclick = callback;
+    grid.appendChild(item);
+}
+
+function closePopup() {
+    document.getElementById('datePopupModal').style.display = 'none';
+    triggerLoadingAndCalculate();
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('datePopupModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// ==========================================
+// 3. تأثير التشويق والإثارة وحساب العداد الحي
+// ==========================================
+function triggerLoadingAndCalculate() {
+    const loader = document.getElementById('loadingEffect');
+    if(loader) loader.style.display = 'block';
+    
+    setTimeout(() => {
+        if(loader) loader.style.display = 'none';
+        runLiveCalculator();
+    }, 700); // 700 ملي ثانية تأثير حركة فلكية سريعة ومثيرة لعين المستخدم
+}
+
+function runLiveCalculator() {
+    if (liveCounterInterval) clearInterval(liveCounterInterval);
+
+    let targetDate = new Date();
+    targetDate.setFullYear(currentSelectedYear);
+    targetDate.setMonth(currentSelectedMonth - 1);
+    targetDate.setDate(currentSelectedDay);
+    targetDate.setHours(0, 0, 0, 0);
+
+    liveCounterInterval = setInterval(() => {
+        const now = new Date();
+        const diffMs = now - targetDate;
+
+        if (diffMs > 0) {
+            const totalSeconds = Math.floor(diffMs / 1000);
+            const totalMinutes = Math.floor(totalSeconds / 60);
+            const totalHours = Math.floor(totalMinutes / 60);
+            const totalDays = Math.floor(totalHours / 24);
+
+            // حقن تراكمي حي ومباشر داخل واجهتك الأصلية بدقة متناهية
+            const resultBox = document.getElementById('resultContainer');
+            if(resultBox) {
+                const paragraphs = resultBox.getElementsByTagName('p');
+                if(paragraphs[1]) paragraphs[1].querySelector('span').textContent = totalDays.toLocaleString();
+                if(paragraphs[2]) paragraphs[2].querySelector('span').textContent = totalHours.toLocaleString();
+                if(paragraphs[3]) paragraphs[3].querySelector('span').textContent = totalMinutes.toLocaleString();
+            }
+        }
+    }, 1000); // تحديث حي كل ثانية واحدة
+}
+
+// الإقلاع والتهيئة الموحدة للمستند عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", () => {
+    // استعادة اللغة المحفوظة سحابياً/محلياً
+    const savedLang = localStorage.getItem('zamanak_lang') || 'ar';
+    const langSelect = document.getElementById('languageSelect');
+    if(langSelect) {
+        langSelect.value = savedLang;
+        langSelect.addEventListener('change', (e) => {
+            applyLanguage(e.target.value);
+        });
+    }
+    applyLanguage(savedLang);
+
+    // استعادة مظهر السمة المحفوظة (داكن/فاتح)
+    const savedTheme = localStorage.getItem('zamanak_theme') || 'dark';
+    document.body.setAttribute('data-theme', savedTheme);
+
+    triggerLoadingAndCalculate();
+});
