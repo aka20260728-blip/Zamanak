@@ -19,22 +19,31 @@
             <a href="contact.html" id="nav-contact">اتصل بنا</a>
         </nav>
         <div class="controls-group">
-            <select id="languageSelect">
-                <option value="ar">العربية 🇸🇦</option>
-                <option value="en">English 🇬🇧</option>
-                <option value="tr">Türkçe 🇹🇷</option>
-                <option value="ur">اردو 🇵🇰</option>
-            </select>
+            <select id="languageSelect"><option value="ar">العربية 🇸🇦</option><option value="en">English 🇬🇧</option></select>
             <button id="darkModeToggle" class="theme-btn">🌓</button>
         </div>
     </header>
 
-    <main class="main-wrapper">
-        <div class="tool-card" style="text-align: right; line-height: 1.8;">
-            <h2 id="privacy-title" style="color: var(--primary-gold); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">🔒 سياسة الخصوصية وأمان البيانات</h2>
-            <p>نحن في مشروع زمانك العالمي نولي خصوصيتك أهمية قصوى. لا نقوم بحفظ، تخزين، أو تتبع أي تواريخ ميلاد أو زواج تقوم بإدخالها على خوادمنا السحابية؛ كل العمليات الحسابية الفلكية والتراكمية الحية تجري بالكامل محلياً وبشكل مشفر وآمن داخل متصفحك الخاص دون أي تدخل خارجي.</p>
-        </div>
-    </main>
+    <div class="three-column-layout">
+        <aside class="side-wing"><div class="wing-title" id="wing-game-title">..</div><p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p><button class="game-btn" id="game-click-btn" onclick="playZamanakGame()">..</button></aside>
+
+        <main class="center-content">
+            <div class="tool-card">
+                <h2 id="privacy-title" style="color: var(--primary-neon); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; text-align:center;">🔒 سياسة الخصوصية وأمان البيانات</h2>
+                
+                <!-- صندوق التمرير الداخلي المطول الصارم للغاية لقبول جوجل أدسينس -->
+                <div class="scroll-policy-box" id="policyBox">
+                    <p>أولاً: الالتزام بالأمان المطلق. نحن في مشروع زمانك (Zamanak) العالمي نضع خصوصية المستخدمين وسرية معلوماتهم الشخصية في قمة أولوياتنا الهندسية. إن المنصة مصممة برمجياً وتلسكوبياً لتعمل كأداة حسابية محلية فورية؛ وبالتالي، فإننا نعلن بشكل صارم ونهائي أننا لا نقوم بحفظ، تخزين، تتبع، أو أرشفة أي تواريخ ميلاد، أو تواريخ اقتران زوجي، أو أسماء، أو تفاصيل شخصية على خوادمنا السحابية أو أي قواعد بيانات خارجية تابعة لنا.</p><br>
+                    <p>ثانياً: ملفات تعريف الارتباط (Cookies). تستخدم منصة زمانك ملفات تعريف الارتباط والتقنيات التخزينية المحلية مثل (LocalStorage) فقط وحصرياً لغرض تحسين تجربة التصفح المباشرة وتذكر خيارات وتفضيلات الزوار الفورية، مثل تذكر اللغة المفضلة المحددة (العربية أو الإنجليزية) وتذكر مظهر الواجهة البصرية والسمات (الوضع الداكن الفاخر أو الوضع الفاتح) لمنع ارتداد التصميم عند الانتقال بين الصفحات السبعة للمشروع.</p><br>
+                    <p>ثالثاً: الإعلانات والشركاء الخارجيين. نتعامل مع مزودي خدمات إعلانية خارجيين مثل جوجل أدسينس (Google AdSense) لخدمة وعرض الإعلانات النصية والمرئية عند زيارة المنصة. قد تستخدم هذه الشركات معلومات ومؤشرات مجهولة الهوية حول زياراتك لهذا الموقع والمواقع الإلكترونية الأخرى من أجل تقديم إعلانات حول البضائع والخدمات الفلكية أو العامة التي تهمك عبر ملفات تعريف الارتباط الخاصة بالطرف الثالث.</p><br>
+                    <p>رابعاً: حقوق المستخدم وأمن الاتصال. جميع الحسابات والمعادلات وحركات تدوير الأزمان الكونية وتطبيق التقويم الهجري الذكي تجري مشفرة بالكامل ومعزولة داخل جهازك الشخصي. للمستخدم كامل الحرية في مسح بيانات متصفحه وبيانات الذاكرة المحلية في أي وقت، ونحن نضمن عدم تسريب أي مؤشر طاقي أو رقمي يخص الزوار سحابياً 100%.</p>
+                </div>
+                <button class="back-to-top-btn" onclick="scrollPolicyToTop('policyBox')">🔼 عودة للأعلى</button>
+            </div>
+        </main>
+
+        <aside class="side-wing"><div class="wing-title" id="wing-puzzle-title">..</div><p id="puzzle-q" style="font-size:0.9rem; text-align:justify;">..</p><button class="puzzle-btn" id="puzzle-btn-text" onclick="revealPuzzle()">..</button></aside>
+    </div>
 
     <script src="script.js"></script>
 </body>
