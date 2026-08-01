@@ -1,4 +1,6 @@
-/* إعدادات التصفير والتوحيد الجغرافي */
+/* ==========================================================================
+   1. إعدادات التصفير وحماية الواجهة الشاملة من الاهتزاز والميلان
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -7,165 +9,215 @@
 }
 
 body {
-    background-color: #0b0f19;
+    background-color: #0b0f19; /* الخلفية الفلكية العميقة */
     color: #ffffff;
-    overflow-x: hidden; /* حماية الواجهة من الميلان واهتزاز الشاشات */
+    overflow-x: hidden; /* حظر الميلان واهتزاز الشاشات على كل الهواتف */
+    line-height: 1.6;
 }
 
-/* القائمة العلوية الذكية */
+/* ==========================================================================
+   2. القائمة العلوية الذكية (تمركز العناصر ومنع الالتصاق بالحواف)
+   ========================================================================== */
 .zamanak-navbar {
     background-color: #121824;
-    padding: 15px 5%;
     border-bottom: 2px solid #1f293d;
+    width: 100%;
+    padding: 15px 5%; /* حافة الأمان لمنع الالتصاق يميناً ويساراً */
 }
 
 .nav-container {
+    max-width: 1200px;
+    margin: 0 auto; /* تمركز محتوى القائمة في المنتصف */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .zamanak-logo {
-    color: #00ffcc;
+    color: #00ffcc; /* الشعار الفيروزي المضيء */
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
+    letter-spacing: 1px;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .nav-links a {
     color: #adb5bd;
     text-decoration: none;
-    transition: color 0.3s;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover, .nav-links a.active {
     color: #00ffcc;
 }
 
-.lang-switcher button {
-    background: #1f293d;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin: 0 2px;
-    cursor: pointer;
-    border-radius: 4px;
+/* صندوق اختيار اللغة */
+.lang-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* شريط الشرح التدفقي الفيروسي (من اليسار إلى اليمين للواجهة العربية) */
-.explainer-bar-wrapper {
-    background: linear-gradient(90deg, #00ffcc, #0077ff);
-    color: #000;
-    padding: 10px 0;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.explainer-bar {
-    display: inline-block;
-    padding-left: 100%;
-    animation: marquee 25s linear infinite;
-    font-weight: bold;
-}
-
-@keyframes marquee {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-100%, 0, 0); }
-}
-
-/* الحاوية السحرية: حواف أمان ميكانيكية بمثابة الـ 5 سم للتوسط وحماية الهواتف */
+/* ==========================================================================
+   3. الحاوية السحرية الكبرى (بنية التوسط وحواف الأمان الـ 5 سم)
+   ========================================================================== */
 .zamanak-main-container {
-    max-width: 1200px;
+    max-width: 900px; /* تحديد عرض مثالي ملموم ومريح جداً للعين */
+    margin: 40px auto; /* تمركز كامل محتوى الصفحة في منتصف الشاشة عمودياً وأفقياً */
+    padding: 0 5%; /* حافة الأمان الميكانيكية بمثابة الـ 5 سم لحماية الهواتف */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* توجيه وتوسيط جميع العناصر داخلياً في المنتصف */
+    gap: 35px; /* مسافات متناسقة بين الأقسام من الأعلى للأسفل */
+    text-align: center; /* توسيط النصوص الافتراضي */
+}
+
+/* عنوان الصفحة الكوني وعناصر التحكم */
+.hero-section {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    color: #adb5bd;
+    font-size: 16px;
+    max-width: 600px;
     margin: 0 auto;
-    padding: 40px 5%; /* الـ 5% هنا توفر حافة أمان ميكانيكية ثابتة تمنع الالتصاق بالحواف */
+}
+
+/* ==========================================================================
+   4. أقسام المحتوى (توزيع عمودي متزن بدلاً من التشتت الجانبي)
+   ========================================================================== */
+.content-wrapper {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-}
-
-/* شبكة الأيام الهيدروليكية الفلكية */
-.days-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 10px;
-    width: 100%;
-    max-width: 500px;
-    margin-top: 20px;
-    transition: all 0.4s ease-in-out; /* لتنعيم التمدد والتقلص الهيدروليكي */
-}
-
-.day-cell {
-    background: #121824;
+    gap: 25px;
+    background: #121824; /* صندوق خلفية أنيق لتجميع العناصر */
     border: 1px solid #1f293d;
-    padding: 15px;
-    text-align: center;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
+    border-radius: 16px;
+    padding: 30px;
 }
 
-.day-cell:hover, .day-cell.active {
-    background: #00ffcc;
-    color: #000;
-    font-weight: bold;
-    box-shadow: 0 0 10px #00ffcc;
-}
-
-/* العدادات الحية التراكمية */
-.live-counters-section {
+/* قسم الاختيارات وقائمة التقويم الهجري */
+.control-box {
+    width: 100%;
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
+    gap: 15px;
+    border-bottom: 1px solid #1f293d;
+    padding-bottom: 20px;
+}
+
+.selection-items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    text-align: right;
+}
+
+.selection-item {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+/* التقويم الهجري الذكي */
+.hijri-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+/* قسم النتائج والحسابات التراكمية الحية */
+.results-box {
     width: 100%;
-}
-
-.counter-card {
-    background: #121824;
-    border: 1px solid #1f293d;
-    padding: 20px;
-    border-radius: 12px;
-    min-width: 120px;
-    text-align: center;
-}
-
-.counter-value {
-    display: block;
-    font-size: 32px;
-    font-weight: bold;
-    color: #00ffcc;
-}
-
-/* النماذج وحقول الإدخال */
-.zamanak-form {
+    text-align: right; /* محاذاة تفاصيل النتائج لليمين لتناسب القراءة العربية */
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+.results-box h2 {
+    color: #00ffcc;
+    font-size: 22px;
+    margin-bottom: 10px;
+    text-align: center; /* توسيط عنوان القسم */
+}
+
+.result-row {
+    font-size: 18px;
+    color: #ffffff;
+    padding: 8px 0;
+    border-bottom: 1px dashed #1f293d;
+}
+
+/* زر مشاركة النتائج المذهلة فيروسياً */
+.share-btn-container {
     width: 100%;
-    max-width: 500px;
+    margin-top: 15px;
 }
 
-.zamanak-form input, .zamanak-form textarea {
-    background: #121824;
-    border: 1px solid #1f293d;
-    color: white;
-    padding: 12px;
-    border-radius: 6px;
-}
-
-.zamanak-form button {
-    background: #00ffcc;
-    color: #000;
-    font-weight: bold;
-    padding: 12px;
+.share-btn {
+    background: linear-gradient(135deg, #00ffcc 0%, #0077ff 100%);
+    color: #0b0f19;
     border: none;
-    border-radius: 6px;
+    padding: 14px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 204, 0.5);
+}
+
+/* تفاعل الهواتف المحمولة الذكي لضمان منتهى الرشاقة */
+@media (max-width: 768px) {
+    .zamanak-main-container {
+        margin: 20px auto;
+        padding: 0 4%;
+    }
+    .content-wrapper {
+        padding: 20px;
+    }
+    .control-box {
+        flex-direction: column;
+        align-items: center;
+    }
+    .selection-items {
+        align-items: center;
+    }
+    .hero-section h1 {
+        font-size: 28px;
+    }
 }
