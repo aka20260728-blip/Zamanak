@@ -3,60 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة زمانك (Zamanak) العالمية</title>
+    <title>Zamanak - زمانك العالمي</title>
+    <!-- ربط ملف التنسيق الموحد -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- الهيدر الموحد بجميع التبويبات المطلوبة لجوجل والشعار التفاعلي -->
-    <header class="global-navbar">
-        <a href="index.html" class="logo-link">✨ ZAMANAK</a>
-        <nav class="nav-links">
-            <a href="index.html" class="active">الرئيسية</a>
-            <a href="birthday.html">الميلاد</a>
-            <a href="marriage.html">الزواج</a>
-            <a href="privacy.html">الخصوصية</a>
-            <a href="terms.html">الشروط</a>
-            <a href="contact.html">اتصل بنا</a>
-        </nav>
-        <div class="controls-group">
-            <select id="languageSelect">
-                <option value="ar">العربية 🇸🇦</option>
-                <option value="en">English 🇬🇧</option>
-                <option value="tr">Türkçe 🇹🇷</option>
-                <option value="ur">اردو 🇵🇰</option>
-            </select>
-            <button id="darkModeToggle" class="theme-btn">🌓</button>
+    <!-- القائمة العلوية والتنقل الذكي -->
+    <nav class="zamanak-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="zamanak-logo">ZAMANAK</a>
+            <ul class="nav-links">
+                <li><a href="index.html" data-i18n-nav="home">الرئيسية</a></li>
+                <li><a href="birthday.html" data-i18n-nav="birthday">ذكرى الميلاد</a></li>
+                <li><a href="marriage.html" data-i18n-nav="marriage">ذكرى الزواج</a></li>
+                <li><a href="privacy.html" data-i18n-nav="privacy">سياسة الخصوصية</a></li>
+                <li><a href="terms.html" data-i18n-nav="terms">الشروط والأحكام</a></li>
+                <li><a href="contact.html" data-i18n-nav="contact">اتصل بنا</a></li>
+            </ul>
+            <!-- أزرار محرك الترجمة السريعة -->
+            <div class="lang-switcher">
+                <button onclick="switchZamanakLanguage('ar')">AR</button>
+                <button onclick="switchZamanakLanguage('en')">EN</button>
+                <button onclick="switchZamanakLanguage('tr')">TR</button>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- الحاوية الرئيسية للتوسط التام للموقع -->
-<main class="main-wrapper">
-    
-    <div class="adsense-placeholder-box">
-        <div id="movingAdText" class="moving-text"></div>
+    <!-- شريط الشرح والتنقل الذكي الفيروسي (انسيابي من اليسار لليمين بدون كلمة أدسينس) -->
+    <div class="explainer-bar-wrapper">
+        <div class="explainer-bar">
+            <span data-i18n-nav="about">مشروع زمانك الفلكي العالمي - احسب تفاصيل عمرك ولحظاتك بدقة فلكية متناهية عبر التاريخ الهجري والميلادي حياً ومباشرة.</span>
+        </div>
     </div>
 
-    <div class="tool-header">
-        <h1 id="main-title">اكتشف أسرار تاريخك الفلكي الكوني</h1>
-        <p id="main-desc" style="opacity: 0.8; font-size: 0.9rem; margin-top: 5px;">اختر الأداة الزمنية التي ترغب في حسابها بدقة متناهية وبأعلى المعايير الفلكية.</p>
-    </div>
+    <!-- الحاوية الرئيسية (بنية التوسط وحواف الأمان 5 سم) -->
+    <main class="zamanak-main-container">
+        
+        <!-- قسم التحكم بالتقويم والمحرك الفلكي -->
+        <section class="astronomical-control">
+            <div class="calendar-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="hijriToggle" onchange="toggleHijriEngine()">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label">التقويم الهجري الذكي</span>
+            </div>
 
-    <div class="tool-card">
-        <h3 id="birth-title" style="color: var(--primary-gold); margin-bottom: 8px;">🎂 حاسبة أسرار ميلادك الفلكي</h3>
-        <p id="birth-desc" style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 12px;">احسب إجمالي الساعات والدقائق التراكمية التي عشتها وتاريخك بالتقويم الهجري الدقيق وأم القرى.</p>
-        <a href="birthday.html" id="birth-link" style="display: inline-block; color: var(--primary-gold); font-weight: bold; text-decoration: none; font-size: 0.9rem;">دخول الأداة والاحتساب الآن ←</a>
-    </div>
+            <!-- شبكة الأيام الهيدروليكية المنبثقة (Grid Popup) -->
+            <div class="grid-popup-container">
+                <h3 id="gridTitle">اختر يومك الفلكي (دمج رقم وشهر لراحة العين):</h3>
+                <div id="daysGrid" class="days-grid">
+                    <!-- سيتم توليد الـ 31 أو 30 يوماً ديناميكياً بواسطة الجافا سكريبت هنا -->
+                </div>
+            </div>
+        </section>
 
-    <div class="tool-card">
-        <h3 id="marriage-title" style="color: var(--primary-gold); margin-bottom: 8px;">💍 حاسبة ذكرى الزواج السعيدة</h3>
-        <p id="marriage-desc" style="font-size: 0.85rem; opacity: 0.9; margin-bottom: 12px;">تتبع أدق التفاصيل التراكمية لرحلتكم المشتركة، واعرف كم يوماً ودقيقة مرت على هذه الخطوة المباركة.</p>
-        <a href="marriage.html" id="marriage-link" style="display: inline-block; color: var(--primary-gold); font-weight: bold; text-decoration: none; font-size: 0.9rem;">دخول الأداة والاحتساب الآن ←</a>
-    </div>
+        <!-- عدادات العرض الحية التراكمية (بلا تجمد) -->
+        <section class="live-counters-section">
+            <div class="counter-card">
+                <span class="counter-value" id="liveDays">0</span>
+                <span class="counter-label">أيام</span>
+            </div>
+            <div class="counter-card">
+                <span class="counter-value" id="liveHours">0</span>
+                <span class="counter-label">ساعات</span>
+            </div>
+            <div class="counter-card">
+                <span class="counter-value" id="liveMinutes">0</span>
+                <span class="counter-label">دقائق</span>
+            </div>
+            <div class="counter-card">
+                <span class="counter-value" id="liveSeconds">0</span>
+                <span class="counter-label">ثواني حية</span>
+            </div>
+        </section>
 
-</main>
+        <!-- نموذج اتصل بنا الديناميكي المترجم -->
+        <section class="contact-section">
+            <h2 data-i18n-form="submit">اتصل بنا</h2>
+            <form id="zamanakContactForm" class="zamanak-form">
+                <input type="text" data-i18n-form="name" placeholder="الاسم الكامل" required>
+                <input type="email" data-i18n-form="email" placeholder="البريد الإلكتروني" required>
+                <textarea data-i18n-form="message" placeholder="نص الرسالة" rows="5" required></textarea>
+                <button type="submit" data-i18n-form="submit">إرسال الرسالة الفورية</button>
+            </form>
+        </section>
 
+    </main>
 
+    <!-- ربط ملف المحرك البرمجي الموحد -->
     <script src="script.js"></script>
 </body>
 </html>
