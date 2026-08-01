@@ -22,24 +22,19 @@
             <select id="languageSelect">
                 <option value="ar">العربية 🇸🇦</option>
                 <option value="en">English 🇬🇧</option>
-                <option value="tr">Türkçe 🇹🇷</option>
-                <option value="ur">اردو 🇵🇰</option>
             </select>
             <button id="darkModeToggle" class="theme-btn">🌓</button>
         </div>
     </header>
 
     <main class="main-wrapper">
-        <div class="tool-header">
-            <h1 id="contact-title">✉️ اتصل بنا والدعم الفوري</h1>
-        </div>
-
+        <div class="tool-header"><h1 id="contact-title">✉️ اتصل بنا والدعم الفوري</h1></div>
         <div class="tool-card">
-            <form class="zamanak-form" onsubmit="event.preventDefault(); alert('تم استلام طلبك بنجاح في قاعدة بيانات زمانك سحابياً!');">
-                <input type="text" id="form-name" placeholder="الاسم الكامل" required style="margin-bottom: 12px;">
-                <input type="email" id="form-email" placeholder="البريد الإلكتروني" required style="margin-bottom: 12px;">
-                <textarea id="form-msg" rows="5" placeholder="نص الرسالة أو الاستفسار الفلكي" required style="margin-bottom: 15px;"></textarea>
-                <button type="submit" id="form-submit" style="width: 100%; background: var(--primary-gold); color: #0b0f19; border: none; font-weight: bold; padding: 14px; font-size: 1rem; border-radius: 8px; cursor: pointer;">إرسال الرسالة الفورية</button>
+            <form onsubmit="event.preventDefault(); alert('تم استلام رسالتك الفورية سحابياً بنجاح في زمانك!');" style="display: flex; flex-direction: column; gap: 15px; width: 100%;">
+                <input type="text" placeholder="الاسم الكامل" required style="background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: 8px; width: 100%;">
+                <input type="email" placeholder="البريد الإلكتروني" required style="background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: 8px; width: 100%;">
+                <textarea rows="5" placeholder="نص الرسالة والاستفسار الكوني" required style="background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: 8px; width: 100%;"></textarea>
+                <button type="submit" style="background: var(--primary-gold); color: #0b0f19; border: none; font-weight: bold; padding: 14px; border-radius: 8px; cursor: pointer; font-size: 1rem;">إرسال الرسالة الفورية</button>
             </form>
         </div>
     </main>
