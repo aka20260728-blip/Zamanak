@@ -1,17 +1,16 @@
 /* ==========================================
-   1. المتغيرات والوضع الداكن الكوني الأصلي
+   1. المتغيرات والسمات الكونية (تذكر المحاذاة)
    ========================================== */
 :root {
-    --bg-main: #0b0f19;       /* الخلفية الليلية الفاخرة المريحة للعين */
-    --bg-card: #121824;       /* خلفية الصناديق والكروت */
-    --border-color: #1f293d;   /* لون الحدود */
-    --text-main: #ffffff;      /* النص الأساسي */
-    --text-muted: #adb5bd;     /* النص الباهت */
-    --primary-gold: #00ffcc;   /* الفيروزي النيوني (أو استبدله بـ #f1c40f للذهبي حسب ذوقك) */
-    --transition-speed: 0.3s;
+    --bg-main: #0b0f19;       
+    --bg-card: #121824;       
+    --border-color: #1f293d;   
+    --text-main: #ffffff;      
+    --text-muted: #adb5bd;     
+    --primary-gold: #00ffcc;   
+    --marquee-dir: marquee-rtl; /* الاتجاه الافتراضي */
 }
 
-/* سمات الوضع الفاتح (إذا قام المستخدم بالتبديل) */
 [data-theme="light"] {
     --bg-main: #f8f9fa;
     --bg-card: #ffffff;
@@ -19,6 +18,11 @@
     --text-main: #212529;
     --text-muted: #6c757d;
     --primary-gold: #d4af37;
+}
+
+/* تحديث اتجاه الحركة للغات الغربية */
+html[dir="ltr"] {
+    --marquee-dir: marquee-ltr;
 }
 
 * {
@@ -31,18 +35,18 @@
 body {
     background-color: var(--bg-main);
     color: var(--text-main);
-    overflow-x: hidden; /* حظر اهتزاز وميلان الشاشات على كل الهواتف */
-    transition: background-color var(--transition-speed), color var(--transition-speed);
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* ==========================================
-   2. شريط التنقل العلوي الموحد (الـ 5 سم أمان)
+   2. شريط التنقل العلوي الموحد (تمركز كامل)
    ========================================== */
 .global-navbar {
     background-color: var(--bg-card);
     border-bottom: 2px solid var(--border-color);
     width: 100%;
-    padding: 15px 5%; /* حافة الأمان 5 سم لمنع الالتصاق بالحواف الجانبية */
+    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,6 +59,10 @@ body {
     font-size: 22px;
     font-weight: bold;
     text-decoration: none;
+    transition: transform 0.2s;
+}
+.logo-link:hover {
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -99,19 +107,18 @@ body {
 }
 
 /* ==========================================
-   3. بنية التوسط السحرية للحاوية الكبرى
+   3. الحاوية الموسطة وشريط الشرح المعكوس الذكي
    ========================================== */
 .main-wrapper {
-    max-width: 750px; /* تجميع ولمّ المحتوى لراحة العين ومنع التشتت */
+    max-width: 850px; 
     margin: 40px auto;
-    padding: 0 5%; /* حافة الأمان الميكانيكية الجانبية على الهواتف */
+    padding: 0 5%; 
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 25px;
 }
 
-/* مستطيل الشرح الاحترافي الانسيابي الخالي من أدسينس */
 .adsense-placeholder-box {
     background: linear-gradient(90deg, #00ffcc, #0077ff);
     color: #0b0f19;
@@ -124,111 +131,61 @@ body {
 
 .moving-text {
     display: inline-block;
-    padding-left: 100%;
-    animation: marquee 25s linear infinite;
     font-weight: bold;
+    animation: var(--marquee-dir) 25s linear infinite;
 }
 
-@keyframes marquee {
-    0% { transform: translate3d(0, 0, 0); }
+/* حركات الأشرطة المعكوسة لراحة حركة العين الحية */
+@keyframes marquee-rtl {
+    0% { transform: translate3d(100%, 0, 0); }
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
-.tool-header h1 {
-    font-size: 28px;
-    margin-bottom: 5px;
+@keyframes marquee-ltr {
+    0% { transform: translate3d(-100%, 0, 0); }
+    100% { transform: translate3d(100%, 0, 0); }
+}
+
+.tool-header {
     text-align: center;
+    width: 100%;
 }
 
-/* صناديق الاختيار المنبثقة */
-.date-selector-box {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 16px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s, border-color 0.2s;
+.tool-header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
-.date-selector-box:hover {
-    transform: translateY(-2px);
-    border-color: var(--primary-gold);
-}
-
-/* صندوق النتائج التراكمية المترجم */
 .tool-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 14px;
-    padding: 25px;
+    padding: 30px;
     width: 100%;
-    text-align: right;
+    text-align: justify;
+    line-height: 1.8;
 }
 
-/* ==========================================
-   4. صندوق النافذة المنبثقة المطور (حجب 100%)
-   ========================================== */
-.popup-modal {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(11, 15, 25, 0.95); /* حجب ما خلفه تماماً بلون فلكي معتم */
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    padding: 20px;
-}
-
-.popup-content {
-    background-color: var(--bg-card);
-    border: 2px solid var(--border-color);
-    border-radius: 16px;
-    max-width: 500px;
-    width: 100%;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.popup-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--primary-gold);
-    margin-bottom: 15px;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 10px;
-}
-
-.grid-container {
+.astrology-section {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 8px;
-    max-height: 300px;
-    overflow-y: auto;
-    padding-right: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+    width: 100%;
+    margin-top: 15px;
 }
 
-.grid-item {
-    background-color: var(--bg-main);
+.astro-card {
+    background-color: rgba(255,255,255,0.02);
     border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 10px;
+    padding: 15px;
+    border-radius: 8px;
     text-align: center;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.2s;
+}
+.astro-card h4 {
+    color: var(--primary-gold);
+    margin-bottom: 8px;
 }
 
-.grid-item:hover {
-    background-color: var(--primary-gold);
-    color: #0b0f19;
-    font-weight: bold;
-}
-
-/* استجابة شاشات الهواتف المحمولة */
 @media (max-width: 768px) {
     .global-navbar { padding: 12px 4%; }
     .main-wrapper { margin: 20px auto; padding: 0 4%; }
