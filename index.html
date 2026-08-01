@@ -3,21 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zamanak - الرئيسية</title>
+    <title>Zamanak | زمانك العالمي</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="zamanak-navbar"><div class="nav-container"><a href="index.html" class="zamanak-logo">ZAMANAK</a><ul class="nav-links"><li><a href="index.html" data-i18n-nav="home" class="active">الرئيسية</a></li><li><a href="birthday.html" data-i18n-nav="birthday">ذكرى الميلاد</a></li><li><a href="marriage.html" data-i18n-nav="marriage">ذكرى الزواج</a></li><li><a href="privacy.html" data-i18n-nav="privacy">سياسة الخصوصية</a></li><li><a href="terms.html" data-i18n-nav="terms">الشروط والأحكام</a></li><li><a href="contact.html" data-i18n-nav="contact">اتصل بنا</a></li></ul><div class="lang-switcher"><button onclick="switchZamanakLanguage('ar')">AR</button><button onclick="switchZamanakLanguage('en')">EN</button><button onclick="switchZamanakLanguage('tr')">TR</button></div></div></nav>
-    <div class="explainer-bar-wrapper"><div class="explainer-bar" data-i18n-nav="about">..</div></div>
-    <main class="zamanak-main-container">
-        <div class="hero-section">
-            <h1>ZAMANAK</h1>
-            <p>بوابتك الكونية الفلكية الشاملة لحساب وحفظ أدق تفاصيل ولحظات عمرك حياً مباشرة.</p>
+
+    <header class="global-navbar">
+        <a href="index.html" class="logo-link">✨ ZAMANAK</a>
+        <nav class="nav-links">
+            <a href="index.html" id="nav-home" class="active">الرئيسية</a>
+            <a href="birthday.html" id="nav-birth">الميلاد</a>
+            <a href="marriage.html" id="nav-marriage">الزواج</a>
+            <a href="privacy.html" id="nav-privacy">الخصوصية</a>
+            <a href="terms.html" id="nav-terms">الشروط</a>
+            <a href="contact.html" id="nav-contact">اتصل بنا</a>
+        </nav>
+        <div class="controls-group">
+            <select id="languageSelect">
+                <option value="ar">العربية 🇸🇦</option>
+                <option value="en">English 🇬🇧</option>
+                <option value="tr">Türkçe 🇹🇷</option>
+                <option value="ur">اردو 🇵🇰</option>
+            </select>
+            <button id="darkModeToggle" class="theme-btn">🌓</button>
         </div>
-        <div class="content-wrapper">
-            <p>اختر أحد الأقسام العلوية لبدء الرحلة الحية التراكمية السنوية.</p>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="adsense-placeholder-box">
+            <div id="movingAdText" class="moving-text">مشروع زمانك الفلكي العالمي</div>
+        </div>
+
+        <div class="tool-header">
+            <h1>🌌 منصة زمانك (Zamanak) الفلكية الشاملة</h1>
+            <p style="opacity: 0.8; font-size: 1rem; margin-top: 10px; max-width: 550px; line-height: 1.6;">مرحباً بك في البوابة العالمية الكبرى. اختر قسماً من الأعلى لاكتشاف أسرار ميلادك الفلكي أو حساب عدادات الرابطة الزوجية حياً ومباشرة بلا توقف.</p>
         </div>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
