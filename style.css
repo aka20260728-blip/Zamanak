@@ -1,6 +1,26 @@
 /* ==========================================
-   1. تصفير العدادات والوضع الداكن الكوني
+   1. المتغيرات والوضع الداكن الكوني الأصلي
    ========================================== */
+:root {
+    --bg-main: #0b0f19;       /* الخلفية الليلية الفاخرة المريحة للعين */
+    --bg-card: #121824;       /* خلفية الصناديق والكروت */
+    --border-color: #1f293d;   /* لون الحدود */
+    --text-main: #ffffff;      /* النص الأساسي */
+    --text-muted: #adb5bd;     /* النص الباهت */
+    --primary-gold: #00ffcc;   /* الفيروزي النيوني (أو استبدله بـ #f1c40f للذهبي حسب ذوقك) */
+    --transition-speed: 0.3s;
+}
+
+/* سمات الوضع الفاتح (إذا قام المستخدم بالتبديل) */
+[data-theme="light"] {
+    --bg-main: #f8f9fa;
+    --bg-card: #ffffff;
+    --border-color: #dee2e6;
+    --text-main: #212529;
+    --text-muted: #6c757d;
+    --primary-gold: #d4af37;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,25 +29,20 @@
 }
 
 body {
-    background-color: #0b0f19; /* وضع داكن عميق */
-    color: #ffffff;
-    overflow-x: hidden; /* منع اهتزاز وميلان الشاشات نهائياً */
-    line-height: 1.6;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    overflow-x: hidden; /* حظر اهتزاز وميلان الشاشات على كل الهواتف */
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 /* ==========================================
-   2. شريط التنقل الذكي وحواف الأمان
+   2. شريط التنقل العلوي الموحد (الـ 5 سم أمان)
    ========================================== */
-.zamanak-navbar {
-    background-color: #121824;
-    border-bottom: 2px solid #1f293d;
+.global-navbar {
+    background-color: var(--bg-card);
+    border-bottom: 2px solid var(--border-color);
     width: 100%;
     padding: 15px 5%; /* حافة الأمان 5 سم لمنع الالتصاق بالحواف الجانبية */
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,64 +50,79 @@ body {
     gap: 15px;
 }
 
-.zamanak-logo {
-    color: #00ffcc; /* الفيروزي النيوني المشع */
-    font-size: 24px;
+.logo-link {
+    color: var(--primary-gold);
+    font-size: 22px;
     font-weight: bold;
     text-decoration: none;
-    letter-spacing: 1px;
 }
 
 .nav-links {
     display: flex;
-    list-style: none;
     gap: 20px;
-    flex-wrap: wrap;
 }
 
 .nav-links a {
-    color: #adb5bd;
+    color: var(--text-muted);
     text-decoration: none;
-    font-size: 16px;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color 0.2s;
 }
 
 .nav-links a:hover, .nav-links a.active {
-    color: #00ffcc;
+    color: var(--primary-gold);
 }
 
-/* أزرار محرك الترجمة الفورية */
-.lang-switcher button {
-    background: #1f293d;
-    color: #ffffff;
-    border: 1px solid #2d3d5a;
+.controls-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.controls-group select {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
     padding: 6px 12px;
-    margin: 0 2px;
-    cursor: pointer;
     border-radius: 6px;
-    font-weight: bold;
-    transition: all 0.2s;
+    cursor: pointer;
 }
 
-.lang-switcher button:hover {
-    background: #00ffcc;
-    color: #0b0f19;
+.theme-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
 }
 
 /* ==========================================
-   3. مستطيل الشرح الانسيابي الفيروسي
+   3. بنية التوسط السحرية للحاوية الكبرى
    ========================================== */
-.explainer-bar-wrapper {
+.main-wrapper {
+    max-width: 750px; /* تجميع ولمّ المحتوى لراحة العين ومنع التشتت */
+    margin: 40px auto;
+    padding: 0 5%; /* حافة الأمان الميكانيكية الجانبية على الهواتف */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* مستطيل الشرح الاحترافي الانسيابي الخالي من أدسينس */
+.adsense-placeholder-box {
     background: linear-gradient(90deg, #00ffcc, #0077ff);
     color: #0b0f19;
-    padding: 10px 0;
+    padding: 12px;
+    border-radius: 8px;
     overflow: hidden;
     white-space: nowrap;
     width: 100%;
 }
 
-.explainer-bar {
+.moving-text {
     display: inline-block;
     padding-left: 100%;
     animation: marquee 25s linear infinite;
@@ -104,185 +134,103 @@ body {
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
-/* ==========================================
-   4. بنية التوسط السحرية للحاوية الكبرى
-   ========================================== */
-.zamanak-main-container {
-    max-width: 850px; /* تجميع ولمّ المحتوى لراحة العين ومنع التشتت */
-    margin: 40px auto;
-    padding: 0 5%; /* حافة الأمان الميكانيكية السفلية والجانبية */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+.tool-header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
     text-align: center;
 }
 
-.hero-section h1 {
-    font-size: 36px;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.hero-section p {
-    color: #adb5bd;
-    font-size: 16px;
-}
-
-/* ==========================================
-   5. صناديق شبكة الأيام الهيدروليكية والعدادات
-   ========================================== */
-.content-wrapper {
-    width: 100%;
-    background: #121824;
-    border: 1px solid #1f293d;
-    border-radius: 16px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.control-box {
-    width: 100%;
+/* صناديق الاختيار المنبثقة */
+.date-selector-box {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    border-bottom: 1px solid #1f293d;
-    padding-bottom: 20px;
-}
-
-/* زر التبديل السحري للتقويم الهجري */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-}
-.switch input { display: none; }
-.slider {
-    position: absolute;
     cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #1f293d;
-    transition: .4s;
-    border-radius: 24px;
+    transition: transform 0.2s, border-color 0.2s;
 }
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px; width: 16px;
-    left: 4px; bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-input:checked + .slider { background-color: #00ffcc; }
-input:checked + .slider:before { transform: translateX(26px); }
 
-/* شبكة الأيام الهيدروليكية الفلكية */
-.days-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
-    gap: 8px;
+.date-selector-box:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-gold);
+}
+
+/* صندوق النتائج التراكمية المترجم */
+.tool-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 25px;
     width: 100%;
-    margin-top: 15px;
-    transition: all 0.3s ease-in-out;
+    text-align: right;
 }
 
-.day-cell {
-    background: #0b0f19;
-    border: 1px solid #1f293d;
-    padding: 12px;
-    text-align: center;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #adb5bd;
-    transition: 0.2s;
-}
-
-.day-cell:hover, .day-cell.active {
-    background: #00ffcc;
-    color: #0b0f19;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
-    border-color: #00ffcc;
-}
-
-/* كروت العدادات الحية التراكمية */
-.counters-grid {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+/* ==========================================
+   4. صندوق النافذة المنبثقة المطور (حجب 100%)
+   ========================================== */
+.popup-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(11, 15, 25, 0.95); /* حجب ما خلفه تماماً بلون فلكي معتم */
+    display: none;
     justify-content: center;
-    width: 100%;
-}
-
-.counter-card {
-    background: #0b0f19;
-    border: 1px solid #1f293d;
+    align-items: center;
+    z-index: 9999;
     padding: 20px;
-    border-radius: 12px;
-    flex: 1;
-    min-width: 120px;
+}
+
+.popup-content {
+    background-color: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.popup-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary-gold);
+    margin-bottom: 15px;
     text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
 }
 
-.counter-value {
-    display: block;
-    font-size: 28px;
-    font-weight: bold;
-    color: #00ffcc;
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
 }
 
-.counter-label {
-    font-size: 14px;
-    color: #adb5bd;
-}
-
-/* قوالب مستندات النصوص السياسية واتصل بنا */
-.text-block {
-    text-align: right;
-    width: 100%;
-}
-.text-block h2 { color: #00ffcc; margin-bottom: 15px; text-align: center;}
-.text-block p { margin-bottom: 15px; color: #adb5bd;}
-
-.zamanak-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-}
-.zamanak-form input, .zamanak-form textarea {
-    background: #0b0f19;
-    border: 1px solid #1f293d;
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    width: 100%;
-    text-align: right;
-}
-.zamanak-form button {
-    background: #00ffcc;
-    color: #0b0f19;
-    font-weight: bold;
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
+.grid-item {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
     transition: 0.2s;
 }
-.zamanak-form button:hover {
-    background: #00ccaa;
+
+.grid-item:hover {
+    background-color: var(--primary-gold);
+    color: #0b0f19;
+    font-weight: bold;
 }
 
-/* استجابة الهواتف */
+/* استجابة شاشات الهواتف المحمولة */
 @media (max-width: 768px) {
-    .zamanak-main-container { margin: 20px auto; }
-    .content-wrapper { padding: 20px; }
-    .control-box { flex-direction: column; gap: 10px; }
+    .global-navbar { padding: 12px 4%; }
+    .main-wrapper { margin: 20px auto; padding: 0 4%; }
+    .nav-links { order: 3; width: 100%; justify-content: center; margin-top: 10px; gap: 15px; }
 }
