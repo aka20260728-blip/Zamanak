@@ -1,265 +1,171 @@
-/* ==========================================
-   1. المتغيرات العامة وإعادة الضبط لمنع ميلان الشاشة
-   ========================================== */
-:root {
-    --bg-color: #121212; /* الخلفية الداكنة الفخمة الثابتة */
-    --text-color: #ffffff;
-    --border-color: #333333;
-    --primary-gold: #f1c40f;
-    --secondary-gold: #e67e22;
-    --box-bg: #1e1e1e;
-}
-
-[data-theme="light"] {
-    --bg-color: #ffffff;
-    --text-color: #2c3e50;
-    --border-color: #e0e0e0;
-    --box-bg: #f9f9f9;
-}
-
+/* إعدادات التصفير والتوحيد الجغرافي */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: system-ui, -apple-system, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    overflow-x: hidden;
-    transition: background-color 0.3s, color 0.3s;
+    background-color: #0b0f19;
+    color: #ffffff;
+    overflow-x: hidden; /* حماية الواجهة من الميلان واهتزاز الشاشات */
 }
 
-/* ==========================================
-   2. شريط التنقل العلوي العالمي الموحد (Global Navbar)
-   ========================================== */
-.global-navbar {
-    width: 100%;
-    max-width: 500px;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 1px solid var(--border-color);
+/* القائمة العلوية الذكية */
+.zamanak-navbar {
+    background-color: #121824;
+    padding: 15px 5%;
+    border-bottom: 2px solid #1f293d;
 }
 
-.logo-link {
-    color: var(--primary-gold);
-    text-decoration: none;
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.zamanak-logo {
+    color: #00ffcc;
+    font-size: 24px;
     font-weight: bold;
-    font-size: 1.4rem;
-    letter-spacing: 1px;
-    transition: transform 0.2s;
-}
-
-.logo-link:hover {
-    transform: scale(1.05);
+    text-decoration: none;
 }
 
 .nav-links {
     display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    list-style: none;
+    gap: 20px;
 }
 
 .nav-links a {
-    color: var(--text-color);
+    color: #adb5bd;
     text-decoration: none;
-    font-size: 0.85rem;
-    opacity: 0.8;
-    padding: 4px 8px;
-    border-radius: 4px;
-    transition: all 0.2s;
+    transition: color 0.3s;
 }
 
-.nav-links a:hover, .nav-links a.active {
-    color: var(--primary-gold);
-    opacity: 1;
-    background-color: rgba(241, 196, 15, 0.1);
+.nav-links a:hover {
+    color: #00ffcc;
 }
 
-.controls-group {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-select, .theme-btn {
-    padding: 6px 10px;
-    border-radius: 6px;
-    border: 1px solid var(--border-color);
-    background-color: var(--box-bg);
-    color: var(--text-color);
+.lang-switcher button {
+    background: #1f293d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 2px;
     cursor: pointer;
-    font-size: 0.85rem;
+    border-radius: 4px;
 }
 
-/* ==========================================
-   3. الحاوية الرئيسية للتوسط الشامل (حواف الـ 5 سم)
-   ========================================== */
-.main-wrapper {
+/* شريط الشرح التدفقي الفيروسي (من اليسار إلى اليمين للواجهة العربية) */
+.explainer-bar-wrapper {
+    background: linear-gradient(90deg, #00ffcc, #0077ff);
+    color: #000;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.explainer-bar {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 25s linear infinite;
+    font-weight: bold;
+}
+
+@keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* الحاوية السحرية: حواف أمان ميكانيكية بمثابة الـ 5 سم للتوسط وحماية الهواتف */
+.zamanak-main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 5%; /* الـ 5% هنا توفر حافة أمان ميكانيكية ثابتة تمنع الالتصاق بالحواف */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* شبكة الأيام الهيدروليكية الفلكية */
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 10px;
     width: 100%;
     max-width: 500px;
-    padding: 20px 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 20px;
+    transition: all 0.4s ease-in-out; /* لتنعيم التمدد والتقلص الهيدروليكي */
+}
+
+.day-cell {
+    background: #121824;
+    border: 1px solid #1f293d;
+    padding: 15px;
     text-align: center;
-    gap: 22px;
-}
-
-h1 {
-    color: var(--primary-gold);
-    font-size: 1.5rem;
-}
-
-.tool-card {
-    background-color: var(--box-bg);
-    border: 1px solid var(--border-color);
-    padding: 20px;
-    border-radius: 10px;
-    width: 100%;
-    text-align: right;
-}
-
-.date-selector-box {
-    background-color: var(--bg-color);
-    border: 1px solid var(--border-color);
-    padding: 12px;
     border-radius: 8px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     cursor: pointer;
-    margin-top: 10px;
+    transition: 0.2s;
 }
 
-input[readonly] {
-    caret-color: transparent;
-    cursor: pointer;
-}
-
-/* ==========================================
-   4. مستطيل الشرح الإعلاني المتحرك المعدل
-   ========================================== */
-.adsense-placeholder-box {
-    width: 100%;
-    background: linear-gradient(90deg, var(--secondary-gold), var(--primary-gold));
+.day-cell:hover, .day-cell.active {
+    background: #00ffcc;
     color: #000;
-    padding: 12px;
-    border-radius: 8px;
-    overflow: hidden;
     font-weight: bold;
-    font-size: 0.85rem;
-    height: 45px;
+    box-shadow: 0 0 10px #00ffcc;
+}
+
+/* العدادات الحية التراكمية */
+.live-counters-section {
     display: flex;
-    align-items: center;
-    position: relative;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }
 
-.moving-text {
-    white-space: nowrap;
-    position: absolute;
-    display: inline-block;
+.counter-card {
+    background: #121824;
+    border: 1px solid #1f293d;
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 120px;
+    text-align: center;
 }
 
-.scroll-rtl {
-    animation: scrollRTL 15s linear infinite;
+.counter-value {
+    display: block;
+    font-size: 32px;
+    font-weight: bold;
+    color: #00ffcc;
 }
 
-.scroll-ltr {
-    animation: scrollLTR 15s linear infinite;
-}
-
-@keyframes scrollRTL {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-@keyframes scrollLTR {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
-}
-
-/* ==========================================
-   5. تأثير التشويق والإثارة والشبكة المنبثقة
-   ========================================== */
-.loading-box {
+/* النماذج وحقول الإدخال */
+.zamanak-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 20px;
-    color: var(--primary-gold);
-    font-weight: bold;
-}
-
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(241, 196, 15, 0.2);
-    border-top: 4px solid var(--primary-gold);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.popup-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
+    gap: 15px;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95) !important; /* حجب غامق كامل يمنع رؤية ما خلفه */
-    display: none; /* جعل الإخفاء التلقائي هو الوضع الافتراضي */
-    justify-content: center;
-    align-items: center;
-    z-index: 99999 !important; /* رفع الطبقة لأعلى مستوى للقضاء على تداخل السنوات */
+    max-width: 500px;
 }
 
-
-.popup-content {
-    background-color: var(--box-bg);
-    border: 2px solid var(--primary-gold);
-    border-radius: 12px;
-    width: 85%;
-    max-width: 350px;
-    padding: 25px;
-    max-height: 65vh;
-    overflow-y: auto;
+.zamanak-form input, .zamanak-form textarea {
+    background: #121824;
+    border: 1px solid #1f293d;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.grid-item {
-    background-color: var(--bg-color);
-    border: 1px solid var(--border-color);
-    padding: 10px;
-    text-align: center;
+.zamanak-form button {
+    background: #00ffcc;
+    color: #000;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.grid-item:hover {
-    background-color: var(--primary-gold);
-    color: #000;
 }
