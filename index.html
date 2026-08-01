@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zamanak | زمانك العالمي</title>
+    <title>Zamanak | زمانك العالمي الكوني</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- شريط التنقل العلوي الموحد (ربط الشعار الذكي والتحكم) -->
     <header class="global-navbar">
         <a href="index.html" class="logo-link">✨ ZAMANAK</a>
         <nav class="nav-links">
@@ -23,21 +24,42 @@
                 <option value="ar">العربية 🇸🇦</option>
                 <option value="en">English 🇬🇧</option>
                 <option value="tr">Türkçe 🇹🇷</option>
-                <option value="ur">اردو 🇵🇰</option>
             </select>
             <button id="darkModeToggle" class="theme-btn">🌓</button>
         </div>
     </header>
 
+    <!-- الحاوية الرئيسية الموسطة تماماً وحواف الأمان الـ 5 سم -->
     <main class="main-wrapper">
+        
+        <!-- مستطيل الأخبار المتدفق الانسيابي والمعكوس حسب اختيار لغتك -->
         <div class="adsense-placeholder-box">
             <div id="movingAdText" class="moving-text">مشروع زمانك الفلكي العالمي</div>
         </div>
 
         <div class="tool-header">
-            <h1>🌌 منصة زمانك (Zamanak) الفلكية الشاملة</h1>
-            <p style="opacity: 0.8; font-size: 1rem; margin-top: 10px; max-width: 550px; line-height: 1.6;">مرحباً بك في البوابة العالمية الكبرى. اختر قسماً من الأعلى لاكتشاف أسرار ميلادك الفلكي أو حساب عدادات الرابطة الزوجية حياً ومباشرة بلا توقف.</p>
+            <h1 id="main-title">🌌 مشروع زمانك الفلكي الكوني العالمي</h1>
+            <p id="main-desc" style="opacity: 0.8; font-size: 1rem; margin-top: 5px;">بوابتك الكبرى الموثوقة لاستقراء حركات الأجرام، الأزمان، والروابط الطالعية لعمرك حياً ومباشرة.</p>
         </div>
+
+        <!-- الصندوق التعريفي الضخم المطور عن الأبراج والتوقيت الفلكي الكوني -->
+        <div class="tool-card">
+            <h3 id="card-title" style="color: var(--primary-gold); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; text-align: center;">🔮 أسرار التقاطعات الزمنية والأبراج الفلكية</h3>
+            <p id="card-text" style="text-align: justify; text-justify: inter-word; font-size: 1.05rem;">جاري تحميل المحتوى الفلكي الموثق لـ زمانك...</p>
+            
+            <!-- شبكة الكروت الداخلية لإثراء المعرفة البصرية الفاخرة للزوار -->
+            <div class="astrology-section">
+                <div class="astro-card">
+                    <h4 id="astro1-title">🌟 دورة الأبراج</h4>
+                    <p id="astro1-text" style="font-size: 0.9rem; opacity: 0.8;">تحليل تموضع الكواكب ومساراتها لحظة ميلادك لاستخراج طاقتك الطالعية.</p>
+                </div>
+                <div class="astro-card">
+                    <h4 id="astro2-title">⏳ تدوير الأزمان</h4>
+                    <p id="astro2-text" style="font-size: 0.9rem; opacity: 0.8;">حساب تراكمي حي يحول السنين الفلكية إلى ثوانٍ ودقائق مباشرة بلا تجمد.</p>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <script src="script.js"></script>
