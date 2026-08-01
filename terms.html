@@ -19,22 +19,31 @@
             <a href="contact.html" id="nav-contact">اتصل بنا</a>
         </nav>
         <div class="controls-group">
-            <select id="languageSelect">
-                <option value="ar">العربية 🇸🇦</option>
-                <option value="en">English 🇬🇧</option>
-                <option value="tr">Türkçe 🇹🇷</option>
-                <option value="ur">اردو 🇵🇰</option>
-            </select>
+            <select id="languageSelect"><option value="ar">العربية 🇸🇦</option><option value="en">English 🇬🇧</option></select>
             <button id="darkModeToggle" class="theme-btn">🌓</button>
         </div>
     </header>
 
-    <main class="main-wrapper">
-        <div class="tool-card" style="text-align: right; line-height: 1.8;">
-            <h2 id="terms-title" style="color: var(--primary-gold); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">📜 الشروط والأحكام لاستخدام المنصة</h2>
-            <p>باستخدامك لمنصة زمانك (Zamanak) الفلكية العالمية، فإنك توافق على الامتثال لكافة البنود المذكورة. جميع المعادلات وحسابات التوقيت التراكمي وأيام التقويم الهجري الذكي مصممة وفق معايير برمجية دقيقة تهدف لتقديم المعرفة الحية والترفيه الرقمي الراقي والمنظم للمستخدمين عبر العالم.</p>
-        </div>
-    </main>
+    <div class="three-column-layout">
+        <aside class="side-wing"><div class="wing-title" id="wing-game-title">..</div><p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p><button class="game-btn" id="game-click-btn" onclick="playZamanakGame()">..</button></aside>
+
+        <main class="center-content">
+            <div class="tool-card">
+                <h2 id="terms-title" style="color: var(--primary-neon); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; text-align:center;">📜 الشروط والأحكام لاستخدام المنصة</h2>
+                
+                <!-- صندوق الشروط المطول الإجباري لجوجل أدسينس مع التمرير -->
+                <div class="scroll-policy-box" id="termsBox">
+                    <p>مقدمة عامة: شروط الاستخدام الملزمة. شروط استخدام منصة زمانك (Zamanak) الفلكية العالمية. بدخولك وتصفحك لهذا الموقع الإلكتروني، فإنك تقر وتوافق بشكل كامل وغير مشروط على الامتثال لكافة البنود والتشريعات المذكورة هنا والالتزام بها. إذا كنت لا توافق على أي جزء من هذه الشروط، فيرجى التوقف عن استخدام المنصة فوراً لحماية حقوق الأطراف ميكانيكياً.</p><br>
+                    <p>البند الأول: طبيعة الخدمة وإخلاء المسؤولية الكوني. إن جميع المعادلات الحسابية، وعدادات الأيام والساعات والدقائق التراكمية الحية المباشرة، وحسابات التقاويم الميلادية والهجرية الذكية، ومقالات الأبراج والتموضعات الكوكبية المعروضة داخل منصة زمانك هي تطبيقات برمجية ديناميكية مبنية على تقديرات ومعادلات تدوير زمنية فلكية عامة تهدف بالدرجة الأولى إلى تقديم المعرفة الرقمية، الإثراء الثقافي، والترفيه الرقمي الراقي والمنظم للمستخدمين عبر العالم. ولا يجب استخدامها كمستندات قانونية أو فلكية رسمية قاطعة، ويتحمل المستخدم كامل المسؤولية عن كيفية تفسيره وتعامله مع هذه المؤشرات الحية التراكمية.</p><br>
+                    <p>البند الثاني: حقوق الملكية الفكرية الكبرى. إن شعار ZAMANAK، والعلامات التجارية المرتبطة به، وجميع النصوص والمقالات الفلكية المطورة، والتركيبة البرمجية والأكواد المصممة هندسياً داخل الصفحات السبعة والمحركات الفلكية، هي ملكية فكرية خالصة ومحمية بموجب القوانين والأنظمة الدولية للملكية الفكرية. يُمنع منعاً باتاً نسخ، أو إعادة هندسة، أو تعديل، أو سرقة المحرك البرمجي للموقع أو استخدام نصوصه الطالعية لأغراض تجارية دون الحصول على إذن خطي مسبق وصريح من إدارة مشروع زمانك العالمي.</p><br>
+                    <p>البند الثالث: شروط الاستخدام المقبول والنزيه. يتعهد زوار المنصة باستخدام الأدوات والعدادات والمنبثقات بشكل نزيه وقانوني. يحظر محاولة اختراق الموقع، أو حقن أكواد خبيثة لتعطيل المتصفحات، أو إرسال طلبات عشوائية ومضللة عبر قاعدة الدعم الفوري أو نموذج اتصل بنا بهدف التخريب البرمي أو استهلاك موارد النطاق السحابي للمشروع على منصة GitHub.</p>
+                </div>
+                <button class="back-to-top-btn" onclick="scrollPolicyToTop('termsBox')">🔼 عودة للأعلى</button>
+            </div>
+        </main>
+
+        <aside class="side-wing"><div class="wing-title" id="wing-puzzle-title">..</div><p id="puzzle-q" style="font-size:0.9rem; text-align:justify;">..</p><button class="puzzle-btn" id="puzzle-btn-text" onclick="revealPuzzle()">..</button></aside>
+    </div>
 
     <script src="script.js"></script>
 </body>
