@@ -11,12 +11,12 @@
     <header class="global-navbar">
         <a href="index.html" class="logo-link">✨ ZAMANAK</a>
         <nav class="nav-links">
-            <a href="index.html" id="nav-home">الرئيسية</a>
-            <a href="birthday.html" id="nav-birth">الميلاد</a>
-            <a href="marriage.html" id="nav-marriage">الزواج</a>
-            <a href="privacy.html" id="nav-privacy" class="active">الخصوصية</a>
-            <a href="terms.html" id="nav-terms">الشروط</a>
-            <a href="contact.html" id="nav-contact">اتصل بنا</a>
+            <a href="index.html"><span data-lang="ar">الرئيسية</span><span data-lang="en">Home</span></a>
+            <a href="birthday.html"><span data-lang="ar">الميلاد</span><span data-lang="en">Birth</span></a>
+            <a href="marriage.html"><span data-lang="ar">الزواج</span><span data-lang="en">Marriage</span></a>
+            <a href="privacy.html" class="active"><span data-lang="ar">الخصوصية</span><span data-lang="en">Privacy</span></a>
+            <a href="terms.html"><span data-lang="ar">الشروط</span><span data-lang="en">Terms</span></a>
+            <a href="contact.html"><span data-lang="ar">اتصل بنا</span><span data-lang="en">Contact</span></a>
         </nav>
         <div class="controls-group">
             <select id="languageSelect"><option value="ar">العربية 🇸🇦</option><option value="en">English 🇬🇧</option></select>
@@ -25,24 +25,31 @@
     </header>
 
     <div class="three-column-layout">
-        <aside class="side-wing"><div class="wing-title" id="wing-game-title">..</div><p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p><button class="game-btn" id="game-click-btn" onclick="playZamanakGame()">..</button></aside>
+        <aside class="side-wing"><div class="wing-title"><span data-lang="ar">🎮 جناح التسلية السريعة</span><span data-lang="en">🎮 Mini Game Wing</span></div><p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p><button class="game-btn" onclick="playZamanakGame()"><span data-lang="ar">اضغط لتجميع طاقة النجوم ✨</span><span data-lang="en">Gather Star Energy ✨</span></button></aside>
 
         <main class="center-content">
             <div class="tool-card">
-                <h2 id="privacy-title" style="color: var(--primary-neon); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; text-align:center;">🔒 سياسة الخصوصية وأمان البيانات</h2>
-                
-                <!-- صندوق التمرير الداخلي المطول الصارم للغاية لقبول جوجل أدسينس -->
-                <div class="scroll-policy-box" id="policyBox">
-                    <p>أولاً: الالتزام بالأمان المطلق. نحن في مشروع زمانك (Zamanak) العالمي نضع خصوصية المستخدمين وسرية معلوماتهم الشخصية في قمة أولوياتنا الهندسية. إن المنصة مصممة برمجياً وتلسكوبياً لتعمل كأداة حسابية محلية فورية؛ وبالتالي، فإننا نعلن بشكل صارم ونهائي أننا لا نقوم بحفظ، تخزين، تتبع، أو أرشفة أي تواريخ ميلاد، أو تواريخ اقتران زوجي، أو أسماء، أو تفاصيل شخصية على خوادمنا السحابية أو أي قواعد بيانات خارجية تابعة لنا.</p><br>
-                    <p>ثانياً: ملفات تعريف الارتباط (Cookies). تستخدم منصة زمانك ملفات تعريف الارتباط والتقنيات التخزينية المحلية مثل (LocalStorage) فقط وحصرياً لغرض تحسين تجربة التصفح المباشرة وتذكر خيارات وتفضيلات الزوار الفورية، مثل تذكر اللغة المفضلة المحددة (العربية أو الإنجليزية) وتذكر مظهر الواجهة البصرية والسمات (الوضع الداكن الفاخر أو الوضع الفاتح) لمنع ارتداد التصميم عند الانتقال بين الصفحات السبعة للمشروع.</p><br>
-                    <p>ثالثاً: الإعلانات والشركاء الخارجيين. نتعامل مع مزودي خدمات إعلانية خارجيين مثل جوجل أدسينس (Google AdSense) لخدمة وعرض الإعلانات النصية والمرئية عند زيارة المنصة. قد تستخدم هذه الشركات معلومات ومؤشرات مجهولة الهوية حول زياراتك لهذا الموقع والمواقع الإلكترونية الأخرى من أجل تقديم إعلانات حول البضائع والخدمات الفلكية أو العامة التي تهمك عبر ملفات تعريف الارتباط الخاصة بالطرف الثالث.</p><br>
-                    <p>رابعاً: حقوق المستخدم وأمن الاتصال. جميع الحسابات والمعادلات وحركات تدوير الأزمان الكونية وتطبيق التقويم الهجري الذكي تجري مشفرة بالكامل ومعزولة داخل جهازك الشخصي. للمستخدم كامل الحرية في مسح بيانات متصفحه وبيانات الذاكرة المحلية في أي وقت، ونحن نضمن عدم تسريب أي مؤشر طاقي أو رقمي يخص الزوار سحابياً 100%.</p>
+                <h2 style="color: var(--primary-neon); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; text-align:center;">
+                    <span data-lang="ar">🔒 سياسة الخصوصية وأمان البيانات</span><span data-lang="en">🔒 Privacy Policy & Data Security</span>
+                </h2>
+                <!-- الـ scroll-policy-box يتحكم تلقائياً بالشريط؛ يختفي إذا كان المكان فاضياً ويظهر إذا طال النص لأسفل الصندوق -->
+                <div class="scroll-policy-box" id="pBox">
+                    <div data-lang="ar">
+                        <p>أولاً: الالتزام بالأمان المطلق. نحن في مشروع زمانك (Zamanak) العالمي نضع خصوصية المستخدمين وسرية معلوماتهم الشخصية في قمة أولوياتنا الهندسية. إن المنصة مصممة برمجياً وتلسكوبياً لتعمل كأداة حسابية محلية فورية؛ وبالتالي، فإننا نعلن بشكل صارم ونهائي أننا لا نقوم بحفظ، تخزين، تتبع، أو أرشفة أي تواريخ ميلاد، أو تواريخ اقتران زوجي، أو أسماء، أو تفاصيل شخصية على خوادمنا السحابية أو أي قواعد بيانات خارجية تابعة لنا.</p><br>
+                        <p>ثانياً: ملفات تعريف الارتباط (Cookies). تستخدم منصة زمانك ملفات تعريف الارتباط والتقنيات التخزينية المحلية مثل (LocalStorage) فقط وحصرياً لغرض تحسين تجربة التصفح المباشرة وتذكر خيارات وتفضيلات الزوار الفورية، مثل تذكر اللغة المفضلة المحددة وتذكر مظهر الواجهة البصرية والسمات (الوضع الداكن الفاخر أو الوضع الفاتح) لمنع ارتداد التصميم عند الانتقال بين الصفحات السبعة للمشروع.</p><br>
+                        <p>ثالثاً: الإعلانات والشركاء الخارجيين. نتعامل مع مزودي خدمات إعلانية خارجيين مثل جوجل أدسينس (Google AdSense) لخدمة وعرض الإعلانات النصية والمرئية عند زيارة المنصة. قد تستخدم هذه الشركات معلومات ومؤشرات مجهولة الهوية حول زياراتك لهذا الموقع والمواقع الإلكترونية الأخرى من أجل تقديم إعلانات حول البضائع والخدمات الفلكية أو العامة التي تهمك عبر ملفات تعريف الارتباط الخاصة بالطرف الثالث.</p>
+                    </div>
+                    <div data-lang="en">
+                        <p>First: Absolute Security Commitment. At Zamanak Global Project, user privacy is our topmost priority. The system is engineered to compute equations entirely locally. We strictly declare that we never store, log, track, or save any birthdates, wedding dates, or identity profiles on our cloud servers or database shards.</p><br>
+                        <p>Second: Storage & Local Cookies. Zamanak platform applies local caching and LocalStorage markers strictly to retain user-selected localization variables (Arabic or English) and chosen themes (Luxury Dark mode or Light mode) to completely stop interface reset during navigation across the 7 application views.</p><br>
+                        <p>Third: AdSense Advertising Compliance. We cooperate with third-party networks like Google AdSense to serve programmatic web advertisements. These entities might read anonymous browser cookies to custom target relevant contextual data, general goods, and astrological advertisements that meet your digital search interests.</p>
+                    </div>
                 </div>
-                <button class="back-to-top-btn" onclick="scrollPolicyToTop('policyBox')">🔼 عودة للأعلى</button>
+                <button class="back-to-top-btn" onclick="scrollPolicyToTop('pBox')"><span data-lang="ar">🔼 عودة للأعلى</span><span data-lang="en">🔼 Scroll to Top</span></button>
             </div>
         </main>
 
-        <aside class="side-wing"><div class="wing-title" id="wing-puzzle-title">..</div><p id="puzzle-q" style="font-size:0.9rem; text-align:justify;">..</p><button class="puzzle-btn" id="puzzle-btn-text" onclick="revealPuzzle()">..</button></aside>
+        <aside class="side-wing"><div class="wing-title"><span data-lang="ar">🔮 أسرار وألغاز طالعك</span><span data-lang="en">🔮 Cosmic Riddles</span></div><p style="font-size:0.9rem; text-align:justify;"><span data-lang="ar">س: ما هو الكوكب الأكثر لمعاناً في سماء الليل؟</span><span data-lang="en">Q: Which is the brightest planet in the night sky?</span></p><button class="puzzle-btn" onclick="revealPuzzle()"><span data-lang="ar">عرض الإجابة الفلكية</span><span data-lang="en">Show Cosmic Answer</span></button></aside>
     </div>
 
     <script src="script.js"></script>
