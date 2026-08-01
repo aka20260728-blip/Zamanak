@@ -1,13 +1,14 @@
-/* ==========================================
-   1. المتغيرات والسمات الكونية الصارمة
-   ========================================== */
+/* ==========================================================================
+   1. المتغيرات والسمات الكونية الصارمة (إصلاح الارتداد والوضع الداكن)
+   ========================================================================== */
 :root {
-    --bg-main: #0b0f19;       
+    --bg-main: #0b0f19;       /* وضع داكن عميق كوني */
     --bg-card: #121824;       
     --border-color: #1f293d;   
     --text-main: #ffffff;      
     --text-muted: #adb5bd;     
-    --primary-gold: #00ffcc;   
+    --primary-gold: #e67e22;   /* البرتقالي الذهبي المميز لزمانك */
+    --primary-neon: #00ffcc;   /* الفيروزي النيوني المشع */
 }
 
 [data-theme="light"] {
@@ -17,6 +18,7 @@
     --text-main: #212529;
     --text-muted: #6c757d;
     --primary-gold: #d4af37;
+    --primary-neon: #00aa88;
 }
 
 * {
@@ -29,18 +31,18 @@
 body {
     background-color: var(--bg-main);
     color: var(--text-main);
-    overflow-x: hidden; 
+    overflow-x: hidden; /* حظر اهتزاز وميلان الشاشات نهائياً */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ==========================================
-   2. شريط التنقل العلوي الذكي (حواف الأمان 5 سم)
-   ========================================== */
+/* ==========================================================================
+   2. شريط التنقل العلوي الذكي (تقريب الأطراف العلوية تماماً للأطراف)
+   ========================================================================== */
 .global-navbar {
     background-color: var(--bg-card);
     border-bottom: 2px solid var(--border-color);
     width: 100%;
-    padding: 15px 5%; 
+    padding: 15px 3%; /* تقريب شديد للأطراف يميناً ويساراً */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,26 +51,28 @@ body {
 }
 
 .logo-link {
-    color: var(--primary-gold);
-    font-size: 22px;
+    color: var(--primary-neon);
+    font-size: 24px;
     font-weight: bold;
     text-decoration: none;
+    letter-spacing: 1px;
 }
 
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 18px;
 }
 
 .nav-links a {
     color: var(--text-muted);
     text-decoration: none;
     font-weight: 500;
+    font-size: 15px;
     transition: color 0.2s;
 }
 
 .nav-links a:hover, .nav-links a.active {
-    color: var(--primary-gold);
+    color: var(--primary-neon);
 }
 
 .controls-group {
@@ -84,6 +88,7 @@ body {
     padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .theme-btn {
@@ -96,30 +101,20 @@ body {
     font-size: 1.1rem;
 }
 
-/* ==========================================
-   3. الحاوية وبكسلية شريط الشرح الانسيابي الجديد
-   ========================================== */
-.main-wrapper {
-    max-width: 850px; 
-    margin: 40px auto;
-    padding: 0 5%; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-}
-
+/* ==========================================================================
+   3. شريط الشرح الاحترافي الانسيابي (حل مشكلة قراءة النص من الأول)
+   ========================================================================== */
 .adsense-placeholder-box {
-    background: linear-gradient(90deg, #00ffcc, #0077ff);
+    background: linear-gradient(90deg, var(--primary-neon), #0077ff);
     color: #0b0f19;
     padding: 12px;
     border-radius: 8px;
     overflow: hidden;
     width: 100%;
     display: flex;
+    margin-bottom: 15px;
 }
 
-/* حل مشكلة قراءة النص من الأول في الاتجاهين */
 html[dir="rtl"] .moving-text {
     display: inline-block;
     white-space: nowrap;
@@ -146,70 +141,58 @@ html[dir="ltr"] .moving-text {
     100% { transform: translate3d(-100%, 0, 0); }
 }
 
+/* ==========================================================================
+   4. بنية التقطيع وتأطير الشاشة الثلاثي الجغرافي الموحد (الوسط والجوانب)
+   ========================================================================== */
+.three-column-layout {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 20px 2%;
+    gap: 20px;
+}
+
+/* الجوانب الترفيهية (يمين ويسار) */
+.side-wing {
+    flex: 1;
+    min-width: 220px;
+    max-width: 280px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.wing-title {
+    color: var(--primary-neon);
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* وسط الشاشة الحاكم والموسط تماماً لحماية التناسق */
+.center-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
 .tool-header {
     text-align: center;
     width: 100%;
 }
 
-/* ==========================================
-   4. المقالات وتوسيع محتوى واجهة العرض للرئيسية
-   ========================================== */
-.articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.info-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 22px;
-    text-align: justify;
-    transition: transform 0.2s;
-}
-
-.info-card h3 {
-    color: var(--primary-gold);
-    margin-bottom: 12px;
-    font-size: 1.2rem;
-    text-align: center;
-}
-
-.info-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-}
-
-/* ==========================================
-   5. النوافذ المنبثقة وصناديق التواريخ الفلكية
-   ========================================== */
-.calendar-switch {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.date-selector-box {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 16px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    width: 100%;
-    transition: 0.2s;
-}
-.date-selector-box:hover {
-    border-color: var(--primary-gold);
-    transform: translateY(-2px);
+.tool-header h1 {
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .tool-card {
@@ -218,11 +201,53 @@ html[dir="ltr"] .moving-text {
     border-radius: 14px;
     padding: 25px;
     width: 100%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
-/* ==========================================
-   6. تأثير الإثارة والتشويق والمودال (Popup)
-   ========================================== */
+/* شبكة المقالات الموسعة بالرئيسية */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+    width: 100%;
+}
+
+.info-card {
+    background: rgba(255,255,255,0.01);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: justify;
+}
+.info-card h4 { color: var(--primary-neon); margin-bottom: 8px; text-align: center; }
+
+/* ==========================================================================
+   5. صناديق التاريخ التفاعلية وتأثير الإثارة والتشويق والمنبثقات
+   ========================================================================== */
+.calendar-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.date-selector-box {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    padding: 14px 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+.date-selector-box:hover {
+    border-color: var(--primary-neon);
+}
+
 .loading-box {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -233,10 +258,10 @@ html[dir="ltr"] .moving-text {
 }
 
 .spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid var(--border-color);
-    border-top: 5px solid var(--primary-gold);
+    width: 45px;
+    height: 45px;
+    border: 4px solid var(--border-color);
+    border-top: 4px solid var(--primary-neon);
     border-radius: 50%;
     margin: 0 auto 15px auto;
     animation: spin 1s linear infinite;
@@ -247,10 +272,74 @@ html[dir="ltr"] .moving-text {
     100% { transform: rotate(360deg); }
 }
 
+/* صناديق السياسات القانونية الطويلة المطولة لجوجل أدسينس مع شريط التمرير */
+.scroll-policy-box {
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 10px;
+    text-align: justify;
+    line-height: 1.8;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+/* زر العودة التفاعلي الميكانيكي لأعلى الصندوق */
+.back-to-top-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--primary-neon);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+    font-size: 0.9rem;
+}
+.back-to-top-btn:hover { background: var(--bg-main); }
+
+/* حشوة وبنية أزرار النماذج والاتصال والمشاركة المطور الفخم */
+.zamanak-form-input {
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.action-gradient-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #e67e22, #f1c40f);
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(230,126,34,0.2);
+}
+
+/* صندوق الألعاب المصغرة التفاعلية يميناً ويساراً */
+.game-btn, .puzzle-btn {
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 0.9rem;
+    text-align: center;
+}
+.game-btn:hover, .puzzle-btn:hover { border-color: var(--primary-neon); }
+
 .popup-modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(11, 15, 25, 0.96); 
+    background-color: rgba(11, 15, 25, 0.97); 
     display: none;
     justify-content: center;
     align-items: center;
@@ -261,16 +350,16 @@ html[dir="ltr"] .moving-text {
     background-color: var(--bg-card);
     border: 2px solid var(--border-color);
     border-radius: 16px;
-    max-width: 480px;
+    max-width: 450px;
     width: 90%;
-    padding: 25px;
+    padding: 22px;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
     gap: 8px;
-    max-height: 280px;
+    max-height: 250px;
     overflow-y: auto;
 }
 
@@ -283,15 +372,11 @@ html[dir="ltr"] .moving-text {
     border-radius: 6px;
     cursor: pointer;
 }
-.grid-item:hover {
-    background-color: var(--primary-gold);
-    color: #0b0f19;
-    font-weight: bold;
-}
+.grid-item:hover { background-color: var(--primary-neon); color: #0b0f19; font-weight: bold; }
 
-/* استجابة الهواتف */
-@media (max-width: 768px) {
+/* استجابة الهواتف المحمولة لإخفاء الأجنحة وضمان الرشاقة التامة في الشاشات الصغيرة */
+@media (max-width: 992px) {
+    .side-wing { display: none; }
     .global-navbar { padding: 12px 4%; }
-    .main-wrapper { margin: 20px auto; padding: 0 4%; }
-    .nav-links { order: 3; width: 100%; justify-content: center; margin-top: 10px; gap: 15px; }
+    .nav-links { order: 3; width: 100%; justify-content: center; margin-top: 10px; gap: 12px; }
 }
