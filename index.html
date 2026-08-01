@@ -8,7 +8,6 @@
 </head>
 <body>
 
-    <!-- شريط التنقل العلوي الموحد الذكي -->
     <header class="global-navbar">
         <a href="index.html" class="logo-link">✨ ZAMANAK</a>
         <nav class="nav-links">
@@ -20,44 +19,40 @@
             <a href="contact.html" id="nav-contact">اتصل بنا</a>
         </nav>
         <div class="controls-group">
-            <select id="languageSelect">
-                <option value="ar">العربية 🇸🇦</option>
-                <option value="en">English 🇬🇧</option>
-            </select>
+            <select id="languageSelect"><option value="ar">العربية 🇸🇦</option><option value="en">English 🇬🇧</option></select>
             <button id="darkModeToggle" class="theme-btn">🌓</button>
         </div>
     </header>
 
-    <!-- الحاوية الرئيسية الموسطة تماماً وحواف الأمان -->
-    <main class="main-wrapper">
-        
-        <!-- مستطيل الشرح الانسيابي المتدفق المعكوس ذكياً -->
-        <div class="adsense-placeholder-box">
-            <div id="movingAdText" class="moving-text">مشروع زمانك الفلكي العالمي</div>
-        </div>
+    <div class="three-column-layout">
+        <!-- الجناح الأيمن الترفيهي -->
+        <aside class="side-wing">
+            <div class="wing-title" id="wing-game-title">اضغط لتجميع طاقة النجوم ✨</div>
+            <p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p>
+            <button class="game-btn" id="game-click-btn" onclick="playZamanakGame()">اضغط هنا 🌟</button>
+        </aside>
 
-        <div class="tool-header">
-            <h1 id="main-title">🌌 منصة زمانك (Zamanak) الفلكية الشاملة</h1>
-            <p id="main-desc" style="opacity: 0.8; font-size: 1rem; margin-top: 5px;">مرحباً بك في البوابة العالمية الكبرى. اكتشف أسرار التقاطعات الزمنية وحركات النجوم حياً ومباشرة.</p>
-        </div>
+        <!-- المحتوى المركزي الموسط -->
+        <main class="center-content">
+            <div class="adsense-placeholder-box"><div id="movingAdText" class="moving-text">..</div></div>
+            <div class="tool-header">
+                <h1 id="main-title">🌌 منصة زمانك (Zamanak) الفلكية الشاملة</h1>
+                <p id="main-desc" style="opacity: 0.8; margin-top: 5px;">..</p>
+            </div>
+            <section class="articles-grid">
+                <div class="info-card"><h4 id="art1-title">..</h4><p id="art1-text">..</p></div>
+                <div class="info-card"><h4 id="art2-title">..</h4><p id="art2-text">..</p></div>
+                <div class="info-card"><h4 id="art3-title">..</h4><p id="art3-text">..</p></div>
+            </section>
+        </main>
 
-        <!-- شبكة مربعات المقالات والمعلومات لملء الصفحة الرئيسية بشكل فاخر -->
-        <section class="articles-grid">
-            <div class="info-card">
-                <h3 id="art1-title">⏳ هندسة وعلم الأزمان</h3>
-                <p id="art1-text">الأزمان ليست مجرد أرقام تتوالى، بل هي تدوير فلكي دقيق يرتبط بحركة الأجرام السماوية ودورات الكواكب حول الشمس ومجموعات النجوم الكونية.</p>
-            </div>
-            <div class="info-card">
-                <h3 id="art2-title">🔮 أسرار ومسارات الأبراج</h3>
-                <p id="art2-text">تموضع الشمس والقمر لحظة خروجك للكون يترك بصمة طاقية فريدة تؤثر على سمات طالعك الفلكي وتكشف ملامح مسارك الزمني الفريد.</p>
-            </div>
-            <div class="info-card">
-                <h3 id="art3-title">🌟 طاقة الأجرام الكونية</h3>
-                <p id="art3-text">ترتبط العدادات التراكمية الحية بالتاريخين الهجري والميلادي لتعيش ثواني عمرك بالتناغم الكامل مع نبض ودورات المجرة الكبرى حياً.</p>
-            </div>
-        </section>
-
-    </main>
+        <!-- الجناح الأيسر للألغاز -->
+        <aside class="side-wing">
+            <div class="wing-title" id="wing-puzzle-title">🔮 أسرار وألغاز طالعك</div>
+            <p id="puzzle-q" style="font-size:0.9rem; text-align:justify;">س: ما هو الكوكب الأكثر لمعاناً في سماء الليل؟</p>
+            <button class="puzzle-btn" id="puzzle-btn-text" onclick="revealPuzzle()">عرض الإجابة الفلكية</button>
+        </aside>
+    </div>
 
     <script src="script.js"></script>
 </body>
