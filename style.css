@@ -4,7 +4,7 @@
     --neon-cyan: #00f2fe;
     --neon-pink: #ff007f;
     --neon-glow: 0 0 12px rgba(0, 242, 254, 0.4);
-    --panel-bg: rgba(13, 22, 37, 0.65);
+    --panel-bg: rgba(13, 22, 37, 0.85);
     --text-main: #f0f4f8;
     --text-muted: #8fa0b5;
 }
@@ -23,7 +23,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- محرك التقطيع الفلكي بالنسبة المئوية المطلوبة (20% | 60% | 20%) --- */
+/* --- محرك التقطيع الفلكي بالنسبة المئوية المحدثة --- */
 .zamanak-grid {
     display: grid;
     grid-template-columns: 20vw 60vw 20vw;
@@ -31,9 +31,8 @@ body {
     width: 100vw;
 }
 
-/* الأجنحة والمحتوى الأوسط */
 .left-wing, .center-content, .right-wing {
-    padding: 20px;
+    padding: 25px;
     height: 100vh;
     overflow-y: auto;
 }
@@ -44,7 +43,7 @@ body {
 }
 
 .center-content {
-    background: rgba(10, 17, 30, 0.85);
+    background: rgba(10, 17, 30, 0.95);
     border-left: 2px solid rgba(0, 242, 254, 0.25);
     border-right: 2px solid rgba(0, 242, 254, 0.25);
 }
@@ -54,23 +53,25 @@ body {
     border-left: 1px solid rgba(0, 242, 254, 0.15);
 }
 
-/* شريط الإعلان العلوي الممتد */
+/* شريط الإعلان العلوي */
 .top-announcement {
     background: #0076a3;
     color: #fff;
-    padding: 10px;
+    padding: 12px;
     text-align: center;
     border-radius: 6px;
     margin-bottom: 25px;
     font-weight: bold;
+    font-size: 14px;
 }
 
-/* كروت التموضع الثلاثية في المنتصف */
+/* كروت التموضع الثلاثية */
 .cards-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     margin-top: 30px;
+    margin-bottom: 40px;
 }
 
 .zamanak-card {
@@ -82,15 +83,36 @@ body {
     font-size: 13px;
 }
 
-/* أدوات المسابقة التفاعلية والأزرار */
+/* قسم المقالات الفلكية الموسع */
+.articles-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.article-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 242, 254, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.article-box h3 {
+    color: var(--neon-cyan);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+/* أدوات المسابقة التفاعلية */
 .quiz-counters {
     display: flex;
     justify-content: space-between;
     background: rgba(0, 0, 0, 0.4);
-    padding: 8px;
+    padding: 10px;
     border-radius: 6px;
-    margin-bottom: 12px;
-    font-size: 12px;
+    margin-bottom: 15px;
+    font-size: 13px;
 }
 
 .btn-option {
@@ -99,12 +121,13 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(0, 242, 254, 0.3);
     color: var(--text-main);
-    padding: 8px;
-    margin: 6px 0;
+    padding: 10px;
+    margin: 8px 0;
     border-radius: 6px;
     cursor: pointer;
-    text-align: right;
+    text-align: inherit;
     font-size: 13px;
+    transition: all 0.2s ease;
 }
 
 .btn-option:hover {
@@ -124,25 +147,49 @@ body {
     font-weight: bold;
 }
 
-.zamanak-btn:hover {
-    background: var(--neon-cyan);
-    color: var(--bg-dark);
+/* لعبة النيون الدائرية لضغط الماوس */
+.clicker-container {
+    text-align: center;
+    margin-top: 20px;
 }
 
-/* لعبة النيون الدائرية التفاعلية */
-.neon-clicker-area {
-    border: 2px dashed var(--neon-pink);
-    height: 150px;
-    border-radius: 8px;
+.neon-clicker-ball {
+    width: 100px;
+    height: 100px;
+    background: transparent;
+    border: 3px solid var(--neon-pink);
+    border-radius: 50%;
+    margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-top: 15px;
     font-weight: bold;
     color: var(--neon-pink);
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.3);
+    user-select: none;
+    transition: transform 0.1s ease;
 }
 
-/* شريط هيدروليكي للمتصفح */
+.neon-clicker-ball:active {
+    transform: scale(0.9);
+    background: rgba(255, 0, 127, 0.2);
+}
+
+/* 📱 إخفاء الجوانب ميكانيكياً عند ضيق الشاشة أو صغرها */
+@media (max-width: 1024px) {
+    .zamanak-grid {
+        grid-template-columns: 100vw;
+    }
+    .left-wing, .right-wing {
+        display: none !important;
+    }
+    .center-content {
+        width: 100vw;
+        border-left: none;
+        border-right: none;
+    }
+}
+
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
