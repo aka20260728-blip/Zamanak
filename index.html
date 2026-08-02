@@ -1,91 +1,97 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZAMANAK - الرئيسية</title>
+    <title>ZAMANAK - الرئيسية المصلحة</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="zamanak-grid">
+    <div class="zamanak-container">
         
-        <!-- 🧩 الجناح الأيسر: المسابقة الثقافية الفلكية (20% من الشاشة) -->
+        <!-- 🧩 الجناح الأيسر: مسابقة الـ 10 أسئلة التفاعلية -->
         <div class="left-wing">
-            <h3 id="leftWingTitle">🧠 المسابقة الثقافية</h3>
-            <hr style="border: 0; border-top: 1px solid rgba(0,242,254,0.2); margin:10px 0;">
+            <h3 id="leftWingTitle" style="font-size:16px; color:#fff;">🧠 مسابقة زمانك الفلكية</h3>
+            <hr style="border:0; border-top:1px solid rgba(0,242,254,0.2); margin:10px 0;">
             
-            <!-- لوحة النتائج العلوية للصح والخطأ -->
             <div class="quiz-counters">
-                <div><span id="correctLabel">الصح: </span><span id="correctScore" style="color:#00ff87; font-weight:bold;">0</span></div>
-                <div><span id="wrongLabel">الخطأ: </span><span id="wrongScore" style="color:#ff0055; font-weight:bold;">0</span></div>
+                <span style="font-weight:bold; color:var(--neon-cyan);">المجموع: </span>
+                <span id="liveQuizScore" style="color:#00ff87; font-weight:bold; font-size:15px;">0</span>
             </div>
 
-            <!-- حاوية الأسئلة والخيارات التفاعلية -->
-            <div id="quizBox" style="background:rgba(0,0,0,0.2); padding:12px; border-radius:6px;">
-                <p id="quizQuestionText" style="font-weight:600; font-size:14px; margin-bottom:10px; color:var(--neon-cyan);"></p>
+            <div id="quizBox">
+                <p id="quizQuestionText" style="font-weight:600; font-size:13px; margin-bottom:10px; color:var(--text-main);"></p>
                 <div id="quizOptionsContainer"></div>
             </div>
         </div>
 
-        <!-- 🚀 المحتوى المركزي: العرض الأساسي للمنصة والكروت الثلاثية (60% من الشاشة) -->
+        <!-- 🚀 المحتوى المركزي: الكروت والمقالات الفلكية الوفيرة -->
         <div class="center-content">
-            <!-- شريط التبديل العلوي الروقان وشريط التنقل -->
-            <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
-                <div style="font-weight:900; letter-spacing:1px; color:var(--neon-cyan); font-size:20px;">ZAMANAK 🚀</div>
-                <nav style="display:flex; gap:15px; font-size:13px;">
-                    <a href="index.html" style="color:var(--neon-cyan); text-decoration:none; font-weight:bold;">الرئيسية</a>
-                    <a href="#" style="color:var(--text-muted); text-decoration:none;">الميلاد</a>
-                    <a href="#" style="color:var(--text-muted); text-decoration:none;">الزواج</a>
-                    <a href="#" style="color:var(--text-muted); text-decoration:none;">الخصوصية</a>
-                    <a href="#" style="color:var(--text-muted); text-decoration:none;">الشروط</a>
-                    <a href="#" style="color:var(--text-muted); text-decoration:none;">اتصل بنا</a>
+            <header class="zamanak-header">
+                <div style="font-weight:900; color:var(--neon-cyan); font-size:18px;">ZAMANAK 🚀</div>
+                <nav class="zamanak-nav">
+                    <a href="index.html" class="active">الرئيسية</a>
+                    <a href="#">الميلاد</a>
+                    <a href="#">الزواج</a>
+                    <a href="#">الخصوصية</a>
+                    <a href="#">الشروط</a>
+                    <a href="#">اتصل بنا</a>
                 </nav>
-                <button id="langSwitcher" class="zamanak-btn" style="width:auto; padding:4px 12px; font-size:12px;">العربية / EN</button>
+                <button id="langSwitcher" class="zamanak-btn" style="font-size:11px;">العربية / EN</button>
             </header>
 
-            <!-- شريط الإعلان الأزرق الممتد المنسق من الصورة -->
             <div class="top-announcement" id="announcementText"></div>
 
-            <!-- الكتلة الترحيبية المركزية الفاخرة -->
-            <section style="text-align:center; padding:20px 0;">
-                <div style="display:inline-block; font-size:40px; margin-bottom:10px;">🌌</div>
-                <h1 id="mainTitleText" style="font-size:24px; color:#fff; margin-bottom:10px;"></h1>
-                <p id="welcomeText" style="color:var(--text-muted); max-width:650px; margin:0 auto; font-size:14px;"></p>
+            <section style="text-align:center; padding:10px 0;">
+                <h1 id="mainTitleText" style="font-size:22px; color:#fff; margin-bottom:8px;"></h1>
+                <p id="welcomeText" style="color:var(--text-muted); font-size:13px; max-width:550px; margin:0 auto;"></p>
             </section>
 
-            <!-- صف كروت المعمارية الفلكية الثلاثية المنسقة هندسياً من صورة العميل -->
+            <!-- صف الكروت الثلاثية المستقرة -->
             <div class="cards-row">
                 <div class="zamanak-card">
-                    <h4 id="c1Title" style="color:var(--neon-cyan); margin-bottom:8px;"></h4>
+                    <h4 id="c1Title" style="color:var(--neon-cyan); margin-bottom:6px;"></h4>
                     <p id="c1Desc" style="color:var(--text-muted); text-align:justify;"></p>
                 </div>
                 <div class="zamanak-card" style="border-top-color: #a855f7;">
-                    <h4 id="c2Title" style="color:#a855f7; margin-bottom:8px;"></h4>
+                    <h4 id="c2Title" style="color:#a855f7; margin-bottom:6px;"></h4>
                     <p id="c2Desc" style="color:var(--text-muted); text-align:justify;"></p>
                 </div>
                 <div class="zamanak-card" style="border-top-color: #eab308;">
-                    <h4 id="c3Title" style="color:#eab308; margin-bottom:8px;"></h4>
+                    <h4 id="c3Title" style="color:#eab308; margin-bottom:6px;"></h4>
                     <p id="c3Desc" style="color:var(--text-muted); text-align:justify;"></p>
                 </div>
             </div>
+
+            <!-- المقالات الفلكية التخصصية لملء الفراغ -->
+            <div class="article-box">
+                <h3 id="art1TitleText"></h3>
+                <p id="art1BodyText" style="color:var(--text-muted); font-size:13px; text-align:justify;"></p>
+            </div>
+            <div class="article-box" style="border-color: rgba(168, 85, 247, 0.15);">
+                <h3 id="art2TitleText" style="color:#a855f7;"></h3>
+                <p id="art2BodyText" style="color:var(--text-muted); font-size:13px; text-align:justify;"></p>
+            </div>
+            <div class="article-box" style="border-color: rgba(234, 179, 8, 0.15);">
+                <h3 id="art3TitleText" style="color:#eab308;"></h3>
+                <p id="art3BodyText" style="color:var(--text-muted); font-size:13px; text-align:justify;"></p>
+            </div>
         </div>
 
-        <!-- 🎮 الجناح الأيمن: لعبة التسلية وحساب طاقة النجوم السريعة (20% من الشاشة) -->
+        <!-- 🎮 الجناح الأيمن: لعبة تسلية الماوس السريعة -->
         <div class="right-wing">
-            <h3 id="rightWingTitle">🎮 جناح التسلية السريعة</h3>
-            <hr style="border: 0; border-top: 1px solid rgba(255,0,127,0.2); margin:10px 0;">
+            <h3 id="rightWingTitle" style="font-size:16px; color:#fff;">🎮 تسلية الماوس</h3>
+            <hr style="border:0; border-top:1px solid rgba(255,0,127,0.2); margin:10px 0;">
             
-            <p style="font-size:12px; color:var(--text-muted);" id="clickActionText"></p>
-            
-            <!-- مساحة ضغط طاقة النيون التفاعلية السريعة -->
-            <div class="neon-clicker-area" id="neonClicker">
-                ⚡ ENERGY PUNCH
-            </div>
-
-            <div style="margin-top:15px; background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; text-align:center; font-size:13px;">
-                <span id="scorePrefix"></span>
-                <span id="liveGameScore" style="color:var(--neon-pink); font-weight:bold; font-size:16px;">0</span>
+            <div style="text-align:center; margin-top:15px;">
+                <p style="font-size:12px; color:var(--text-muted);" id="clickActionText"></p>
+                <div class="clicker-ball" id="mouseBallClicker">⚡ CLICK</div>
+                
+                <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; font-size:12px; margin-top:15px;">
+                    <span id="scorePrefix"></span>
+                    <span id="liveGameScore" style="color:var(--neon-pink); font-weight:bold; font-size:15px;">0</span>
+                </div>
             </div>
         </div>
 
