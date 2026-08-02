@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // تثبيت حالة الثيم والوضع الداكن
     localStorage.setItem('zamanak-theme', 'dark');
     document.documentElement.setAttribute('data-theme', 'dark');
 
+    // قاموس البيانات المترجمة المطابق تماماً لـ IDs الخاصة بك
     const dictionary = {
         ar: {
-            topBar: "مشروع زمانك الفلكي العالمي - احسب تفاصيل عمرك ولحظتك بدقة",
+            topBar: "مشروع زمانك الفلكي العالمي - احسب تفاصيل عمرك ولحظتك بدقة عالية",
             mainTitle: "منصة زمانك (Zamanak) الفلكية الشاملة",
             welcome: "مرحباً بك في البوابة العالمية الكبرى لاستقراء حركات الأجرام، الأزمان، والروابط الطالعة لعمرك حياً ومباشرة.",
             card1Title: "📜 هندسة وعلم الأزمان الكونية",
@@ -50,13 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
             restartQuiz: "Restart Quiz 🔄"
         }
     };
+        // بنك الـ 10 أسئلة الفلكية للجانب الأيسر
     const quizQuestions = {
         ar: [
             { q: "ما هو الكوكب الأكثر لمعاناً في سماء الليل؟", o: ["الزهرة", "المريخ", "المشتري"], a: 0 },
             { q: "كم يبلغ عدد الأبراج الفلكية الرئيسية؟", o: ["10 أبراج", "12 برجاً", "14 برجاً"], a: 1 },
             { q: "ما هو الجرم المسؤول عن ظاهرة المد والجزر؟", o: ["الشمس", "النيازك", "القمر"], a: 2 },
             { q: "أي كوكب يعرف بالكوكب الأحمر؟", o: ["عطارد", "المريخ", "نبتون"], a: 1 },
-            { q: "ما هو أكبر كوكب في المجموعة الشمسية؟", o: ["الأرض", "زحل", "المشتري"], a: 2 },
+            { q: "ما هو أكبر كوكب في المجموعة الشمسية？", o: ["الأرض", "زحل", "المشتري"], a: 2 },
             { q: "كم تستغرق الأرض لتكمل دورة كاملة حول الشمس؟", o: ["365 يوماً", "24 ساعة", "30 يوماً"], a: 0 },
             { q: "ما هو الكوكب الأقرب إلى الشمس؟", o: ["عطارد", "الزهرة", "الأرض"], a: 0 },
             { q: "أي برج يرمز إليه بمخلوق من الأساطير المائية؟", o: ["الحوت", "العقرب", "الجدي"], a: 2 },
@@ -68,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
             { q: "How many main zodiac signs are there?", o: ["10 Signs", "12 Signs", "14 Signs"], a: 1 },
             { q: "Which celestial body is responsible for tides?", o: ["Sun", "Meteors", "Moon"], a: 2 },
             { q: "Which planet is known as the Red Planet?", o: ["Mercury", "Mars", "Neptune"], a: 1 },
-            { q: "What is the largest planet in our solar system?", o: ["Earth", "Saturn", "Jupiter"], a: 2 },
+            { q: "What is the largest planet in our solar system?", o: ["Earth", "Saturn", "Jupiter", "Venus"], a: 2 },
             { q: "How long does Earth take to orbit the Sun?", o: ["365 Days", "24 Hours", "30 Days"], a: 0 },
             { q: "What is the closest planet to the Sun?", o: ["Mercury", "Venus", "Earth"], a: 0 },
             { q: "Which zodiac is represented by a sea-goat?", o: ["Pisces", "Scorpio", "Capricorn"], a: 2 },
@@ -81,49 +84,55 @@ document.addEventListener("DOMContentLoaded", () => {
     let quizScore = 0;
     let currentQuestionIndex = 0;
     let mouseClickScore = 0;
+    // دالة المزامنة وحقن البيانات وحمايتها من الانهيار بالفحص الميكانيكي للأقسام
     function initLanguage(lang) {
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
         
-        document.getElementById('announcementText').innerText = dictionary[lang].topBar;
-        document.getElementById('mainTitleText').innerText = dictionary[lang].mainTitle;
-        document.getElementById('welcomeText').innerText = dictionary[lang].welcome;
+        if(document.getElementById('announcementText')) document.getElementById('announcementText').innerText = dictionary[lang].topBar;
+        if(document.getElementById('mainTitleText')) document.getElementById('mainTitleText').innerText = dictionary[lang].mainTitle;
+        if(document.getElementById('welcomeText')) document.getElementById('welcomeText').innerText = dictionary[lang].welcome;
         
-        document.getElementById('c1Title').innerText = dictionary[lang].card1Title;
-        document.getElementById('c1Desc').innerText = dictionary[lang].card1Desc;
-        document.getElementById('c2Title').innerText = dictionary[lang].card2Title;
-        document.getElementById('c2Desc').innerText = dictionary[lang].card2Desc;
-        document.getElementById('c3Title').innerText = dictionary[lang].card3Title;
-        document.getElementById('c3Desc').innerText = dictionary[lang].card3Desc;
+        if(document.getElementById('c1Title')) document.getElementById('c1Title').innerText = dictionary[lang].card1Title;
+        if(document.getElementById('c1Desc')) document.getElementById('c1Desc').innerText = dictionary[lang].card1Desc;
+        if(document.getElementById('c2Title')) document.getElementById('c2Title').innerText = dictionary[lang].card2Title;
+        if(document.getElementById('c2Desc')) document.getElementById('c2Desc').innerText = dictionary[lang].card2Desc;
+        if(document.getElementById('c3Title')) document.getElementById('c3Title').innerText = dictionary[lang].card3Title;
+        if(document.getElementById('c3Desc')) document.getElementById('c3Desc').innerText = dictionary[lang].card3Desc;
 
-        document.getElementById('art1TitleText').innerText = dictionary[lang].art1Title;
-        document.getElementById('art1BodyText').innerText = dictionary[lang].art1Text;
-        document.getElementById('art2TitleText').innerText = dictionary[lang].art2Title;
-        document.getElementById('art2BodyText').innerText = dictionary[lang].art2Text;
-        document.getElementById('art3TitleText').innerText = dictionary[lang].art3Title;
-        document.getElementById('art3BodyText').innerText = dictionary[lang].art3Text;
+        if(document.getElementById('art1TitleText')) document.getElementById('art1TitleText').innerText = dictionary[lang].art1Title;
+        if(document.getElementById('art1BodyText')) document.getElementById('art1BodyText').innerText = dictionary[lang].art1Text;
+        if(document.getElementById('art2TitleText')) document.getElementById('art2TitleText').innerText = dictionary[lang].art2Title;
+        if(document.getElementById('art2BodyText')) document.getElementById('art2BodyText').innerText = dictionary[lang].art2Text;
+        if(document.getElementById('art3TitleText')) document.getElementById('art3TitleText').innerText = dictionary[lang].art3Title;
+        if(document.getElementById('art3BodyText')) document.getElementById('art3BodyText').innerText = dictionary[lang].art3Text;
 
-        document.getElementById('rightWingTitle').innerText = dictionary[lang].wingRightTitle;
-        document.getElementById('clickActionText').innerText = dictionary[lang].clickText;
-        document.getElementById('scorePrefix').innerText = dictionary[lang].scoreText;
-        document.getElementById('leftWingTitle').innerText = dictionary[lang].wingLeftTitle;
+        if(document.getElementById('rightWingTitle')) document.getElementById('rightWingTitle').innerText = dictionary[lang].wingRightTitle;
+        if(document.getElementById('clickActionText')) document.getElementById('clickActionText').innerText = dictionary[lang].clickText;
+        if(document.getElementById('scorePrefix')) document.getElementById('scorePrefix').innerText = dictionary[lang].scoreText;
+        if(document.getElementById('leftWingTitle')) document.getElementById('leftWingTitle').innerText = dictionary[lang].wingLeftTitle;
 
         currentQuestionIndex = 0;
         quizScore = 0;
-        document.getElementById('liveQuizScore').innerText = quizScore;
+        if(document.getElementById('liveQuizScore')) document.getElementById('liveQuizScore').innerText = quizScore;
         loadQuizQuestion();
     }
 
-    document.getElementById('langSwitcher').addEventListener('click', () => {
-        currentLang = currentLang === 'ar' ? 'en' : 'ar';
-        localStorage.setItem('zamanak-lang', currentLang);
-        initLanguage(currentLang);
-    });
+    const switcherBtn = document.getElementById('langSwitcher');
+    if(switcherBtn) {
+        switcherBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('zamanak-lang', currentLang);
+            initLanguage(currentLang);
+        });
+    }
 
     function loadQuizQuestion() {
         const questionsList = quizQuestions[currentLang];
         const container = document.getElementById('quizOptionsContainer');
         const questionText = document.getElementById('quizQuestionText');
+
+        if(!container || !questionText) return;
 
         if (currentQuestionIndex >= 10 || currentQuestionIndex >= questionsList.length) {
             questionText.innerText = dictionary[currentLang].quizFinished + " (" + quizScore + ")";
@@ -156,10 +165,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    document.getElementById('mouseBallClicker').addEventListener('click', () => {
-        mouseClickScore++;
-        document.getElementById('liveGameScore').innerText = mouseClickScore;
-    });
+    const clickerBall = document.getElementById('mouseBallClicker');
+    if(clickerBall) {
+        clickerBall.addEventListener('click', () => {
+            mouseClickScore++;
+            if(document.getElementById('liveGameScore')) {
+                document.getElementById('liveGameScore').innerText = mouseClickScore;
+            }
+        });
+    }
 
     initLanguage(currentLang);
 });
+
+
+
+                          
