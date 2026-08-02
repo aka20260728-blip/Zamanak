@@ -1,0 +1,117 @@
+/* --- الكروت والمقالات ومكونات اللعب --- */
+.top-announcement {
+    background: #0076a3;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.cards-row {
+    display: flex;
+    gap: 15px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.zamanak-card {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 3px solid #00f2fe;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 13px;
+}
+
+.article-box {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(0, 242, 254, 0.08);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.article-box h3 {
+    color: #00f2fe;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.quiz-counters, .game-counters {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.btn-option {
+    display: block;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    color: #f0f4f8;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-option:hover {
+    background: #00f2fe;
+    color: #070b12;
+}
+
+.zamanak-btn {
+    background: transparent;
+    border: 1px solid #00f2fe;
+    color: #00f2fe;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- ⚽ ميدان اللعبة المطور هندسياً وحراً للخروج --- */
+.pitch-container {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    border-radius: 8px;
+    height: 220px;
+    position: relative;
+    /* نتحكم بالـ overflow ديناميكياً بالجافا سكريبت للسماح بخروج الكرة */
+    overflow: visible; 
+    margin-top: 15px;
+}
+
+.astral-goal-post {
+    width: 60px;
+    height: 20px;
+    background: #ff007f;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #ff007f;
+    position: absolute;
+    top: 15px;
+    left: 90px;
+    z-index: 10;
+}
+
+.cosmic-ball {
+    width: 23px;
+    height: 23px;
+    background: #00f2fe;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00f2fe;
+    position: absolute;
+    bottom: 20px;
+    left: 108px;
+    cursor: pointer;
+    z-index: 20;
+}
