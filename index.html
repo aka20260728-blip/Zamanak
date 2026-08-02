@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZAMANAK - الرئيسية المصلحة</title>
-  <link rel="stylesheet" href="style.css?v=1.1">
-
+    <title>ZAMANAK - المنصة الفلكية الشاملة</title>
+    <!-- تم إضافة علامة الإصدار لمنع تخزين المتصفح وإجبار جلب التعديل الفوري -->
+    <link rel="stylesheet" href="style.css?v=1.2">
 </head>
-<body> 
+<body>
 
     <div class="zamanak-container">
         
         <!-- 🧩 الجناح الأيسر: مسابقة الـ 10 أسئلة التفاعلية -->
         <div class="left-wing">
-            <h3 id="leftWingTitle" style="font-size:16px; color:#fff;">🧠 مسابقة زمانك الفلكية</h3>
+            <h3 id="leftWingTitle" style="font-size:16px; color:#fff;">🧠 مسابقة زمانك</h3>
             <hr style="border:0; border-top:1px solid rgba(0,242,254,0.2); margin:10px 0;">
             
             <div class="quiz-counters">
@@ -27,17 +27,16 @@
             </div>
         </div>
 
-        <!-- 🚀 المحتوى المركزي: الكروت والمقالات الفلكية الوفيرة -->
+        <!-- 🚀 المحتوى المركزي: الكروت، البطاقات التعريفية الجديدة والمقالات الوفيرة -->
         <div class="center-content">
             <header class="zamanak-header">
                 <div style="font-weight:900; color:var(--neon-cyan); font-size:18px;">ZAMANAK 🚀</div>
+                <!-- تم ضبط الروابط للتنقل الميكانيكي داخل الصفحة بالـ ID المستقر -->
                 <nav class="zamanak-nav">
                     <a href="index.html" class="active">الرئيسية</a>
-                    <a href="#">الميلاد</a>
-                    <a href="#">الزواج</a>
-                    <a href="#">الخصوصية</a>
-                    <a href="#">الشروط</a>
-                    <a href="#">اتصل بنا</a>
+                    <a onclick="scrollToSection('cards-section')">التعريفات الفلكية</a>
+                    <a onclick="scrollToSection('islamic-section')">البطاقات الإيمانية</a>
+                    <a onclick="scrollToSection('articles-section')">المقالات الكونية</a>
                 </nav>
                 <button id="langSwitcher" class="zamanak-btn" style="font-size:11px;">العربية / EN</button>
             </header>
@@ -49,8 +48,8 @@
                 <p id="welcomeText" style="color:var(--text-muted); font-size:13px; max-width:550px; margin:0 auto;"></p>
             </section>
 
-            <!-- صف الكروت الثلاثية المستقرة -->
-            <div class="cards-row">
+            <!-- قسم كروت المعمارية الفلكية الثلاثية المستقرة -->
+            <div class="cards-row" id="cards-section">
                 <div class="zamanak-card">
                     <h4 id="c1Title" style="color:var(--neon-cyan); margin-bottom:6px;"></h4>
                     <p id="c1Desc" style="color:var(--text-muted); text-align:justify;"></p>
@@ -65,31 +64,58 @@
                 </div>
             </div>
 
-            <!-- المقالات الفلكية التخصصية لملء الفراغ -->
-            <div class="article-box">
-                <h3 id="art1TitleText"></h3>
-                <p id="art1BodyText" style="color:var(--text-muted); font-size:13px; text-align:justify;"></p>
+            <!-- 📜 البطاقات التعريفية الأربعة الإضافية (الأبراج، الأشهر الحرم، المناسبات، الاستغفار) -->
+            <h2 style="font-size:16px; margin-top:35px; color:var(--neon-cyan);" id="islamic-section">✨ بطاقات زمانك التعريفية والإيمانية</h2>
+            <div class="cards-row">
+                <div class="zamanak-card" style="border-top-color: #10b981;">
+                    <h4 id="infoCard1Title" style="color:#10b981; margin-bottom:6px;"></h4>
+                    <p id="infoCard1Desc" style="color:var(--text-muted); text-align:justify;"></p>
+                </div>
+                <div class="zamanak-card" style="border-top-color: #f59e0b;">
+                    <h4 id="infoCard2Title" style="color:#f59e0b; margin-bottom:6px;"></h4>
+                    <p id="infoCard2Desc" style="color:var(--text-muted); text-align:justify;"></p>
+                </div>
+                <div class="zamanak-card" style="border-top-color: #ec4899;">
+                    <h4 id="infoCard3Title" style="color:#ec4899; margin-bottom:6px;"></h4>
+                    <p id="infoCard3Desc" style="color:var(--text-muted); text-align:justify;"></p>
+                </div>
+                <div class="zamanak-card" style="border-top-color: #3b82f6;">
+                    <h4 id="infoCard4Title" style="color:#3b82f6; margin-bottom:6px;"></h4>
+                    <p id="infoCard4Desc" style="color:var(--text-muted); text-align:justify;"></p>
+                </div>
             </div>
-            <div class="article-box" style="border-color: rgba(168, 85, 247, 0.15);">
-                <h3 id="art2TitleText" style="color:#a855f7;"></h3>
-                <p id="art2BodyText" style="color:var(--text-muted); font-size:13px; text-align:justify;"></p>
-            </div>
-            <div class="article-box" style="border-color: rgba(234, 179, 8, 0.15);">
-                <h3 id="art3TitleText" style="color:#eab308;"></h3>
-                <p id="art3BodyText" style="color:var(--text-muted); font-size:13px; text-align:justify;"></p>
+
+            <!-- المقالات الفلكية التخصصية لملء النصف الفارغ -->
+            <div id="articles-section" style="margin-top:20px;">
+                <div class="article-box">
+                    <h3 id="art1TitleText"></h3>
+                    <p id="art1BodyText" style="color:var(--text-muted); font-size:13px; text-align:justify;"></p>
+                </div>
+                <div class="article-box" style="border-color: rgba(168, 85, 247, 0.15);">
+                    <h3 id="art2TitleText" style="color:#a855f7;"></h3>
+                    <p id="art2BodyText" style="color:var(--text-muted); font-size:13px; text-align:justify;"></p>
+                </div>
+                <div class="article-box" style="border-color: rgba(234, 179, 8, 0.15);">
+                    <h3 id="art3TitleText" style="color:#eab308;"></h3>
+                    <p id="art3BodyText" style="color:var(--text-muted); font-size:13px; text-align:justify;"></p>
+                </div>
             </div>
         </div>
 
-        <!-- 🎮 الجناح الأيمن: لعبة تسلية الماوس السريعة -->
+        <!-- 🎮 الجناح الأيمن: لعبة تسلية مكعب النيون لكسر الملل -->
         <div class="right-wing">
-            <h3 id="rightWingTitle" style="font-size:16px; color:#fff;">🎮 تسلية الماوس</h3>
+            <h3 id="rightWingTitle" style="font-size:16px; color:#fff;">🎮 جناح التسلية السريعة</h3>
             <hr style="border:0; border-top:1px solid rgba(255,0,127,0.2); margin:10px 0;">
             
-            <div style="text-align:center; margin-top:15px;">
+            <div style="margin-top:15px;">
                 <p style="font-size:12px; color:var(--text-muted);" id="clickActionText"></p>
-                <div class="clicker-ball" id="mouseBallClicker">⚡ CLICK</div>
                 
-                <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; font-size:12px; margin-top:15px;">
+                <!-- ميدان لعبة مكعب النيون الطائر لكسر الملل بضغط الماوس -->
+                <div class="game-box">
+                    <div class="neon-target" id="neonCubeGame"></div>
+                </div>
+                
+                <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; font-size:12px; margin-top:15px; text-align:center;">
                     <span id="scorePrefix"></span>
                     <span id="liveGameScore" style="color:var(--neon-pink); font-weight:bold; font-size:15px;">0</span>
                 </div>
