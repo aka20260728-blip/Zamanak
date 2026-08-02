@@ -1,4 +1,4 @@
-/* --- إعدادات فلكية أساسية وعزل التصميم --- */
+/* --- إعدادات فلكية أساسية وجذور التصميم للمنصة --- */
 :root {
     --bg-dark: #070b12;
     --neon-cyan: #00f2fe;
@@ -23,40 +23,51 @@ body {
     line-height: 1.6;
 }
 
-/* --- نظام الحماية الثلاثي المستقر (بدون انكسار) --- */
+/* --- نظام الروقان الثلاثي الحاسم والمثبت هندسياً --- */
 .zamanak-container {
     display: flex;
+    flex-direction: row; /* إلزام المتصفح بالترتيب الأفقي منعاً للقفز */
     width: 100%;
     min-height: 100vh;
 }
 
-/* الجناح الأيسر - المسابقة (20%) */
+/* الجناح الأيسر - مسابقة زمانك (20% ثابتة لا تزيد ولا تنقص) */
 .left-wing {
     width: 20%;
+    min-width: 20%;
+    max-width: 20%;
     background: var(--panel-bg);
     border-left: 1px solid rgba(0, 242, 254, 0.15);
     border-right: 1px solid rgba(0, 242, 254, 0.15);
     padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-/* المحتوى المركزي ملموم ومحمي (60%) */
+/* المحتوى المركزي الفاخر الملموم (60% ثابتة ومحمية الحواف) */
 .center-content {
     width: 60%;
+    min-width: 60%;
+    max-width: 60%;
     background: rgba(10, 17, 30, 0.95);
     padding: 30px;
-    min-width: 320px;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-/* الجناح الأيمن - التسلية (20%) */
+/* الجناح الأيمن - التسلية السريعة (20% ثابتة لا تزيد ولا تنقص) */
 .right-wing {
     width: 20%;
+    min-width: 20%;
+    max-width: 20%;
     background: var(--panel-bg);
     border-left: 1px solid rgba(0, 242, 254, 0.15);
     border-right: 1px solid rgba(0, 242, 254, 0.15);
     padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
 }
-
-/* الهيدر وشريط التنقل الملموم */
+/* --- الكروت والمقالات والهيدر الملموم في المنتصف --- */
 .zamanak-header {
     display: flex;
     justify-content: space-between;
@@ -82,7 +93,6 @@ body {
     font-weight: bold;
 }
 
-/* --- الكروت والمقالات التخصصية لزمانك --- */
 .top-announcement {
     background: #0076a3;
     color: #fff;
@@ -124,7 +134,7 @@ body {
     font-size: 16px;
 }
 
-/* --- أدوات المسابقة والخيارات --- */
+/* --- عناصر التحكم والخيارات التفاعلية للمسابقة واللعبة --- */
 .quiz-counters {
     background: rgba(0, 0, 0, 0.3);
     padding: 10px;
@@ -163,7 +173,6 @@ body {
     font-weight: bold;
 }
 
-/* --- لعبة الماوس التلقائية --- */
 .clicker-ball {
     width: 90px;
     height: 90px;
@@ -179,12 +188,14 @@ body {
     user-select: none;
 }
 
-/* --- حماية الحواف وإخفاء الأجنحة التلقائي عند صغر الشاشة --- */
+/* 📱 حماية وإخفاء الأجنحة التلقائي عند ضيق الشاشة */
 @media (max-width: 1025px) {
     .left-wing, .right-wing {
         display: none !important;
     }
     .center-content {
         width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
     }
 }
