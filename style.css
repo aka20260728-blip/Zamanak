@@ -14,6 +14,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth; /* لتأمين الانتقال السلس عند ضغط التبويبات */
 }
 
 body {
@@ -26,48 +27,47 @@ body {
 /* --- نظام الروقان الثلاثي الحاسم والمثبت هندسياً --- */
 .zamanak-container {
     display: flex;
-    flex-direction: row; /* إلزام المتصفح بالترتيب الأفقي منعاً للقفز */
+    flex-direction: row;
     width: 100%;
     min-height: 100vh;
 }
 
-/* الجناح الأيسر - مسابقة زمانك (20% ثابتة لا تزيد ولا تنقص) */
+/* الجناح الأيسر - مسابقة زمانك */
 .left-wing {
     width: 20%;
-    min-width: 20%;
-    max-width: 20%;
+    min-width: 250px;
     background: var(--panel-bg);
     border-left: 1px solid rgba(0, 242, 254, 0.15);
     border-right: 1px solid rgba(0, 242, 254, 0.15);
     padding: 20px;
     height: 100vh;
+    position: sticky;
+    top: 0;
     overflow-y: auto;
 }
 
-/* المحتوى المركزي الفاخر الملموم (60% ثابتة ومحمية الحواف) */
+/* المحتوى المركزي الفاخر الملموم */
 .center-content {
-    width: 60%;
-    min-width: 60%;
-    max-width: 60%;
+    flex: 1;
     background: rgba(10, 17, 30, 0.95);
     padding: 30px;
-    height: 100vh;
-    overflow-y: auto;
 }
 
-/* الجناح الأيمن - التسلية السريعة (20% ثابتة لا تزيد ولا تنقص) */
+/* الجناح الأيمن - التسلية السريعة */
 .right-wing {
     width: 20%;
-    min-width: 20%;
-    max-width: 20%;
+    min-width: 250px;
     background: var(--panel-bg);
     border-left: 1px solid rgba(0, 242, 254, 0.15);
     border-right: 1px solid rgba(0, 242, 254, 0.15);
     padding: 20px;
     height: 100vh;
+    position: sticky;
+    top: 0;
     overflow-y: auto;
 }
-/* --- الكروت والمقالات والهيدر الملموم في المنتصف --- */
+
+/* التبويبات وهيدر المنصة */
 .zamanak-header {
     display: flex;
     justify-content: space-between;
@@ -81,14 +81,17 @@ body {
     display: flex;
     gap: 15px;
     font-size: 13px;
+    flex-wrap: wrap;
 }
 
 .zamanak-nav a {
     color: var(--text-muted);
     text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
-.zamanak-nav a.active {
+.zamanak-nav a:hover, .zamanak-nav a.active {
     color: var(--neon-cyan);
     font-weight: bold;
 }
@@ -104,14 +107,17 @@ body {
     font-size: 13px;
 }
 
+/* شبكة كروت زمانك (الثلاثية والرباعية الجديدة) */
 .cards-row {
     display: flex;
     gap: 15px;
     margin: 25px 0;
+    flex-wrap: wrap;
 }
 
 .zamanak-card {
     flex: 1;
+    min-width: 200px;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-top: 3px solid var(--neon-cyan);
@@ -120,6 +126,7 @@ body {
     font-size: 13px;
 }
 
+/* كتل ومقالات العرض الفاخرة */
 .article-box {
     background: rgba(255, 255, 255, 0.01);
     border: 1px solid rgba(0, 242, 254, 0.08);
@@ -134,7 +141,7 @@ body {
     font-size: 16px;
 }
 
-/* --- عناصر التحكم والخيارات التفاعلية للمسابقة واللعبة --- */
+/* المسابقة الثقافية التفاعلية */
 .quiz-counters {
     background: rgba(0, 0, 0, 0.3);
     padding: 10px;
@@ -173,29 +180,42 @@ body {
     font-weight: bold;
 }
 
-.clicker-ball {
-    width: 90px;
-    height: 90px;
-    border: 3px solid var(--neon-pink);
-    border-radius: 50%;
-    margin: 20px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-weight: bold;
-    color: var(--neon-pink);
-    user-select: none;
+/* --- ميدان لعبة النيون لكسر الملل --- */
+.game-box {
+    background: rgba(0,0,0,0.3);
+    border: 1px dashed var(--neon-pink);
+    border-radius: 8px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 15px;
 }
 
-/* 📱 حماية وإخفاء الأجنحة التلقائي عند ضيق الشاشة */
-@media (max-width: 1025px) {
-    .left-wing, .right-wing {
-        display: none !important;
+.neon-target {
+    width: 40px;
+    height: 40px;
+    background: var(--neon-pink);
+    border-radius: 8px;
+    box-shadow: 0 0 10px var(--neon-pink);
+    position: absolute;
+    cursor: pointer;
+    top: 40px;
+    left: 40px;
+    transition: all 0.4s ease; /* سرعة القفز عند ضغط الماوس */
+}
+
+/* 📱 هيدروليك تكيفي ميكانيكي (تنزل الأجنحة أسفل المحتوى المركزي عند ضيق الشاشة بدل الاختفاء) */
+@media (max-width: 1100px) {
+    .zamanak-container {
+        flex-direction: column;
     }
-    .center-content {
+    .left-wing, .right-wing {
         width: 100% !important;
-        min-width: 100% !important;
         max-width: 100% !important;
+        min-width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        border: none;
+        border-top: 2px solid rgba(0, 242, 254, 0.15);
     }
 }
