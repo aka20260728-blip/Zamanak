@@ -1,28 +1,38 @@
-/* --- السمة الفلكية العميقة لمنع الارتداد البصري --- */
+/* --- السمة الافتراضية الفلكية العميقة المتزنة --- */
 body {
-    background-color: #070b12;
+    background-color: #05080f; /* أسود فلكي عميق خالص وواضح جداً */
     color: #f0f4f8;
 }
 
+/* الترويسة الثابتة */
 .zamanak-navbar-fixed {
-    background: #0d1625;
+    background: #090f1a;
     border-bottom: 2px solid #00f2fe;
-    box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
 }
 
 .nav-brand, .nav-links-wrap a.active {
     color: #00f2fe;
-    text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
 }
 
 .nav-links-wrap a {
     color: #8fa0b5;
 }
 
+.nav-links-wrap a:hover {
+    color: #00f2fe;
+}
+
+/* خلفيات الأجنحة والمنتصف المعزولة والواضحة */
 .left-wing, .right-wing {
-    background: rgba(13, 22, 37, 0.85);
+    background: #0b1220; /* أزرق داكن فلكي صلب لتمييز الأجنحة وعزلها */
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .center-content {
-    background: rgba(10, 17, 30, 0.95);
+    background: #070c14; /* درجة واضحة للمنتصف تفصله عن الأجنحة بروقان */
+    border-left: 1px solid rgba(0, 242, 254, 0.1);
+    border-right: 1px solid rgba(0, 242, 254, 0.1);
 }
