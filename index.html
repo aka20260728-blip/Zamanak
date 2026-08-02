@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZAMANAK - المنظومة الفلكية الشاملة</title>
-    <!-- استدعاء ملفات التنسيق الفاخرة والمقسمة مع علامة التحديث للإسقاط الفوري للكاش -->
-    <link rel="stylesheet" href="layout.css?v=1.7">
-    <link rel="stylesheet" href="theme.css?v=1.7">
-    <link rel="stylesheet" href="components.css?v=1.7">
+    <link rel="stylesheet" href="layout.css?v=1.8">
+    <link rel="stylesheet" href="theme.css?v=1.8">
+    <link rel="stylesheet" href="components.css?v=1.8">
 </head>
 <body>
 
-    <!-- 🏛️ الترويسة العلوية الثابتة والمحجوزة عبر كامل الشاشة -->
+    <!-- الترويسة العلوية الثابتة -->
     <header class="zamanak-navbar-fixed">
         <div class="nav-brand">ZAMANAK 🚀</div>
         <nav class="nav-links-wrap">
@@ -25,10 +24,9 @@
         <button id="langSwitcher" class="zamanak-btn" style="font-size:11px; padding:4px 10px;">العربية / EN</button>
     </header>
 
-    <!-- نظام الشبكة الحاسم خالي الأخطاء لجمع الأقسام الثلاثة متجاورة بالبادنج الجديد -->
     <div class="zamanak-grid-core">
         
-        <!-- 🧩 1. الجناح الأيسر: مسابقة الـ 10 أسئلة التفاعلية -->
+        <!-- الجناح الأيسر: مسابقة الـ 10 أسئلة التفاعلية -->
         <div class="left-wing">
             <h3 id="leftWingTitle" style="font-size:15px; color:#fff;">🧠 مسابقة زمانك الفلكية</h3>
             <hr style="border:0; border-top:1px solid rgba(0,242,254,0.2); margin:10px 0;">
@@ -42,7 +40,7 @@
             </div>
         </div>
 
-        <!-- 🚀 2. المحتوى المركزي الفخم: الكروت والمقالات الفلكية الوفيرة لملء الفراغ الكلي -->
+        <!-- المحتوى المركزي الفخم: الكروت والمقالات الفلكية -->
         <div class="center-content">
             <div class="top-announcement" id="announcementText"></div>
             
@@ -66,29 +64,24 @@
                 <div class="zamanak-card" style="border-top-color: #3b82f6;"><h4 id="infoCard4Title" style="color:#3b82f6; margin-bottom:6px;"></h4><p id="infoCard4Desc" style="color:#8fa0b5; text-align:justify;"></p></div>
             </div>
 
-            <!-- المقالات التخصصية لملء النصف الفارغ بانتظام دقيق -->
+            <!-- المقالات التخصصية لملء النصف الفارغ -->
             <div class="article-box"><h3 id="art1TitleText"></h3><p id="art1BodyText" style="color:#8fa0b5; font-size:13px; text-align:justify;"></p></div>
             <div class="article-box" style="border-color: rgba(168, 85, 247, 0.15);"><h3 id="art2TitleText"></h3><p id="art2BodyText" style="color:#8fa0b5; font-size:13px; text-align:justify;"></p></div>
             <div class="article-box" style="border-color: rgba(234, 179, 8, 0.15);"><h3 id="art3TitleText"></h3><p id="art3BodyText" style="color:#8fa0b5; font-size:13px; text-align:justify;"></p></div>
         </div>
 
-        <!-- 🎮 3. الجناح الأيمن: لعبة ضرب الكرة نحو الهدف مع زر إيقاف وتشغيل ميكانيكي لمنع الإزعاج البصري -->
+        <!-- الجناح الأيمن: لعبة ضرب الكرة نحو الهدف -->
         <div class="right-wing">
             <h3 id="rightWingTitle" style="font-size:15px; color:#fff;">🎮 جناح التسلية وإنهاء الملل</h3>
             <hr style="border:0; border-top:1px solid rgba(255,0,127,0.2); margin:10px 0;">
-            
             <div class="game-counters">
                 <p id="clickActionText" style="font-size:11px; margin-bottom:8px; color:#8fa0b5;"></p>
-                
-                <!-- زر تشغيل/إيقاف اللعبة الميكانيكي الفاخر بناءً على طلبك الصارم -->
-                <button id="gameToggleBtn" class="zamanak-btn" style="width:100%; margin-bottom:12px; font-size:11px; border-color:var(--neon-pink); color:var(--neon-pink);"></button>
-                
+                <button id="gameToggleBtn" class="zamanak-btn" style="width:100%; margin-bottom:12px; font-size:11px;"></button>
                 <div style="display:flex; justify-content:space-between; font-size:12px;">
                     <div><span id="scorePrefix">الأهداف: </span><span id="liveGameScore" style="color:#ff007f; font-weight:bold;">0</span></div>
                     <div><span>المحاولات: </span><span id="gameShotsCount" style="color:#00f2fe; font-weight:bold;">0</span>/10</div>
                 </div>
             </div>
-            
             <div class="pitch-container" id="gamePitch">
                 <div class="astral-goal-post" id="goalPost"></div>
                 <div class="cosmic-ball" id="shootBall"></div>
@@ -98,7 +91,7 @@
 
     </div>
 
-    <!-- استدعاء ملف تشغيل واحد مشفر داخلياً بالكامل لمنع انفصال التراجم والتخلص من الـ undefined -->
-    <script src="script.js?v=1.7"></script>
+    <!-- استدعاء ملف تشغيل الجافا سكريبت الموحد والمطابق للمعرفات -->
+    <script src="script.js?v=1.8"></script>
 </body>
 </html>
