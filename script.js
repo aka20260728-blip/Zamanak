@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // تثبيت حالة الثيم والوضع الداكن
     localStorage.setItem('zamanak-theme', 'dark');
     document.documentElement.setAttribute('data-theme', 'dark');
 
-    // قاموس البيانات المترجمة المطابق تماماً لـ IDs الخاصة بك
     const dictionary = {
         ar: {
             topBar: "مشروع زمانك الفلكي العالمي - احسب تفاصيل عمرك ولحظتك بدقة عالية",
@@ -15,6 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
             card2Desc: "إن تموضع الشمس والقمر والتقاطعات الكوكبية لحظة خروجك إلى هذا الكون يترك بصمة طاقية فريدة تؤثر على ملامح طالعك الفلكي.",
             card3Title: "🌌 طاقة الأجرام وحساب التراكم",
             card3Desc: "ترتبط عدادات زمانك التراكمية الحية بالتاريخين الهجري والميلادي لتعيش تفاصيل ثواني ودقائق عمرك بالتناغم الكامل مع نبض المجرة الكبرى.",
+            
+            // نصوص البطاقات التعريفية الأربعة الجديدة
+            infoCard1Title: "🎯 دليل الأبراج وطوالع الفلك",
+            infoCard1Desc: "تنقسم الأبراج الكونية في محرك زمانك إلى أربع مجموعات تخصصية: نارية، ترابية، هوائية، ومائية؛ حيث يحدد طالعك الفلكي الفردي نمط تفاعلك مع الكواكب السابحة.",
+            infoCard2Title: "🕌 الأشهر الحُرُم ومكانتها الزمنية",
+            infoCard2Desc: "الأشهر الحُرُم هي أربعة أشهر عظمى في التقويم الهجري الميكانيكي (ذو القعدة، ذو الحجة، محرم، ورجب)؛ يتضاعف فيها الأجر والعمل الصالح للتوازن الروحي الكلي.",
+            infoCard3Title: "🕋 المناسبات الدينية الكبرى",
+            infoCard3Desc: "يتتبع محرك زمانك بدقة ميكانيكية مواعيد بزوغ أهلة الهجرة السنوية وعيد الفطر وعيد الأضحى وموسم الحج المعظم لربط نبضك الحقيقي بالتقويم الفلكي الصافي.",
+            infoCard4Title: "📿 فضائل الاستغفار وجلب الأرزاق",
+            infoCard4Desc: "الاستغفار يمثل الرابط الروحي الأكبر لتطهير السجلات وتحويل خطوط الزمن الجافة إلى تدفقات وفيرة من الأرزاق والبركة، تحقيقاً لقوله تعالى: 'يُرْسِلِ السَّمَاءَ عَلَيْكُم مِّدْرَارًا'.",
+
             art1Title: "🐋 برج الحوت: عمق طاقة المياه والمجرات السحيقة",
             art1Text: "يُمثل برج الحوت نهاية الدورة الفلكية الكبرى، وهو مستودع الطاقات الروحية والوجدانية في نظام زمانك. يمتلك مواليد هذا البرج حدساً فلكياً فائقاً وقدرة على استشعار تقلبات الخطوط الزمنية بيسر وسهولة وتناغم مطلق.",
             art2Title: "🪐 تأثير زحل الميكانيكي على مسارات الأعمار",
@@ -22,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             art3Title: "🌞 بوابات الشموس: كيف تؤثر الطاقة النجمية على الروابط حياً؟",
             art3Text: "الشموس ليست مجرد كرات غازية ملتهبة، بل هي العقل النابض للمنظومة الفلكية. كل تدفق طاقي يخرج من البوابات النجمية يعيد صياغة العدادات الحية لأعمارنا، ويتحكم مباشرة في مسارات التسلية والثقافة الكونية التي نتأثر بها يومياً عبر بوابات العرض النظيفة والروقان المركزي.",
             wingRightTitle: "🎮 جناح التسلية السريعة",
-            clickText: "اضغط على الكرة لتوليد النقاط الفلكية 🌟",
+            clickText: "التقط مكعب النيون الطائر لكسر الملل! ⚡",
             scoreText: "النقاط الحالية: ",
             wingLeftTitle: "🧠 مسابقة زمانك (10 أسئلة)",
             quizFinished: "🎉 انتهت المسابقة! نتيجتك النهائية هي: ",
@@ -38,6 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
             card2Desc: "The positioning of the sun, moon, and planetary intersections at your birth leaves a unique energetic imprint on your cosmic traits.",
             card3Title: "🌌 Planetary Energy & Accumulation",
             card3Desc: "Zamanak live accumulative counters tie both Hijri & Gregorian timelines together to sync your seconds with the grand galactic pulse.",
+            
+            // New Cards English Text
+            infoCard1Title: "🎯 Zodiacs & Ascendants Guide",
+            infoCard1Desc: "Zodiac signs in Zamanak engine split into four specific cosmic categories: Fire, Earth, Air, and Water; your individual ascendant shapes your unique connection.",
+            infoCard2Title: "🕌 The Sacred Months Placement",
+            infoCard2Desc: "The Sacred Months are four noble months in the mechanical Hijri calendar (Dhu al-Qadah, Dhu al-Hijjah, Muharram, and Rajab) where rewards are amplified.",
+            infoCard3Title: "🕋 Major Islamic Spiritual Occasions",
+            infoCard3Desc: "Zamanak tracks moon crescents to lock annual Hijri dates, Eid al-Fitr, Eid al-Adha, and Hajj seasons directly into the galactic timeline.",
+            infoCard4Title: "📿 Virtues of Istighfar & Abundance",
+            infoCard4Desc: "Seeking forgiveness functions as the greatest spiritual tool to clear records and shift timelines into vast currents of blessings and prosperity.",
+
             art1Title: "🐋 Pisces: The Deep Energy of Water and Ancient Galaxies",
             art1Text: "Pisces represents the end of the grand astronomical cycle, serving as the reservoir of spiritual energies in the Zamanak system. Natives of this sign possess a planetary frequency tuned to Neptune, granting them high intuition.",
             art2Title: "🪐 Saturn's Mechanical Impact on Life Paths",
@@ -45,21 +65,20 @@ document.addEventListener("DOMContentLoaded", () => {
             art3Title: "🌞 Solar Gateways: How Star Energy Affects Live Connections",
             art3Text: "Suns are not just burning gas spheres, but the pulsing heart of the astronomical system. Every energy flow from stellar gateways reshapes our live counters and directly controls our daily cosmic paths accurately.",
             wingRightTitle: "🎮 Quick Entertainment Wing",
-            clickText: "Click the ball to generate astral points 🌟",
+            clickText: "Catch the flying neon cube to break boredom! ⚡",
             scoreText: "Current Score: ",
             wingLeftTitle: "🧠 Zamanak Quiz (10 Questions)",
             quizFinished: "🎉 Quiz Finished! Your final score is: ",
             restartQuiz: "Restart Quiz 🔄"
         }
     };
-        // بنك الـ 10 أسئلة الفلكية للجانب الأيسر
     const quizQuestions = {
         ar: [
             { q: "ما هو الكوكب الأكثر لمعاناً في سماء الليل؟", o: ["الزهرة", "المريخ", "المشتري"], a: 0 },
             { q: "كم يبلغ عدد الأبراج الفلكية الرئيسية؟", o: ["10 أبراج", "12 برجاً", "14 برجاً"], a: 1 },
-            { q: "ما هو الجرم المسؤول عن ظاهرة المد والجزر؟", o: ["الشمس", "النيازك", "القمر"], a: 2 },
+            { q: "ما هو الجرم المسؤول عن ظاهرة المد والجزر？", o: ["الشمس", "النيازك", "القمر"], a: 2 },
             { q: "أي كوكب يعرف بالكوكب الأحمر؟", o: ["عطارد", "المريخ", "نبتون"], a: 1 },
-            { q: "ما هو أكبر كوكب في المجموعة الشمسية？", o: ["الأرض", "زحل", "المشتري"], a: 2 },
+            { q: "ما هو أكبر كوكب في المجموعة الشمسية؟", o: ["الأرض", "زحل", "المشتري"], a: 2 },
             { q: "كم تستغرق الأرض لتكمل دورة كاملة حول الشمس؟", o: ["365 يوماً", "24 ساعة", "30 يوماً"], a: 0 },
             { q: "ما هو الكوكب الأقرب إلى الشمس؟", o: ["عطارد", "الزهرة", "الأرض"], a: 0 },
             { q: "أي برج يرمز إليه بمخلوق من الأساطير المائية؟", o: ["الحوت", "العقرب", "الجدي"], a: 2 },
@@ -74,9 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
             { q: "What is the largest planet in our solar system?", o: ["Earth", "Saturn", "Jupiter", "Venus"], a: 2 },
             { q: "How long does Earth take to orbit the Sun?", o: ["365 Days", "24 Hours", "30 Days"], a: 0 },
             { q: "What is the closest planet to the Sun?", o: ["Mercury", "Venus", "Earth"], a: 0 },
-            { q: "Which zodiac is represented by a sea-goat?", o: ["Pisces", "Scorpio", "Capricorn"], a: 2 },
+            { q: "Which zodiac is represented by a sea-goat?", o: ["Pisces", "Scorpio", "Capricorn", "Cancer"], a: 2 },
             { q: "What is the central star of our solar system?", o: ["North Star", "Sun", "Sirius"], a: 1 },
-            { q: "Which planet is famous for its bright rings?", o: ["Uranus", "Jupiter", "Saturn"], a: 2 }
+            { q: "Which planet is famous for its bright rings?", o: ["Uranus", "Jupiter", "Saturn", "Neptune"], a: 2 }
         ]
     };
 
@@ -84,7 +103,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let quizScore = 0;
     let currentQuestionIndex = 0;
     let mouseClickScore = 0;
-    // دالة المزامنة وحقن البيانات وحمايتها من الانهيار بالفحص الميكانيكي للأقسام
     function initLanguage(lang) {
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
@@ -99,6 +117,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if(document.getElementById('c2Desc')) document.getElementById('c2Desc').innerText = dictionary[lang].card2Desc;
         if(document.getElementById('c3Title')) document.getElementById('c3Title').innerText = dictionary[lang].card3Title;
         if(document.getElementById('c3Desc')) document.getElementById('c3Desc').innerText = dictionary[lang].card3Desc;
+
+        // حقن نصوص كروت التعريف الإضافية الأربعة
+        if(document.getElementById('infoCard1Title')) document.getElementById('infoCard1Title').innerText = dictionary[lang].infoCard1Title;
+        if(document.getElementById('infoCard1Desc')) document.getElementById('infoCard1Desc').innerText = dictionary[lang].infoCard1Desc;
+        if(document.getElementById('infoCard2Title')) document.getElementById('infoCard2Title').innerText = dictionary[lang].infoCard2Title;
+        if(document.getElementById('infoCard2Desc')) document.getElementById('infoCard2Desc').innerText = dictionary[lang].infoCard2Desc;
+        if(document.getElementById('infoCard3Title')) document.getElementById('infoCard3Title').innerText = dictionary[lang].infoCard3Title;
+        if(document.getElementById('infoCard3Desc')) document.getElementById('infoCard3Desc').innerText = dictionary[lang].infoCard3Desc;
+        if(document.getElementById('infoCard4Title')) document.getElementById('infoCard4Title').innerText = dictionary[lang].infoCard4Title;
+        if(document.getElementById('infoCard4Desc')) document.getElementById('infoCard4Desc').innerText = dictionary[lang].infoCard4Desc;
 
         if(document.getElementById('art1TitleText')) document.getElementById('art1TitleText').innerText = dictionary[lang].art1Title;
         if(document.getElementById('art1BodyText')) document.getElementById('art1BodyText').innerText = dictionary[lang].art1Text;
@@ -165,19 +193,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const clickerBall = document.getElementById('mouseBallClicker');
-    if(clickerBall) {
-        clickerBall.addEventListener('click', () => {
+    // 🎮 محرك لعبة مكعب النيون الطائر لكسر الملل وحقن القفزات العشوائية
+    const gameCube = document.getElementById('neonCubeGame');
+    if(gameCube) {
+        gameCube.addEventListener('click', () => {
             mouseClickScore++;
             if(document.getElementById('liveGameScore')) {
                 document.getElementById('liveGameScore').innerText = mouseClickScore;
             }
+            // توليد إحداثيات قفز عشوائية داخل الميدان لمنع الملل
+            const randomTop = Math.floor(Math.random() * 150);
+            const randomLeft = Math.floor(Math.random() * 180);
+            gameCube.style.top = randomTop + "px";
+            gameCube.style.left = randomLeft + "px";
         });
     }
 
     initLanguage(currentLang);
 });
 
-
-
-                          
+// دالة الانتقال الميكانيكي السلس عند ضغط أزرار التبويبات بالأعلى
+function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if(el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+    }
+}
