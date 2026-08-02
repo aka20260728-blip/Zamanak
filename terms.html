@@ -1,54 +1,99 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الشروط والأحكام | Zamanak</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* --- جغرافية الوزن الكلي والمسافات الآمنة لزمانك --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    <header class="global-navbar">
-        <a href="index.html" class="logo-link">✨ ZAMANAK</a>
-        <nav class="nav-links">
-            <a href="index.html"><span data-lang="ar">الرئيسية</span><span data-lang="en">Home</span></a>
-            <a href="birthday.html"><span data-lang="ar">الميلاد</span><span data-lang="en">Birth</span></a>
-            <a href="marriage.html"><span data-lang="ar">الزواج</span><span data-lang="en">Marriage</span></a>
-            <a href="privacy.html"><span data-lang="ar">الخصوصية</span><span data-lang="en">Privacy</span></a>
-            <a href="terms.html" class="active"><span data-lang="ar">الشروط</span><span data-lang="en">Terms</span></a>
-            <a href="contact.html"><span data-lang="ar">اتصل بنا</span><span data-lang="en">Contact</span></a>
-        </nav>
-        <div class="controls-group">
-            <select id="languageSelect"><option value="ar">العربية 🇸🇦</option><option value="en">English 🇬🇧</option></select>
-            <button id="darkModeToggle" class="theme-btn">🌓</button>
-        </div>
-    </header>
+body {
+    padding-top: 90px; /* مارجن علوي حاسم لعزل الترويسة ومنع التكدس */
+    overflow-x: hidden;
+}
 
-    <div class="three-column-layout">
-        <aside class="side-wing"><div class="wing-title"><span data-lang="ar">🎮 جناح التسلية السريعة</span><span data-lang="en">🎮 Mini Game Wing</span></div><p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p><button class="game-btn" onclick="playZamanakGame()"><span data-lang="ar">اضغط لتجميع طاقة النجوم ✨</span><span data-lang="en">Gather Star Energy ✨</span></button></aside>
+/* حاوية زمانك الكبرى الموزونة بالهوامش */
+.zamanak-grid-core {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    min-height: calc(100vh - 90px);
+    padding: 30px 50px; /* بادنج خارجي فاخر لضمان مسافة الأمان 5 سم من الأطراف */
+    gap: 35px; /* مارجن وجسر فاصل متزن وعريض بين الأجنحة والمنتصف */
+    align-items: flex-start; /* إلزام جميع الأقسام بالبدء من خط أفقي متزن واحد */
+}
 
-        <main class="center-content">
-            <div class="tool-card">
-                <h2 style="color: var(--primary-neon); margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; text-align:center;">
-                    <span data-lang="ar">📜 الشروط والأحكام لاستخدام المنصة</span><span data-lang="en">📜 Platform Terms & Conditions</span>
-                </h2>
-                <div class="scroll-policy-box" id="tBox">
-                    <div data-lang="ar">
-                        <p>مقدمة عامة: شروط الاستخدام الملزمة. شروط استخدام منصة زمانك (Zamanak) الفلكية العالمية. بدخولك وتصفحك لهذا الموقع الإلكتروني، فإنك تقر وتوافق بشكل كامل وغير مشروط على الامتثال لكافة البنود والتشريعات المذكورة هنا والالتزام بها. إذا كنت لا توافق على أي جزء من هذه الشروط، فيرجى التوقف عن استخدام المنصة فوراً لحماية حقوق الأطراف ميكانيكياً.</p><br>
-                        <p>البند الأول: طبيعة الخدمة وإخلاء المسؤولية الكوني. إن جميع المعادلات الحسابية، وعدادات الأيام والساعات والدقائق التراكمية الحية المباشرة، وحسابات التقاويم الميلادية والهجرية الذكية، ومقالات الأبراج والتموضعات الكوكبية المعروضة داخل منصة زمانك هي تطبيقات برمجية ديناميكية مبنية على تقديرات ومعادلات تدوير زمنية فلكية عامة تهدف بالدرجة الأولى إلى تقديم المعرفة الرقمية، الإثراء الثقافي، والترفيه الرقمي الراقي والمنظم للمستخدمين عبر العالم. ولا يجب استخدامها كمستندات قانونية أو فلكية رسمية قاطعة.</p>
-                    </div>
-                    <div data-lang="en">
-                        <p>General Introduction: Terms of Legal Binding. Welcome to Zamanak Global Astronomical platform. By accessing or navigating this site, you officially pledge full and non-negotiable compliance with all statutory parameters and terms stipulated within this document. Stop utilization instantly if you decline agreement.</p><br>
-                        <p>Section 1: General Disclaimer. All calculated values, live cumulative matrices, hours lived, and smart Hijri-Gregorian synchronization features mapped inside Zamanak are programmatic simulations configured upon astronomical epoch vectors. They are developed exclusively for digital engagement, education, and entertainment. They hold zero statutory or judicial power.</p>
-                    </div>
-                </div>
-                <button class="back-to-top-btn" onclick="scrollPolicyToTop('tBox')"><span data-lang="ar">🔼 عودة للأعلى</span><span data-lang="en">🔼 Scroll to Top</span></button>
-            </div>
-        </main>
+/* الجناح الأيسر - المسابقة الفلكية */
+.left-wing {
+    width: 23%;
+    min-width: 280px;
+    padding: 25px;
+    height: calc(100vh - 150px);
+    position: sticky;
+    top: 110px;
+    overflow-y: auto;
+}
 
-        <aside class="side-wing"><div class="wing-title"><span data-lang="ar">🔮 أسرار وألغاز طالعك</span><span data-lang="en">🔮 Cosmic Riddles</span></div><p style="font-size:0.9rem; text-align:justify;"><span data-lang="ar">س: ما هو الكوكب الأكثر لمعاناً في سماء الليل؟</span><span data-lang="en">Q: Which is the brightest planet in the night sky?</span></p><button class="puzzle-btn" onclick="revealPuzzle()"><span data-lang="ar">عرض الإجابة الفلكية</span><span data-lang="en">Show Cosmic Answer</span></button></aside>
-    </div>
+/* المحتوى المركزي الفاخر المتزن والملموم */
+.center-content {
+    flex: 1;
+    padding: 40px; /* بادنج داخلي دسم وعميق يمنح المقالات روقاناً في العرض */
+    min-height: calc(100vh - 150px);
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* الجناح الأيمن - لعبة كرة الهدف */
+.right-wing {
+    width: 23%;
+    min-width: 280px;
+    padding: 25px;
+    height: calc(100vh - 150px);
+    position: sticky;
+    top: 110px;
+    overflow-y: auto;
+}
+
+/* 🏛️ الترويسة العلوية الثابتة المطلقة */
+.zamanak-navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    z-index: 9999;
+}
+
+.nav-brand {
+    font-weight: 900;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.nav-links-wrap {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links-wrap a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* 📱 النزول الهيدروليكي الذكي التكيفي عند ضيق الشاشة */
+@media (max-width: 1150px) {
+    .zamanak-grid-core {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+    }
+    .left-wing, .right-wing {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        top: 0 !important;
+    }
+}
