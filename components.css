@@ -1,93 +1,103 @@
-/* --- الكروت والمقالات ومكونات اللعب --- */
+/* --- الكروت التخصصية والمقالات ومكونات اللعب لزمانك --- */
 .top-announcement {
-    background: #0076a3;
+    background: #006085;
     color: #fff;
-    padding: 12px;
+    padding: 14px;
     text-align: center;
-    border-radius: 6px;
-    margin-bottom: 25px;
+    border-radius: 8px;
+    margin-bottom: 30px; /* مارجن مريح تحت الإعلان العلوي */
     font-weight: bold;
     font-size: 13px;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.1);
 }
 
+/* صف الكروت الموزونة بالمساحات */
 .cards-row {
     display: flex;
-    gap: 15px;
-    margin: 25px 0;
+    gap: 20px; /* مارجن وتباعد متزن بين كروت الصف الواحد */
+    margin: 30px 0 40px 0; /* مارجن علوي وسفلي صارم لحماية المحتوى */
     flex-wrap: wrap;
 }
 
 .zamanak-card {
     flex: 1;
-    min-width: 180px;
+    min-width: 200px;
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-top: 3px solid #00f2fe;
-    border-radius: 8px;
-    padding: 15px;
-    font-size: 13px;
-}
-
-.article-box {
-    background: rgba(255, 255, 255, 0.01);
-    border: 1px solid rgba(0, 242, 254, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 3px solid #00f2fe; /* نيون ثابت فيروزي */
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 20px;
+    font-size: 13px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* مقالات روقان لملء النصف الفارغ بانتظام */
+.article-box {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(0, 242, 254, 0.06);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px; /* مارجن متباعد وموزون بين المقالات */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .article-box h3 {
     color: #00f2fe;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     font-size: 16px;
+    text-shadow: 0 0 5px rgba(0, 242, 254, 0.2);
 }
 
+/* صناديق التحكم والخيارات التفاعلية للمسابقات واللعبة */
 .quiz-counters, .game-counters {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    border-radius: 6px;
-    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
     text-align: center;
     font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 .btn-option {
     display: block;
     width: 100%;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(0, 242, 254, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 242, 254, 0.15);
     color: #f0f4f8;
-    padding: 10px;
-    margin: 8px 0;
+    padding: 12px;
+    margin: 10px 0;
     border-radius: 6px;
     cursor: pointer;
     font-size: 13px;
+    transition: all 0.2s ease;
+    text-align: inherit;
 }
 
 .btn-option:hover {
     background: #00f2fe;
-    color: #070b12;
+    color: #05080f;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
 }
 
 .zamanak-btn {
     background: transparent;
     border: 1px solid #00f2fe;
     color: #00f2fe;
-    padding: 8px 12px;
+    padding: 10px 15px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+    transition: all 0.2s;
 }
 
-/* --- ⚽ ميدان اللعبة المطور هندسياً وحراً للخروج --- */
+/* ميدان لعبة الكرة الفيروزية والهدف */
 .pitch-container {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(0, 242, 254, 0.2);
+    background: #03050a;
+    border: 1px solid rgba(255, 0, 127, 0.2);
     border-radius: 8px;
     height: 220px;
     position: relative;
-    /* نتحكم بالـ overflow ديناميكياً بالجافا سكريبت للسماح بخروج الكرة */
-    overflow: visible; 
     margin-top: 15px;
 }
 
@@ -96,22 +106,20 @@
     height: 20px;
     background: #ff007f;
     border-radius: 4px;
-    box-shadow: 0 0 8px #ff007f;
+    box-shadow: 0 0 12px #ff007f;
     position: absolute;
     top: 15px;
     left: 90px;
-    z-index: 10;
 }
 
 .cosmic-ball {
-    width: 23px;
-    height: 23px;
+    width: 22px;
+    height: 22px;
     background: #00f2fe;
     border-radius: 50%;
-    box-shadow: 0 0 10px #00f2fe;
+    box-shadow: 0 0 12px #00f2fe;
     position: absolute;
     bottom: 20px;
     left: 108px;
     cursor: pointer;
-    z-index: 20;
 }
