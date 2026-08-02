@@ -1,368 +1,148 @@
-/* ==========================================================================
-   1. المتغيرات والسمات الكونية الصارمة والوضع الداكن الموحد
-   ========================================================================== */
+/* --- أساسيات الروقان الفلكي والوضع الداكن الثابت --- */
 :root {
-    --bg-main: #0b0f19;       /* السمة الليلية العميقة لزمانك */
-    --bg-card: #121824;       
-    --border-color: #1f293d;   
-    --text-main: #ffffff;      
-    --text-muted: #adb5bd;     
-    --primary-gold: #e67e22;   
-    --primary-neon: #00ffcc;   
-}
-
-[data-theme="light"] {
-    --bg-main: #f8f9fa;
-    --bg-card: #ffffff;
-    --border-color: #dee2e6;
-    --text-main: #212529;
-    --text-muted: #6c757d;
-    --primary-gold: #d4af37;
-    --primary-neon: #00aa88;
+    --bg-dark: #070b12;
+    --neon-cyan: #00f2fe;
+    --neon-pink: #ff007f;
+    --neon-glow: 0 0 12px rgba(0, 242, 254, 0.4);
+    --panel-bg: rgba(13, 22, 37, 0.65);
+    --text-main: #f0f4f8;
+    --text-muted: #8fa0b5;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--bg-main);
+    background-color: var(--bg-dark);
     color: var(--text-main);
-    overflow-x: hidden; /* حظر اهتزاز وميلان الشاشات نهائياً على كل الهواتف */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* ==========================================================================
-   2. شريط التنقل العلوي وتقريب الأطراف تماماً للأطراف الجغرافية
-   ========================================================================== */
-.global-navbar {
-    background-color: var(--bg-card);
-    border-bottom: 2px solid var(--border-color);
-    width: 100%;
-    padding: 15px 3%; /* تقريب الشعار واللغات لأطراف شاشتك تماماً */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+/* --- محرك التقطيع الفلكي بالنسبة المئوية المطلوبة (20% | 60% | 20%) --- */
+.zamanak-grid {
+    display: grid;
+    grid-template-columns: 20vw 60vw 20vw;
+    min-height: 100vh;
+    width: 100vw;
 }
 
-.logo-link {
-    color: var(--primary-neon);
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.nav-links {
-    display: flex;
-    gap: 18px;
-}
-
-.nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
-    transition: color 0.2s;
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: var(--primary-neon);
-}
-
-.controls-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.controls-group select {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    border: 1px solid var(--border-color);
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.theme-btn {
-    background: none;
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.1rem;
-}
-
-/* ==========================================================================
-   3. شريط الشرح الانسيابي الفيروسي (انطلاق القراءة من الحرف الأول دائماً)
-   ========================================================================== */
-.adsense-placeholder-box {
-    background: linear-gradient(90deg, var(--primary-neon), #0077ff);
-    color: #0b0f19;
-    padding: 12px;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 100%;
-    display: flex;
-    margin-bottom: 15px;
-}
-
-html[dir="rtl"] .moving-text {
-    display: inline-block;
-    white-space: nowrap;
-    font-weight: bold;
-    padding-right: 100%;
-    animation: marquee-arabic 35s linear infinite;
-}
-
-html[dir="ltr"] .moving-text {
-    display: inline-block;
-    white-space: nowrap;
-    font-weight: bold;
-    padding-left: 100%;
-    animation: marquee-english 35s linear infinite;
-}
-
-@keyframes marquee-arabic {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(100%, 0, 0); }
-}
-
-@keyframes marquee-english {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-100%, 0, 0); }
-}
-
-/* ==========================================================================
-   4. ميكانيكية التقطيع وتأطير الشاشة الثلاثي (الوسط الملموم والأجنحة)
-   ========================================================================== */
-.three-column-layout {
-    display: flex;
-    width: 100%;
-    min-height: calc(100vh - 80px);
-    padding: 20px 2%;
-    gap: 20px;
-}
-
-.side-wing {
-    flex: 1;
-    min-width: 230px;
-    max-width: 260px;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+/* الأجنحة والمحتوى الأوسط */
+.left-wing, .center-content, .right-wing {
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    height: fit-content;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    height: 100vh;
+    overflow-y: auto;
 }
 
-.wing-title {
-    color: var(--primary-neon);
-    font-size: 1.05rem;
-    font-weight: bold;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 10px;
+.left-wing {
+    background: var(--panel-bg);
+    border-right: 1px solid rgba(0, 242, 254, 0.15);
 }
 
 .center-content {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    width: 100%;
+    background: rgba(10, 17, 30, 0.85);
+    border-left: 2px solid rgba(0, 242, 254, 0.25);
+    border-right: 2px solid rgba(0, 242, 254, 0.25);
 }
 
-.tool-header {
+.right-wing {
+    background: var(--panel-bg);
+    border-left: 1px solid rgba(0, 242, 254, 0.15);
+}
+
+/* شريط الإعلان العلوي الممتد */
+.top-announcement {
+    background: #0076a3;
+    color: #fff;
+    padding: 10px;
     text-align: center;
-    width: 100%;
-}
-
-.tool-header h1 {
-    font-size: 28px;
+    border-radius: 6px;
+    margin-bottom: 25px;
     font-weight: bold;
-    margin-bottom: 5px;
 }
 
-.tool-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 14px;
-    padding: 25px;
-    width: 100%;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-}
-
-/* تقييد ولَم نموذج اتصل بنا ليلتزم بحدود التوسط البرمي الصارم */
-.constrained-form-wrapper {
-    width: 100%;
-    max-width: 600px; /* لَم الحقول ومنع انسكابها العشوائي للنهاية */
-    margin: 0 auto;
-}
-
-.articles-grid {
+/* كروت التموضع الثلاثية في المنتصف */
+.cards-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
-    width: 100%;
+    margin-top: 30px;
 }
 
-.info-card {
-    background: rgba(255,255,255,0.01);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 18px;
-    text-align: justify;
-}
-.info-card h4 { color: var(--primary-neon); margin-bottom: 10px; text-align: center; }
-
-/* ==========================================================================
-   5. الصناديق التفاعلية، حركات التشويق والمنبثقات الهيدروليكية
-   ========================================================================== */
-.calendar-switch {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.date-selector-box {
-    background-color: var(--bg-main);
-    border: 1px solid var(--border-color);
-    padding: 14px 20px;
+.zamanak-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 3px solid var(--neon-cyan);
     border-radius: 8px;
+    padding: 15px;
+    font-size: 13px;
+}
+
+/* أدوات المسابقة التفاعلية والأزرار */
+.quiz-counters {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 12px;
+}
+
+.btn-option {
+    display: block;
     width: 100%;
-    margin-top: 10px;
-    transition: 0.2s;
-}
-.date-selector-box:hover { border-color: var(--primary-neon); }
-
-.loading-box {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 35px;
-    border-radius: 12px;
-    width: 100%;
-    text-align: center;
-}
-
-.spinner {
-    width: 45px;
-    height: 45px;
-    border: 4px solid var(--border-color);
-    border-top: 4px solid var(--primary-neon);
-    border-radius: 50%;
-    margin: 0 auto 15px auto;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* شريط التمرير التلقائي الذكي لأدسينس (يختفي تماماً إذا كان المربع فارغاً) */
-.scroll-policy-box {
-    max-height: 280px;
-    overflow-y: auto; /* تلقائي ميكانيكي */
-    padding-right: 8px;
-    text-align: justify;
-    line-height: 1.8;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 15px;
-}
-
-.back-to-top-btn {
-    background: none;
-    border: 1px solid var(--border-color);
-    color: var(--primary-neon);
-    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 242, 254, 0.3);
+    color: var(--text-main);
+    padding: 8px;
+    margin: 6px 0;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
-    display: block;
-    margin: 0 auto;
+    text-align: right;
+    font-size: 13px;
 }
 
-.zamanak-form-input {
-    background: var(--bg-main);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 12px;
-    border-radius: 8px;
-    width: 100%;
-    margin-bottom: 12px;
+.btn-option:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+    box-shadow: var(--neon-glow);
 }
 
-.action-gradient-btn {
-    width: 100%;
-    background: linear-gradient(90deg, #e67e22, var(--primary-gold));
-    color: #fff;
-    border: none;
-    font-weight: bold;
-    padding: 14px;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.game-btn, .puzzle-btn {
-    background: var(--bg-main);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
+.zamanak-btn {
+    background: transparent;
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
     padding: 10px;
     border-radius: 6px;
     cursor: pointer;
     width: 100%;
-    font-size: 0.9rem;
-    text-align: center;
+    font-weight: bold;
 }
 
-.popup-modal {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(11, 15, 25, 0.97); 
-    display: none;
-    justify-content: center;
+.zamanak-btn:hover {
+    background: var(--neon-cyan);
+    color: var(--bg-dark);
+}
+
+/* لعبة النيون الدائرية التفاعلية */
+.neon-clicker-area {
+    border: 2px dashed var(--neon-pink);
+    height: 150px;
+    border-radius: 8px;
+    display: flex;
     align-items: center;
-    z-index: 9999;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--neon-pink);
 }
 
-.popup-content {
-    background-color: var(--bg-card);
-    border: 2px solid var(--border-color);
-    border-radius: 16px;
-    max-width: 450px;
-    width: 90%;
-    padding: 22px;
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
-    gap: 8px;
-    max-height: 240px;
-    overflow-y: auto;
-}
-
-@media (max-width: 992px) {
-    .side-wing { display: none; }
-    .global-navbar { padding: 12px 4%; }
-    .nav-links { order: 3; width: 100%; justify-content: center; margin-top: 10px; gap: 12px; }
-}
+/* شريط هيدروليكي للمتصفح */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
