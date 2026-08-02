@@ -1,0 +1,28 @@
+/* --- السمة الفلكية العميقة لمنع الارتداد البصري --- */
+body {
+    background-color: #070b12;
+    color: #f0f4f8;
+}
+
+.zamanak-navbar-fixed {
+    background: #0d1625;
+    border-bottom: 2px solid #00f2fe;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+.nav-brand, .nav-links-wrap a.active {
+    color: #00f2fe;
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+}
+
+.nav-links-wrap a {
+    color: #8fa0b5;
+}
+
+.left-wing, .right-wing {
+    background: rgba(13, 22, 37, 0.85);
+}
+
+.center-content {
+    background: rgba(10, 17, 30, 0.95);
+}
