@@ -1,71 +1,94 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zamanak | زمانك العالمي</title>
+    <title>ZAMANAK - الرئيسية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="global-navbar">
-        <a href="index.html" class="logo-link">✨ ZAMANAK</a>
-        <nav class="nav-links">
-            <a href="index.html" class="active"><span data-lang="ar">الرئيسية</span><span data-lang="en">Home</span></a>
-            <a href="birthday.html"><span data-lang="ar">الميلاد</span><span data-lang="en">Birth</span></a>
-            <a href="marriage.html"><span data-lang="ar">الزواج</span><span data-lang="en">Marriage</span></a>
-            <a href="privacy.html"><span data-lang="ar">الخصوصية</span><span data-lang="en">Privacy</span></a>
-            <a href="terms.html"><span data-lang="ar">الشروط</span><span data-lang="en">Terms</span></a>
-            <a href="contact.html"><span data-lang="ar">اتصل بنا</span><span data-lang="en">Contact</span></a>
-        </nav>
-        <div class="controls-group">
-            <select id="languageSelect"><option value="ar">العربية 🇸🇦</option><option value="en">English 🇬🇧</option></select>
-            <button id="darkModeToggle" class="theme-btn">🌓</button>
+    <div class="zamanak-grid">
+        
+        <!-- 🧩 الجناح الأيسر: المسابقة الثقافية الفلكية (20% من الشاشة) -->
+        <div class="left-wing">
+            <h3 id="leftWingTitle">🧠 المسابقة الثقافية</h3>
+            <hr style="border: 0; border-top: 1px solid rgba(0,242,254,0.2); margin:10px 0;">
+            
+            <!-- لوحة النتائج العلوية للصح والخطأ -->
+            <div class="quiz-counters">
+                <div><span id="correctLabel">الصح: </span><span id="correctScore" style="color:#00ff87; font-weight:bold;">0</span></div>
+                <div><span id="wrongLabel">الخطأ: </span><span id="wrongScore" style="color:#ff0055; font-weight:bold;">0</span></div>
+            </div>
+
+            <!-- حاوية الأسئلة والخيارات التفاعلية -->
+            <div id="quizBox" style="background:rgba(0,0,0,0.2); padding:12px; border-radius:6px;">
+                <p id="quizQuestionText" style="font-weight:600; font-size:14px; margin-bottom:10px; color:var(--neon-cyan);"></p>
+                <div id="quizOptionsContainer"></div>
+            </div>
         </div>
-    </header>
 
-    <div class="three-column-layout">
-        <aside class="side-wing">
-            <div class="wing-title"><span data-lang="ar">🎮 جناح التسلية السريعة</span><span data-lang="en">🎮 Mini Game Wing</span></div>
-            <p id="game-score-text" style="font-size:0.9rem; text-align:center;">النقاط الفلكية الحالية: 0</p>
-            <button class="game-btn" onclick="playZamanakGame()"><span data-lang="ar">اضغط لتجميع طاقة النجوم ✨</span><span data-lang="en">Gather Star Energy ✨</span></button>
-        </aside>
+        <!-- 🚀 المحتوى المركزي: العرض الأساسي للمنصة والكروت الثلاثية (60% من الشاشة) -->
+        <div class="center-content">
+            <!-- شريط التبديل العلوي الروقان وشريط التنقل -->
+            <header style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div style="font-weight:900; letter-spacing:1px; color:var(--neon-cyan); font-size:20px;">ZAMANAK 🚀</div>
+                <nav style="display:flex; gap:15px; font-size:13px;">
+                    <a href="index.html" style="color:var(--neon-cyan); text-decoration:none; font-weight:bold;">الرئيسية</a>
+                    <a href="#" style="color:var(--text-muted); text-decoration:none;">الميلاد</a>
+                    <a href="#" style="color:var(--text-muted); text-decoration:none;">الزواج</a>
+                    <a href="#" style="color:var(--text-muted); text-decoration:none;">الخصوصية</a>
+                    <a href="#" style="color:var(--text-muted); text-decoration:none;">الشروط</a>
+                    <a href="#" style="color:var(--text-muted); text-decoration:none;">اتصل بنا</a>
+                </nav>
+                <button id="langSwitcher" class="zamanak-btn" style="width:auto; padding:4px 12px; font-size:12px;">العربية / EN</button>
+            </header>
 
-        <main class="center-content">
-            <div class="adsense-placeholder-box">
-                <div class="moving-text">
-                    <span data-lang="ar">مشروع زمانك الفلكي العالمي - احسب تفاصيل عمرك ولحظاتك بدقة فلكية متناهية حياً ومباشرة عبر التاريخ الهجري والميلادي.</span>
-                    <span data-lang="en">Zamanak Global Astronomical Project - Calculate your age details and live moments with extreme accuracy via Hijri and Gregorian systems.</span>
-                </div>
-            </div>
-            <div class="tool-header">
-                <h1><span data-lang="ar">🌌 منصة زمانك (Zamanak) الفلكية الشاملة</span><span data-lang="en">🌌 Zamanak Comprehensive Astronomical Platform</span></h1>
-                <p style="opacity: 0.8; margin-top: 5px;">
-                    <span data-lang="ar">مرحباً بك في البوابة العالمية الكبرى لاستقراء حركات الأجرام، الأزمان، والروابط الطالعية لعمرك حياً ومباشرة.</span>
-                    <span data-lang="en">Welcome to the grand global gateway to explore celestial movements, epochs, and live alignment of your age.</span>
-                </p>
-            </div>
-            <section class="articles-grid">
-                <div class="info-card">
-                    <h4><span data-lang="ar">⏳ هندسة وعلم الأزمان الكونية</span><span data-lang="en">⏳ Cosmic Time Engineering</span></h4>
-                    <p><span data-lang="ar">الأزمان ليست مجرد أرقام تتوالى في فراغ، بل هي تدوير فلكي دقيق يرتبط ميكانيكياً بحركة الأجرام السماوية ودورات الكواكب ومجموعات النجوم في قبة الفضاء. نحن نربط حركة عمرك بنبض المجرة الفعلي.</span><span data-lang="en">Time is not just a sequence of numbers, but a precise celestial rotation mechanically linked to planetary orbits around the sun and grand stellar grids. We bind your age to the galactic heartbeat.</span></p>
-                </div>
-                <div class="info-card">
-                    <h4><span data-lang="ar">🔮 أسرار ومسارات الأبراج والطوالع</span><span data-lang="en">🔮 Secrets of Zodiacs & Ascendants</span></h4>
-                    <p><span data-lang="ar">إن تموضع الشمس والقمر والتقاطعات الكوكبية لحظة خروجك إلى هذا الكون يترك بصمة طاقية فريدة تؤثر على ملامح طالعك الفلكي وتكشف ملامح مسارك الزمني الفريد عبر الأبراج الاثني عشر الأساسية بدقة متناهية.</span><span data-lang="en">The positioning of the Sun and Moon at your precise birth moment leaves an energetic blueprint shaping your astronomical ascendant traits and exposing your matrix across the 12 cosmic signs.</span></p>
-                </div>
-                <div class="info-card">
-                    <h4><span data-lang="ar">🌟 طاقة الأجرام وحساب التراكم</span><span data-lang="en">🌟 Planetary Energies</span></h4>
-                    <p><span data-lang="ar">ترتبط عدادات زمانك التراكمية الحية بالتاريخين الهجري والميلادي لتعيش تفاصيل ثواني ودقائق عمرك بالتناغم الكامل مع نبض ودورات المجرة الكبرى حياً ومباشرة دون أي تعليق أو تجمد برمي.</span><span data-lang="en">Zamanak live cumulative counters connect Hijri and Gregorian charts together, allowing your life seconds to expand in absolute harmony with the rotation of interstellar matrices.</span></p>
-                </div>
+            <!-- شريط الإعلان الأزرق الممتد المنسق من الصورة -->
+            <div class="top-announcement" id="announcementText"></div>
+
+            <!-- الكتلة الترحيبية المركزية الفاخرة -->
+            <section style="text-align:center; padding:20px 0;">
+                <div style="display:inline-block; font-size:40px; margin-bottom:10px;">🌌</div>
+                <h1 id="mainTitleText" style="font-size:24px; color:#fff; margin-bottom:10px;"></h1>
+                <p id="welcomeText" style="color:var(--text-muted); max-width:650px; margin:0 auto; font-size:14px;"></p>
             </section>
-        </main>
 
-        <aside class="side-wing">
-            <div class="wing-title"><span data-lang="ar">🔮 أسرار وألغاز طالعك</span><span data-lang="en">🔮 Cosmic Riddles</span></div>
-            <p id="puzzle-q" style="font-size:0.9rem; text-align:justify;"><span data-lang="ar">س: ما هو الكوكب الأكثر لمعاناً في سماء الليل؟</span><span data-lang="en">Q: Which is the brightest planet in the night sky?</span></p>
-            <button class="puzzle-btn" onclick="revealPuzzle()"><span data-lang="ar">عرض الإجابة الفلكية</span><span data-lang="en">Show Cosmic Answer</span></button>
-        </aside>
+            <!-- صف كروت المعمارية الفلكية الثلاثية المنسقة هندسياً من صورة العميل -->
+            <div class="cards-row">
+                <div class="zamanak-card">
+                    <h4 id="c1Title" style="color:var(--neon-cyan); margin-bottom:8px;"></h4>
+                    <p id="c1Desc" style="color:var(--text-muted); text-align:justify;"></p>
+                </div>
+                <div class="zamanak-card" style="border-top-color: #a855f7;">
+                    <h4 id="c2Title" style="color:#a855f7; margin-bottom:8px;"></h4>
+                    <p id="c2Desc" style="color:var(--text-muted); text-align:justify;"></p>
+                </div>
+                <div class="zamanak-card" style="border-top-color: #eab308;">
+                    <h4 id="c3Title" style="color:#eab308; margin-bottom:8px;"></h4>
+                    <p id="c3Desc" style="color:var(--text-muted); text-align:justify;"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 🎮 الجناح الأيمن: لعبة التسلية وحساب طاقة النجوم السريعة (20% من الشاشة) -->
+        <div class="right-wing">
+            <h3 id="rightWingTitle">🎮 جناح التسلية السريعة</h3>
+            <hr style="border: 0; border-top: 1px solid rgba(255,0,127,0.2); margin:10px 0;">
+            
+            <p style="font-size:12px; color:var(--text-muted);" id="clickActionText"></p>
+            
+            <!-- مساحة ضغط طاقة النيون التفاعلية السريعة -->
+            <div class="neon-clicker-area" id="neonClicker">
+                ⚡ ENERGY PUNCH
+            </div>
+
+            <div style="margin-top:15px; background:rgba(0,0,0,0.3); padding:10px; border-radius:6px; text-align:center; font-size:13px;">
+                <span id="scorePrefix"></span>
+                <span id="liveGameScore" style="color:var(--neon-pink); font-weight:bold; font-size:16px;">0</span>
+            </div>
+        </div>
+
     </div>
 
     <script src="script.js"></script>
