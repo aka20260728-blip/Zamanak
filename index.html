@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZAMANAK - المنظومة الفلكية الشاملة</title>
-    <!-- استدعاء فكرتك العبقرية لتقسيم التنسيق مع منع التخزين المؤقت -->
-    <link rel="stylesheet" href="layout.css?v=1.3">
-    <link rel="stylesheet" href="theme.css?v=1.3">
-    <link rel="stylesheet" href="components.css?v=1.3">
+    <!-- استدعاء ملفات التنسيق الثلاثة المقسمة بناء على فكرتك العبقرية -->
+    <link rel="stylesheet" href="layout.css?v=1.5">
+    <link rel="stylesheet" href="theme.css?v=1.5">
+    <link rel="stylesheet" href="components.css?v=1.5">
 </head>
 <body>
 
+    <!-- 🏛️ الترويسة العلوية الثابتة والمحجوزة عبر كامل الشاشة -->
     <header class="zamanak-navbar-fixed">
         <div class="nav-brand">ZAMANAK 🚀</div>
         <nav class="nav-links-wrap">
             <a href="index.html" class="active">الرئيسية</a>
-            <a href="birth.html">حساب الميلاد</a>
+            <a href="birthday.html">حساب الميلاد</a>
             <a href="marriage.html">حساب الزواج</a>
             <a href="privacy.html">الخصوصية</a>
             <a href="terms.html">الشروط والأحكام</a>
@@ -24,8 +25,10 @@
         <button id="langSwitcher" class="zamanak-btn" style="font-size:11px; padding:4px 10px;">العربية / EN</button>
     </header>
 
+    <!-- نظام الشبكة الحاسم خالي الأخطاء لجمع الأقسام الثلاثة متجاورة -->
     <div class="zamanak-grid-core">
         
+        <!-- 🧩 1. الجناح الأيسر: مسابقة الـ 10 أسئلة التفاعلية -->
         <div class="left-wing">
             <h3 id="leftWingTitle" style="font-size:15px; color:#fff;">🧠 مسابقة زمانك الفلكية</h3>
             <hr style="border:0; border-top:1px solid rgba(0,242,254,0.2); margin:10px 0;">
@@ -39,19 +42,23 @@
             </div>
         </div>
 
+        <!-- 🚀 2. المحتوى المركزي الفخم: الكروت والمقالات الفلكية الوفيرة لملء الفراغ الكلي -->
         <div class="center-content">
             <div class="top-announcement" id="announcementText"></div>
+            
             <section style="text-align:center; padding:10px 0;">
                 <h1 id="mainTitleText" style="font-size:22px; color:#fff; margin-bottom:8px;"></h1>
                 <p id="welcomeText" style="color:#8fa0b5; font-size:13px; max-width:600px; margin:0 auto;"></p>
             </section>
 
+            <!-- صف الكروت الثلاثية المستقرة -->
             <div class="cards-row">
                 <div class="zamanak-card"><h4 id="c1Title" style="color:#00f2fe; margin-bottom:6px;"></h4><p id="c1Desc" style="color:#8fa0b5; text-align:justify;"></p></div>
                 <div class="zamanak-card" style="border-top-color: #a855f7;"><h4 id="c2Title" style="color:#a855f7; margin-bottom:6px;"></h4><p id="c2Desc" style="color:#8fa0b5; text-align:justify;"></p></div>
                 <div class="zamanak-card" style="border-top-color: #eab308;"><h4 id="c3Title" style="color:#eab308; margin-bottom:6px;"></h4><p id="c3Desc" style="color:#8fa0b5; text-align:justify;"></p></div>
             </div>
 
+            <!-- صف البطاقات الإضافية الأربعة الإيمانية والتعريفية -->
             <div class="cards-row">
                 <div class="zamanak-card" style="border-top-color: #10b981;"><h4 id="infoCard1Title" style="color:#10b981; margin-bottom:6px;"></h4><p id="infoCard1Desc" style="color:#8fa0b5; text-align:justify;"></p></div>
                 <div class="zamanak-card" style="border-top-color: #f59e0b;"><h4 id="infoCard2Title" style="color:#f59e0b; margin-bottom:6px;"></h4><p id="infoCard2Desc" style="color:#8fa0b5; text-align:justify;"></p></div>
@@ -59,18 +66,20 @@
                 <div class="zamanak-card" style="border-top-color: #3b82f6;"><h4 id="infoCard4Title" style="color:#3b82f6; margin-bottom:6px;"></h4><p id="infoCard4Desc" style="color:#8fa0b5; text-align:justify;"></p></div>
             </div>
 
+            <!-- المقالات التخصصية لملء النصف الفارغ بانتظام دقيق -->
             <div class="article-box"><h3 id="art1TitleText"></h3><p id="art1BodyText" style="color:#8fa0b5; font-size:13px; text-align:justify;"></p></div>
             <div class="article-box" style="border-color: rgba(168, 85, 247, 0.15);"><h3 id="art2TitleText" style="color:#a855f7;"></h3><p id="art2BodyText" style="color:#8fa0b5; font-size:13px; text-align:justify;"></p></div>
             <div class="article-box" style="border-color: rgba(234, 179, 8, 0.15);"><h3 id="art3TitleText" style="color:#eab308;"></h3><p id="art3BodyText" style="color:#8fa0b5; font-size:13px; text-align:justify;"></p></div>
         </div>
 
+        <!-- 🎮 3. الجناح الأيمن: لعبة تسديد الكرة نحو الهدف ذات النهاية والفيزياء الحرة -->
         <div class="right-wing">
             <h3 id="rightWingTitle" style="font-size:15px; color:#fff;">🎮 جناح التسلية وإنهاء الملل</h3>
             <hr style="border:0; border-top:1px solid rgba(255,0,127,0.2); margin:10px 0;">
             <div class="game-counters">
                 <p id="clickActionText" style="font-size:11px; margin-bottom:5px;"></p>
                 <div style="display:flex; justify-content:space-between; font-size:12px; margin-top:5px;">
-                    <div><span id="scorePrefix">النقاط: </span><span id="liveGameScore" style="color:#ff007f; font-weight:bold;">0</span></div>
+                    <div><span id="scorePrefix">الأهداف: </span><span id="liveGameScore" style="color:#ff007f; font-weight:bold;">0</span></div>
                     <div><span>المحاولات: </span><span id="gameShotsCount" style="color:#00f2fe; font-weight:bold;">0</span>/10</div>
                 </div>
             </div>
@@ -83,6 +92,8 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <!-- استدعاء ملفات جافا سكريبت المقسمة والنظيفة -->
+    <script src="translations.js?v=1.5"></script>
+    <script src="script.js?v=1.5"></script>
 </body>
 </html>
