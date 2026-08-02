@@ -1,0 +1,80 @@
+/* --- جغرافية التقطيع الثلاثي والانسياب الهيدروليكي --- */
+.zamanak-grid-core {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    min-height: calc(100vh - 70px);
+}
+
+.left-wing {
+    width: 20%;
+    min-width: 260px;
+    padding: 25px;
+    height: calc(100vh - 70px);
+    position: sticky;
+    top: 70px;
+    overflow-y: auto;
+}
+
+.center-content {
+    flex: 1;
+    padding: 30px;
+    min-height: calc(100vh - 70px);
+}
+
+.right-wing {
+    width: 20%;
+    min-width: 260px;
+    padding: 25px;
+    height: calc(100vh - 70px);
+    position: sticky;
+    top: 70px;
+    overflow-y: auto;
+}
+
+/* 🏛️ الترويسة العلوية المطلقة والثابتة */
+.zamanak-navbar-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 9999;
+}
+
+.nav-brand {
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.nav-links-wrap {
+    display: flex;
+    gap: 18px;
+}
+
+.nav-links-wrap a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* 📱 الرد على ملاحظتك: نزول الجوانب للأسفل عند ضيق الشاشة */
+@media (max-width: 1150px) {
+    .zamanak-grid-core {
+        flex-direction: column; /* تحويل الترتيب عمودياً لتنزل الأجنحة تلقائياً */
+    }
+    .left-wing, .right-wing {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        top: 0 !important;
+        border: none;
+    }
+}
